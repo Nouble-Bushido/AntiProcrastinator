@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  AntiProcrastinator
+
+  Created by Артем Чжен on 22.01.2024.
+  
+*/
+
+// MARK: Splash
+"Splash.Life.Text" = "Занимайся жизнью, а не работой";
+"Splash.Affairs.Text" = "Опять дела?";
+"Splash.TimePasses.Text" = "Так и жизнь пройдет";
+
+// MARK: Name
+"NameRequest.Name.Text" = "Имя";
+"NameRequest.NameFormat.Text" = "Введите ваше имя...";
+"NameRequest.Continue.Text" = "Продолжить";
