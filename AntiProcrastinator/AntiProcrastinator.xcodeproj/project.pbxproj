@@ -11,6 +11,11 @@
 		1201E6172B5E113100682E71 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6162B5E113100682E71 /* SplashViewController.swift */; };
 		1201E61C2B5E113200682E71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1201E61B2B5E113200682E71 /* Assets.xcassets */; };
 		1201E61F2B5E113200682E71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1201E61D2B5E113200682E71 /* LaunchScreen.storyboard */; };
+		1201E6282B5E177100682E71 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6272B5E177100682E71 /* SplashView.swift */; };
+		1201E62A2B5E177F00682E71 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6292B5E177F00682E71 /* SplashViewModel.swift */; };
+		1201E62E2B5E186200682E71 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E62D2B5E186200682E71 /* GradientView.swift */; };
+		1201E6312B5E18E100682E71 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6302B5E18E100682E71 /* String+Extension.swift */; };
+		1201E6342B5E194800682E71 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6332B5E194800682E71 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		1201E61B2B5E113200682E71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1201E61E2B5E113200682E71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1201E6202B5E113200682E71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1201E6272B5E177100682E71 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		1201E6292B5E177F00682E71 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		1201E62D2B5E186200682E71 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		1201E6302B5E18E100682E71 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		1201E6332B5E194800682E71 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +62,66 @@
 		1201E6112B5E113100682E71 /* AntiProcrastinator */ = {
 			isa = PBXGroup;
 			children = (
-				1201E6122B5E113100682E71 /* AppDelegate.swift */,
-				1201E6162B5E113100682E71 /* SplashViewController.swift */,
+				1201E62B2B5E183A00682E71 /* Misc */,
+				1201E6352B5E19C600682E71 /* Presentation */,
 				1201E61B2B5E113200682E71 /* Assets.xcassets */,
 				1201E61D2B5E113200682E71 /* LaunchScreen.storyboard */,
 				1201E6202B5E113200682E71 /* Info.plist */,
 			);
 			path = AntiProcrastinator;
+			sourceTree = "<group>";
+		};
+		1201E6262B5E174C00682E71 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				1201E6162B5E113100682E71 /* SplashViewController.swift */,
+				1201E6272B5E177100682E71 /* SplashView.swift */,
+				1201E6292B5E177F00682E71 /* SplashViewModel.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		1201E62B2B5E183A00682E71 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				1201E6122B5E113100682E71 /* AppDelegate.swift */,
+				1201E6322B5E192B00682E71 /* UIColor+Extension */,
+				1201E62F2B5E18CB00682E71 /* Extension */,
+				1201E62C2B5E184700682E71 /* CustomView */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		1201E62C2B5E184700682E71 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				1201E62D2B5E186200682E71 /* GradientView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		1201E62F2B5E18CB00682E71 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1201E6302B5E18E100682E71 /* String+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		1201E6322B5E192B00682E71 /* UIColor+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1201E6332B5E194800682E71 /* UIColor+Extension.swift */,
+			);
+			path = "UIColor+Extension";
+			sourceTree = "<group>";
+		};
+		1201E6352B5E19C600682E71 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				1201E6262B5E174C00682E71 /* Splash */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +194,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1201E6342B5E194800682E71 /* UIColor+Extension.swift in Sources */,
 				1201E6172B5E113100682E71 /* SplashViewController.swift in Sources */,
 				1201E6132B5E113100682E71 /* AppDelegate.swift in Sources */,
+				1201E62E2B5E186200682E71 /* GradientView.swift in Sources */,
+				1201E6282B5E177100682E71 /* SplashView.swift in Sources */,
+				1201E6312B5E18E100682E71 /* String+Extension.swift in Sources */,
+				1201E62A2B5E177F00682E71 /* SplashViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
