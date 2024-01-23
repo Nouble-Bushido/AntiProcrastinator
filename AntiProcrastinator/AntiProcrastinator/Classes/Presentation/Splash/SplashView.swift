@@ -72,8 +72,8 @@ private extension SplashView {
     
     func makeTextLife() -> UILabel {
         let attr = TextAttributes()
-            .textColor(UIColor.white)
-//            .font(Fonts.Ubuntu.medium(size: 18))
+            .textColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1))
+            .font(Fonts.Ubuntu.medium(size: 18))
             .lineHeight(24.scale)
             .textAlignment(.left)
             .letterSpacing(-0.41.scale)
@@ -91,8 +91,8 @@ private extension SplashView {
     
     func makeTextAffairs() -> UILabel {
         let attr = TextAttributes()
-            .textColor(UIColor.white)
-//            .font(Fonts.Ubuntu.medium(size: 18))
+            .textColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1))
+            .font(Fonts.Ubuntu.medium(size: 18))
             .lineHeight(20.scale)
             .textAlignment(.center)
             .letterSpacing(-0.41.scale)
@@ -110,8 +110,8 @@ private extension SplashView {
     
     func makeTextTimePasses() -> UILabel {
         let attr = TextAttributes()
-            .textColor(UIColor.white)
-//            .font(Fonts.Ubuntu.medium(size: 18))
+            .textColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1))
+            .font(Fonts.Ubuntu.medium(size: 18))
             .lineHeight(22.scale)
             .textAlignment(.center)
             .letterSpacing(-0.41.scale)

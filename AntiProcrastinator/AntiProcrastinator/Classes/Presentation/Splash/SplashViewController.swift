@@ -16,7 +16,7 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = mainView
-        
+
         let output = viewModel.configure(input: SplashViewModel.Input(route: route))
         userDidSelectName = output.userDidSelectName
     }

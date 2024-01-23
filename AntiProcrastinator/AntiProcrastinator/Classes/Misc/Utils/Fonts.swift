@@ -13,7 +13,7 @@ enum Fonts {
             UIFont(name: "Ubuntu-Medium", size: size)!
         }
         
-        static func semiBold(size: CGFloat) -> UIFont {
+        static func light(size: CGFloat) -> UIFont {
             UIFont(name: "Ubuntu-Light", size: size)!
         }
         

@@ -54,7 +54,7 @@ private extension NameView {
 private extension NameView {
     func makeWhiteBackgroundView() -> UIView {
         let view = UIView()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         view.layer.cornerRadius = 20.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
@@ -63,9 +63,10 @@ private extension NameView {
     
     func makeNameLabel() -> UILabel {
         let attr = TextAttributes()
-            .textColor(UIColor.black)
+            .textColor(UIColor(red: 0.112, green: 0.112, blue: 0.112, alpha: 1))
             .lineHeight(28.scale)
             .textAlignment(.left)
+            .font(Fonts.Ubuntu.medium(size: 17))
             .letterSpacing(-0.41.scale)
         
         let view = UILabel()
@@ -77,18 +78,26 @@ private extension NameView {
     }
     
     func makeNameTextField() -> UITextField {
-        let attr = TextAttributes()
-            .textColor(UIColor.gray)
+        let placeHolderAttrs = TextAttributes()
+            .textColor(UIColor(red: 0.667, green: 0.667, blue: 0.667, alpha: 1))
             .lineHeight(24.scale)
             .textAlignment(.left)
+            .font(Fonts.Ubuntu.bold(size: 16))
             .letterSpacing(-0.41.scale)
         
+        let defaultTextAttrs = TextAttributes()
+            .textColor(UIColor(red: 0.112, green: 0.112, blue: 0.112, alpha: 1))
+            .font(Fonts.Ubuntu.regular(size: 16.scale))
+            .lineHeight(24.scale)
+            .textAlignment(.left)
+            .letterSpacing(-0.38.scale)
+        
         let view = UITextField()
-        view.attributedPlaceholder = "NameRequest.NameFormat.Text".localized.attributed(with: attr)
-        view.defaultTextAttributes = attr.dictionary
+        view.attributedPlaceholder = "NameRequest.NameFormat.Text".localized.attributed(with: placeHolderAttrs)
+        view.defaultTextAttributes = defaultTextAttrs.dictionary
         view.borderStyle = .none
         view.layer.cornerRadius = 12.scale
-        view.backgroundColor = UIColor.systemGray6
+        view.backgroundColor = UIColor(red: 0.953, green: 0.957, blue: 0.965, alpha: 1)
         view.keyboardType = .alphabet
         view.translatesAutoresizingMaskIntoConstraints = false
         whiteBackgroundView.addSubview(view)
@@ -97,14 +106,14 @@ private extension NameView {
     
     func makeContinueButton() -> UIButton {
         let attr = TextAttributes()
-            .textColor(UIColor.white)
-            .lineHeight(28.scale)
+            .textColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1))
             .textAlignment(.center)
+            .font(Fonts.Ubuntu.regular(size: 16))
             .letterSpacing(-0.41.scale)
         
         let view = UIButton()
         view.setAttributedTitle("NameRequest.Continue.Text".localized.attributed(with: attr), for: .normal)
-        view.backgroundColor = UIColor.blue
+        view.backgroundColor = UIColor(red: 0.11, green: 0.216, blue: 0.82, alpha: 0.5)
         view.layer.cornerRadius = 12.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         whiteBackgroundView.addSubview(view)
