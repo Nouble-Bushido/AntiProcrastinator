@@ -12,7 +12,6 @@ final class NameView: UIView {
     lazy var nameLabel = makeNameLabel()
     lazy var nameTextField = makeNameTextField()
     lazy var continueButton = makeContinueButton()
-    lazy var toolBar = makeToolBar()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,7 +89,7 @@ private extension NameView {
         view.borderStyle = .none
         view.layer.cornerRadius = 12.scale
         view.backgroundColor = UIColor.systemGray6
-        view.keyboardType = .phonePad
+        view.keyboardType = .alphabet
         view.translatesAutoresizingMaskIntoConstraints = false
         whiteBackgroundView.addSubview(view)
         return view
@@ -110,11 +109,5 @@ private extension NameView {
         view.translatesAutoresizingMaskIntoConstraints = false
         whiteBackgroundView.addSubview(view)
         return view
-    }
-    
-    func makeToolBar() -> UIToolbar {
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        return toolBar
     }
 }

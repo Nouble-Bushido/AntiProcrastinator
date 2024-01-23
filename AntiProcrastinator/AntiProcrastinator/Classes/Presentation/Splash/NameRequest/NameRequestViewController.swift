@@ -20,19 +20,27 @@ final class NameRequestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.nameTextField.delegate = self
+        actionButton()
     }
 }
 
 //MARK: UITextFieldDelegate
 extension NameRequestViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return false
+        return true
     }
 }
 
 //MARK: Private
 private extension NameRequestViewController {
-
+    @objc func pressContinueButton() {
+        guard let enteredName = mainView.nameTextField.text, !enteredName.isEmpty else { return }
+     onContinue?(enteredName)
+    }
+    
+    func actionButton() {
+        mainView.continueButton.addTarget(self, action: #selector(pressContinueButton), for: .touchUpInside)
+    }
 }
 
 
