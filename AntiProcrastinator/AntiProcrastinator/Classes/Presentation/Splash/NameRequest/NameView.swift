@@ -28,7 +28,7 @@ private extension NameView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             whiteBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            whiteBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            whiteBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -5.scale),
             whiteBackgroundView.heightAnchor.constraint(equalToConstant: 172.scale),
             whiteBackgroundView.widthAnchor.constraint(equalToConstant: 343.scale),
             

@@ -31,6 +31,7 @@
 		1201E6872B5FB45B00682E71 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1201E6822B5FB44F00682E71 /* Ubuntu-Light.ttf */; };
 		1201E6882B5FB45B00682E71 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1201E6832B5FB44F00682E71 /* Ubuntu-Medium.ttf */; };
 		1201E6892B5FB45B00682E71 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1201E6852B5FB44F00682E71 /* Ubuntu-Regular.ttf */; };
+		1201E68B2B60FA1400682E71 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E68A2B60FA1400682E71 /* PaddingLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		1201E6832B5FB44F00682E71 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		1201E6842B5FB44F00682E71 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
 		1201E6852B5FB44F00682E71 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
+		1201E68A2B60FA1400682E71 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				1201E6322B5E192B00682E71 /* Utils */,
 				1201E62F2B5E18CB00682E71 /* Extension */,
 				1201E62C2B5E184700682E71 /* CustomView */,
+				1201E68C2B60FA2900682E71 /* CustomLabel */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -241,6 +244,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		1201E68C2B60FA2900682E71 /* CustomLabel */ = {
+			isa = PBXGroup;
+			children = (
+				1201E68A2B60FA1400682E71 /* PaddingLabel.swift */,
+			);
+			path = CustomLabel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -317,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1201E6342B5E194800682E71 /* UIColor+Extension.swift in Sources */,
+				1201E68B2B60FA1400682E71 /* PaddingLabel.swift in Sources */,
 				1201E6172B5E113100682E71 /* SplashViewController.swift in Sources */,
 				1201E6452B5E22C300682E71 /* Scalable.swift in Sources */,
 				1201E6502B5E427500682E71 /* UserManager.swift in Sources */,

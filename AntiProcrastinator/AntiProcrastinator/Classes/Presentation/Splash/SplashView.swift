@@ -41,7 +41,7 @@ private extension SplashView {
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 109.scale),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            lifeLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10.scale),
+            lifeLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20.scale),
             lifeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30.scale),
             lifeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -140.scale),
             lifeLabel.heightAnchor.constraint(equalToConstant: 64.scale),
@@ -71,15 +71,15 @@ private extension SplashView {
         return view
     }
     
-    func makeTextLife() -> UILabel {
+    func makeTextLife() -> CustomLabel {
         let attr = TextAttributes()
             .textColor(UIColor(integralRed: 255, green: 255, blue: 255, alpha: 1))
             .font(Fonts.Ubuntu.medium(size: 18))
             .lineHeight(20.scale)
-            .textAlignment(.center)
+            .textAlignment(.left)
             .letterSpacing(-0.41.scale)
     
-        let view = UILabel()
+        let view = CustomLabel()
         view.attributedText = "Splash.Life.Text".localized.attributed(with: attr)
         view.numberOfLines = 0
         view.layer.cornerRadius = 20.scale
