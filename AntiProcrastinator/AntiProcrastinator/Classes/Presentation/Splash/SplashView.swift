@@ -41,9 +41,10 @@ private extension SplashView {
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 109.scale),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            lifeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 21.scale),
             lifeLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10.scale),
-            lifeLabel.widthAnchor.constraint(equalToConstant: 219.scale),
+            lifeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30.scale),
+            lifeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -140.scale),
+            lifeLabel.heightAnchor.constraint(equalToConstant: 64.scale),
             
             affairsLabel.topAnchor.constraint(equalTo: lifeLabel.bottomAnchor, constant: 20.scale),
             affairsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 189.scale),
@@ -72,18 +73,18 @@ private extension SplashView {
     
     func makeTextLife() -> UILabel {
         let attr = TextAttributes()
-            .textColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1))
+            .textColor(UIColor(integralRed: 255, green: 255, blue: 255, alpha: 1))
             .font(Fonts.Ubuntu.medium(size: 18))
-            .lineHeight(24.scale)
-            .textAlignment(.left)
+            .lineHeight(20.scale)
+            .textAlignment(.center)
             .letterSpacing(-0.41.scale)
-        
+    
         let view = UILabel()
         view.attributedText = "Splash.Life.Text".localized.attributed(with: attr)
         view.numberOfLines = 0
         view.layer.cornerRadius = 20.scale
         view.clipsToBounds = true
-        view.backgroundColor = UIColor(red: 0.11, green: 0.216, blue: 0.82, alpha: 1)
+        view.backgroundColor = UIColor(integralRed: 28, green: 55, blue: 208)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -91,9 +92,9 @@ private extension SplashView {
     
     func makeTextAffairs() -> UILabel {
         let attr = TextAttributes()
-            .textColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1))
+            .textColor(UIColor(integralRed: 255, green: 255, blue: 255, alpha: 1))
             .font(Fonts.Ubuntu.medium(size: 18))
-            .lineHeight(20.scale)
+            .lineHeight(22.scale)
             .textAlignment(.center)
             .letterSpacing(-0.41.scale)
         
@@ -102,7 +103,7 @@ private extension SplashView {
         view.numberOfLines = 0
         view.layer.cornerRadius = 20.scale
         view.clipsToBounds = true
-        view.backgroundColor = UIColor(red: 0.95, green: 0.61, blue: 0.099, alpha: 1)
+        view.backgroundColor =  UIColor(integralRed: 242, green: 156, blue: 25, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -110,7 +111,7 @@ private extension SplashView {
     
     func makeTextTimePasses() -> UILabel {
         let attr = TextAttributes()
-            .textColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1))
+            .textColor(UIColor(integralRed: 255, green: 255, blue: 255, alpha: 1))
             .font(Fonts.Ubuntu.medium(size: 18))
             .lineHeight(22.scale)
             .textAlignment(.center)
@@ -121,7 +122,7 @@ private extension SplashView {
         view.numberOfLines = 0
         view.layer.cornerRadius = 20.scale
         view.clipsToBounds = true
-        view.backgroundColor = UIColor(red: 0.413, green: 0.496, blue: 0.971, alpha: 1)
+        view.backgroundColor = UIColor(integralRed: 105, green: 126, blue: 248, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
