@@ -114,7 +114,7 @@ private extension NameView {
         
         let view = UIButton()
         view.setAttributedTitle("NameRequest.Continue.Text".localized.attributed(with: attr), for: .normal)
-        view.backgroundColor = UIColor(integralRed: 28, green: 55, blue: 209, alpha: 0.5)
+        view.backgroundColor = UIColor(integralRed: 28, green: 55, blue: 209, alpha: 0.6)
         view.layer.cornerRadius = 12.scale
         view.isEnabled = false
         view.translatesAutoresizingMaskIntoConstraints = false

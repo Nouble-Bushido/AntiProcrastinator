@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class NameRequestViewController: UIViewController, UITextFieldDelegate {
+final class NameRequestViewController: UIViewController {
     private lazy var mainView = NameView()
     var onContinue: ((String) -> Void)?
     
@@ -19,7 +19,6 @@ final class NameRequestViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainView.nameTextField.delegate = self
         mainView.nameTextField.addTarget(self, action: #selector(didInput), for: .editingChanged)
         actionButton()
     }
@@ -37,7 +36,9 @@ private extension NameRequestViewController {
     }
     
     @objc func didInput() {
-        mainView.continueButton.isEnabled = !(mainView.nameTextField.text?.isEmpty ?? true)
+        let isNameEntered = !(mainView.nameTextField.text?.isEmpty ?? true)
+        mainView.continueButton.isEnabled = isNameEntered
+        mainView.continueButton.backgroundColor = isNameEntered ? UIColor(integralRed: 28, green: 55, blue: 209, alpha: 1) : UIColor(integralRed: 28, green: 55, blue: 209, alpha: 0.6)
     }
 }
 
