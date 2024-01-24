@@ -71,7 +71,7 @@ private extension SplashView {
         return view
     }
     
-    func makeTextLife() -> CustomLabel {
+    func makeTextLife() -> PaddingLabel {
         let attr = TextAttributes()
             .textColor(UIColor(integralRed: 255, green: 255, blue: 255, alpha: 1))
             .font(Fonts.Ubuntu.medium(size: 18))
@@ -79,7 +79,7 @@ private extension SplashView {
             .textAlignment(.left)
             .letterSpacing(-0.41.scale)
     
-        let view = CustomLabel()
+        let view = PaddingLabel()
         view.attributedText = "Splash.Life.Text".localized.attributed(with: attr)
         view.numberOfLines = 0
         view.layer.cornerRadius = 20.scale
