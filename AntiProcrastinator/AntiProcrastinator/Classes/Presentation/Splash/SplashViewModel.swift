@@ -9,9 +9,18 @@ import UIKit
 
 final class SplashViewModel {
     enum Route {
-        case requestName, main
+        case requestName, main, info
     }
     private lazy var userManager = UserManager()
+    private lazy var isFirstLaunchKey = "isFirstLaunch"
+    private  var isFirstLaunch: Bool {
+           get {
+               return UserDefaults.standard.bool(forKey: isFirstLaunchKey)
+           }
+           set {
+               UserDefaults.standard.set(newValue, forKey: isFirstLaunchKey)
+           }
+       }
 }
 
 //MARK: Public
@@ -28,9 +37,9 @@ extension SplashViewModel {
         input.route(makeRoute())
         var userDidSelectName: (String) -> Void {
             { [weak self] name in
-            let user = User(name: name)
+                let user = User(name: name)
                 self?.userManager.set(user: user)
-                input.route(.main)
+                input.route(.info)
             }
         }
         return Output(userDidSelectName: userDidSelectName)
@@ -40,6 +49,12 @@ extension SplashViewModel {
 //MARK: Private
 private extension SplashViewModel {
     func makeRoute() -> Route {
-        userManager.getUser()?.name == nil ? Route.requestName : Route.main
+        let name = userManager.getUser()?.name
+        if isFirstLaunch {
+               isFirstLaunch = false
+               return name == nil ? .requestName : .main
+           } else {
+               return name == nil ? .requestName : .main
+           }
     }
 }

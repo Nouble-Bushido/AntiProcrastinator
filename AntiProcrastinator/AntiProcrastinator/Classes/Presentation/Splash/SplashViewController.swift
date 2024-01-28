@@ -42,6 +42,8 @@ private extension SplashViewController {
                     self.presentNameRequest()
                 case .main:
                     self.presentMain()
+                case .info:
+                    self.presentInfo()
                 }
             }
         }
@@ -54,6 +56,13 @@ private extension SplashViewController {
             self?.userDidSelectName?(name)
         }
         present(vc, animated: true)
+    }
+    
+    func presentInfo() {
+        let vc = InfoViewController()
+        let navigationController = UINavigationController(rootViewController: vc)
+        vc.modalPresentationStyle = .overFullScreen
+        UIApplication.shared.keyWindow?.rootViewController = navigationController
     }
     
     func presentMain() {
