@@ -12,15 +12,6 @@ final class SplashViewModel {
         case requestName, main, info
     }
     private lazy var userManager = UserManager()
-    private lazy var isFirstLaunchKey = "isFirstLaunch"
-    private  var isFirstLaunch: Bool {
-           get {
-               return UserDefaults.standard.bool(forKey: isFirstLaunchKey)
-           }
-           set {
-               UserDefaults.standard.set(newValue, forKey: isFirstLaunchKey)
-           }
-       }
 }
 
 //MARK: Public
@@ -50,9 +41,8 @@ extension SplashViewModel {
 private extension SplashViewModel {
     func makeRoute() -> Route {
         let name = userManager.getUser()?.name
-        if isFirstLaunch {
-               isFirstLaunch = false
-               return name == nil ? .requestName : .main
+        if LaunchManager.isFirstLaunch {
+               return name == nil ? .requestName : .info
            } else {
                return name == nil ? .requestName : .main
            }

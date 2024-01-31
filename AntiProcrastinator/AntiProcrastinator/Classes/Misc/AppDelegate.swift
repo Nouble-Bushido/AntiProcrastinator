@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.rootViewController = splashVc
             window.makeKeyAndVisible()
         }
+        LaunchManager.recordFirstLaunch()
+        
         return true
     }
 }

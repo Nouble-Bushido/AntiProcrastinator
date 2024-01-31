@@ -9,8 +9,8 @@ import UIKit
 
 final class InfoViewController: UIViewController {
     private lazy var mainView = InfoView()
+    private lazy var flooterView = TableViewFooter()
     private var viewModel = InfoViewModel()
-    private var didSelectElements: ((InfoTableElement) -> Void)?
     
     override func loadView() {
         super.loadView()
@@ -19,10 +19,9 @@ final class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let output = viewModel.configure(input: InfoViewModel.Input(bind: { [weak self] sections in
+        viewModel.configure(input: InfoViewModel.Input(bind: { [weak self] sections in
             self?.mainView.tableView.setup(sections: sections)
         }))
-        didSelectElements = output.didSelect
         actionContinueButton()
     }
 }
@@ -30,7 +29,7 @@ final class InfoViewController: UIViewController {
 //MARK: Private
 private extension InfoViewController {
     func actionContinueButton() {
-        mainView.continueButton.addTarget(self, action: #selector(pressContinueButton), for: .touchUpInside)
+        flooterView.continueButton.addTarget(self, action: #selector(pressContinueButton), for: .touchUpInside)
     }
     
     @objc func pressContinueButton() {

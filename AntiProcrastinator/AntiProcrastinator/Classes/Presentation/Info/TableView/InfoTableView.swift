@@ -34,41 +34,21 @@ extension InfoTableView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.clear
-
-        let label = UILabel()
-        label.textColor = UIColor(integralRed: 0, green: 0, blue: 0)
-        label.font = Fonts.Ubuntu.medium(size: 16.scale)
-        label.textAlignment = .center
-        label.text = sections[section].title
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        let button = UIButton()
-        button.setImage(UIImage(systemName: sections[section].isExpanded ? "chevron.up" : "chevron.down"), for: .normal)
-        button.tintColor = UIColor(integralRed: 0, green: 0, blue: 0)
-        button.addTarget(self, action: #selector(toggleSection(sender:)), for: .touchUpInside)
-        button.tag = section
-        button.translatesAutoresizingMaskIntoConstraints = false
-
-        headerView.addSubview(label)
-        headerView.addSubview(button)
-
-        NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16.scale),
-            label.topAnchor.constraint(equalTo: headerView.topAnchor),
-            label.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -10.scale),
-            
-            button.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-            button.topAnchor.constraint(equalTo: headerView.topAnchor),
-            button.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -10.scale)
-        ])
-
+        let headerView = InfoTableHeaderView()
+        headerView.configure(withTitle: sections[section].title,
+                             isExpanded: sections[section].isExpanded,
+                             section: section,
+                             target: self,
+                             action: #selector(toggleSection(sender:)))
         return headerView
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25.scale
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return sections[section].isExpanded ? 1 : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,6 +59,20 @@ extension InfoTableView: UITableViewDataSource {
             cell.setup(text: text)
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let result = UIView()
+        let insets = tableView.separatorInset
+        let width = tableView.bounds.width - insets.left - insets.right
+        let separatorFrame = CGRect(x: insets.left, y: -0.5, width: width, height: 0.5)
+        
+        let separator = CALayer()
+        separator.frame = separatorFrame
+        separator.backgroundColor = tableView.separatorColor?.cgColor
+        result.layer.addSublayer(separator)
+        
+        return result
     }
 }
 
@@ -99,6 +93,7 @@ extension InfoTableView: UITableViewDelegate {
 private extension InfoTableView {
     func initialize() {
         register(InfoCell.self, forCellReuseIdentifier: String(describing: InfoCell.self))
+        showsVerticalScrollIndicator = false
         dataSource = self
         delegate = self
     }
@@ -106,9 +101,6 @@ private extension InfoTableView {
     @objc func toggleSection(sender: UIButton) {
         let section = sender.tag
         sections[section].isExpanded.toggle()
-        
-        DispatchQueue.main.async {
-            self.reloadData()
-        }
+        self.reloadSections(IndexSet(integer: section), with: .automatic)
     }
 }

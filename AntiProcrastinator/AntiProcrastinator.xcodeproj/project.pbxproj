@@ -38,6 +38,10 @@
 		1201E6962B61FF6B00682E71 /* InfoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6952B61FF6B00682E71 /* InfoTableView.swift */; };
 		1201E6992B62000100682E71 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6982B62000100682E71 /* InfoCell.swift */; };
 		1201E69F2B6209E700682E71 /* InfoTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E69E2B6209E700682E71 /* InfoTableSection.swift */; };
+		1201E6A22B69FF9900682E71 /* InfoTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6A12B69FF9900682E71 /* InfoTableHeaderView.swift */; };
+		1201E6A52B6A178900682E71 /* LaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6A42B6A178900682E71 /* LaunchManager.swift */; };
+		1201E6A72B6A432E00682E71 /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6A62B6A432E00682E71 /* TableViewHeader.swift */; };
+		1201E6A92B6A462600682E71 /* TableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6A82B6A462600682E71 /* TableViewFooter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +78,10 @@
 		1201E6952B61FF6B00682E71 /* InfoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableView.swift; sourceTree = "<group>"; };
 		1201E6982B62000100682E71 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		1201E69E2B6209E700682E71 /* InfoTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableSection.swift; sourceTree = "<group>"; };
+		1201E6A12B69FF9900682E71 /* InfoTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableHeaderView.swift; sourceTree = "<group>"; };
+		1201E6A42B6A178900682E71 /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
+		1201E6A62B6A432E00682E71 /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
+		1201E6A82B6A462600682E71 /* TableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFooter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +135,7 @@
 		1201E62B2B5E183A00682E71 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				1201E6122B5E113100682E71 /* AppDelegate.swift */,
 				1201E6322B5E192B00682E71 /* Utils */,
 				1201E62F2B5E18CB00682E71 /* Extension */,
 				1201E62C2B5E184700682E71 /* CustomView */,
@@ -139,6 +148,9 @@
 			isa = PBXGroup;
 			children = (
 				1201E62D2B5E186200682E71 /* GradientView.swift */,
+				1201E6A12B69FF9900682E71 /* InfoTableHeaderView.swift */,
+				1201E6A62B6A432E00682E71 /* TableViewHeader.swift */,
+				1201E6A82B6A462600682E71 /* TableViewFooter.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -207,11 +219,8 @@
 			isa = PBXGroup;
 			children = (
 				1201E62B2B5E183A00682E71 /* Misc */,
-				1201E6122B5E113100682E71 /* AppDelegate.swift */,
-				1201E6352B5E19C600682E71 /* Presentation */,
-				1201E6942B61FF4600682E71 /* TableView */,
-				1201E6972B61FF7500682E71 /* Cell */,
 				1201E64A2B5E41BE00682E71 /* Service */,
+				1201E6352B5E19C600682E71 /* Presentation */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -219,6 +228,7 @@
 		1201E64A2B5E41BE00682E71 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				1201E6A32B6A175E00682E71 /* Launch */,
 				1201E64B2B5E420C00682E71 /* User */,
 			);
 			path = Service;
@@ -273,6 +283,8 @@
 				1201E68E2B61FF0F00682E71 /* InfoView.swift */,
 				1201E6902B61FF2D00682E71 /* InfoViewController.swift */,
 				1201E6922B61FF3A00682E71 /* InfoViewModel.swift */,
+				1201E6942B61FF4600682E71 /* TableView */,
+				1201E6972B61FF7500682E71 /* Cell */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -292,6 +304,14 @@
 				1201E6982B62000100682E71 /* InfoCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		1201E6A32B6A175E00682E71 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				1201E6A42B6A178900682E71 /* LaunchManager.swift */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,14 +397,18 @@
 				1201E6502B5E427500682E71 /* UserManager.swift in Sources */,
 				1201E6132B5E113100682E71 /* AppDelegate.swift in Sources */,
 				1201E68F2B61FF0F00682E71 /* InfoView.swift in Sources */,
+				1201E6A52B6A178900682E71 /* LaunchManager.swift in Sources */,
 				1201E6412B5E227E00682E71 /* TextAttributes.swift in Sources */,
+				1201E6A92B6A462600682E71 /* TableViewFooter.swift in Sources */,
 				1201E62E2B5E186200682E71 /* GradientView.swift in Sources */,
 				1201E65A2B5E47C100682E71 /* MainViewController.swift in Sources */,
 				1201E6282B5E177100682E71 /* SplashView.swift in Sources */,
 				1201E6932B61FF3A00682E71 /* InfoViewModel.swift in Sources */,
+				1201E6A22B69FF9900682E71 /* InfoTableHeaderView.swift in Sources */,
 				1201E6432B5E229A00682E71 /* ScreenSize.swift in Sources */,
 				1201E6582B5E47B700682E71 /* MainView.swift in Sources */,
 				1201E6532B5E474400682E71 /* NameView.swift in Sources */,
+				1201E6A72B6A432E00682E71 /* TableViewHeader.swift in Sources */,
 				1201E6962B61FF6B00682E71 /* InfoTableView.swift in Sources */,
 				1201E6912B61FF2D00682E71 /* InfoViewController.swift in Sources */,
 				1201E64E2B5E423000682E71 /* User.swift in Sources */,
