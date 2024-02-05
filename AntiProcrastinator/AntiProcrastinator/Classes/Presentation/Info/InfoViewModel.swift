@@ -13,14 +13,28 @@ final class InfoViewModel {
 //MARK: Public
 extension InfoViewModel {
     struct Input {
-        let bind: ([InfoTableSection]) -> Void
+        let bind: ([AllElements]) -> Void
     }
     
-    func configure(input: Input) {
+    struct Output {
+        let didSelect: (AllElements) -> ()
+    }
+    
+    func configure(input: Input) -> Output {
         let fatigueLevelsSection = InfoTableSection(title: "Info.FatigueLevels.Text".localized, elements: .fatigueLevels("Info.decriptionFatigueLevels.Text".localized), isExpanded: false)
         let pointsSection = InfoTableSection(title: "Info.Points.Text".localized, elements: .points("Info.descriptionPoints.Text".localized), isExpanded: false)
         let punishmentSection = InfoTableSection(title: "Info.Punishment.Text".localized, elements: .punishment("Info.descriptionPunishment.Text".localized), isExpanded: false)
-        let sections: [InfoTableSection] = [fatigueLevelsSection, pointsSection, punishmentSection]
-        input.bind(sections)
+        
+        let allElements: [AllElements] = [
+            .imageCell("Info.Image"),
+            .sections(fatigueLevelsSection),
+            .sections(pointsSection),
+            .sections(punishmentSection),
+            .buttonCell("Info.Start.Text".localized)
+        ]
+        
+        input.bind(allElements)
+        return Output { selected in
+        }
     }
 }

@@ -14,9 +14,6 @@ final class InfoView: UIView {
         super.init(frame: frame)
         initialize()
         makeConstraints()
-        tableView.tableHeaderView = makeTableHeaderView()
-        tableView.tableFooterView = makeTableFooterView()
-        if #available(iOS 15.0, *) { tableView.sectionHeaderTopPadding = 0.0 }
     }
     
     required init?(coder: NSCoder) {
@@ -38,16 +35,8 @@ private extension InfoView {
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15.scale),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tableView.topAnchor.constraint(equalTo: topAnchor, constant: -30.scale),
+            tableView.topAnchor.constraint(equalTo: topAnchor, constant: -47.scale),
         ])
-    }
-    
-    func makeTableHeaderView() -> UIView {
-        return TableViewHeader(frame: CGRect(x: 0, y: 0, width: frame.width, height: 375.scale))
-    }
-    
-    func makeTableFooterView() -> UIView {
-        return TableViewFooter(frame: CGRect(x: 0, y: 0, width: frame.width, height: 50.scale))
     }
 }
 

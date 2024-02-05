@@ -8,7 +8,8 @@
 import UIKit
 
 final class InfoTableView: UITableView {
-    lazy var sections = [InfoTableSection]()
+    lazy var allElements = [AllElements]()
+    var continueButtonTappedHandler: (() -> Void)?
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -21,8 +22,8 @@ final class InfoTableView: UITableView {
 }
 
 extension InfoTableView {
-    func setup(sections: [InfoTableSection]) {
-        self.sections = sections
+    func setup(allElements: [AllElements]) {
+        self.allElements = allElements
         reloadData()
     }
 }
@@ -30,77 +31,100 @@ extension InfoTableView {
 //MARK: UITableViewDataSourse
 extension InfoTableView: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        sections.count
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = InfoTableHeaderView()
-        headerView.configure(withTitle: sections[section].title,
-                             isExpanded: sections[section].isExpanded,
-                             section: section,
-                             target: self,
-                             action: #selector(toggleSection(sender:)))
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 25.scale
+        allElements.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].isExpanded ? 1 : 0
+        switch allElements[section] {
+        case .sections(let sectionInfo):
+            return sectionInfo.isExpanded ? 1 : 0
+        default:
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InfoCell.self)) as? InfoCell else { return UITableViewCell()}
-        
-        switch sections[indexPath.section].elements {
-        case .fatigueLevels(let text), .points(let text), .punishment(let text):
-            cell.setup(text: text)
+        switch allElements[indexPath.section] {
+        case .imageCell(let imageName):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ImageViewCell.self)) as? ImageViewCell else { return UITableViewCell()}
+            cell.setup(imageName: imageName)
+            return cell
+        case .sections(let section):
+            switch section.elements {
+            case .fatigueLevels(let text), .points(let text), .punishment(let text):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InfoViewCell.self)) as? InfoViewCell else { return UITableViewCell()}
+                cell.setup(text: text)
+                return cell
+            }
+        case .buttonCell(let name):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ButtonViewCell.self)) as? ButtonViewCell else { return UITableViewCell()}
+            cell.setup(name: name)
+            cell.continueButtonTappedHandler = { [weak self] in
+                self?.continueButtonTappedHandler?()
+            }
+            return cell
         }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let result = UIView()
-        let insets = tableView.separatorInset
-        let width = tableView.bounds.width - insets.left - insets.right
-        let separatorFrame = CGRect(x: insets.left, y: -0.5, width: width, height: 0.5)
-        
-        let separator = CALayer()
-        separator.frame = separatorFrame
-        separator.backgroundColor = tableView.separatorColor?.cgColor
-        result.layer.addSublayer(separator)
-        
-        return result
     }
 }
 
 //MARK: UITableViewDelegate
 extension InfoTableView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return sections[indexPath.section].isExpanded ? UITableView.automaticDimension : 0
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = InfoTableHeaderView()
+        switch allElements[section] {
+        case let .sections(sectionInfo):
+            headerView.configure(withTitle: sectionInfo.title,
+                                 isExpanded: sectionInfo.isExpanded,
+                                 section: section,
+                                 target: self,
+                                 action: #selector(toggleSection(sender:)))
+        default:
+            break
+        }
+        return headerView
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = indexPath.section
-        sections[section].isExpanded.toggle()
-        tableView.reloadSections(IndexSet(integer: section), with: .automatic)
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        switch allElements[section] {
+        case .sections:
+            let separatorView = UIView()
+            let insets = tableView.separatorInset
+            let width = tableView.bounds.width - insets.left - insets.right
+            let separatorFrame = CGRect(x: insets.left, y: 0, width: width, height: 0.5)
+            
+            let separator = CALayer()
+            separator.frame = separatorFrame
+            separator.backgroundColor = tableView.separatorColor?.cgColor
+            separatorView.layer.addSublayer(separator)
+            return separatorView
+            
+        default:
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1.0
     }
 }
 
 // MARK: Private
 private extension InfoTableView {
     func initialize() {
-        register(InfoCell.self, forCellReuseIdentifier: String(describing: InfoCell.self))
+        register(ImageViewCell.self, forCellReuseIdentifier: String(describing: ImageViewCell.self))
+        register(InfoViewCell.self, forCellReuseIdentifier: String(describing: InfoViewCell.self))
+        register(ButtonViewCell.self, forCellReuseIdentifier: String(describing: ButtonViewCell.self))
         showsVerticalScrollIndicator = false
+        separatorStyle = .none
         dataSource = self
         delegate = self
     }
     
     @objc func toggleSection(sender: UIButton) {
         let section = sender.tag
-        sections[section].isExpanded.toggle()
-        self.reloadSections(IndexSet(integer: section), with: .automatic)
+        guard case var .sections(sectionInfo) = allElements[section] else { return }
+        sectionInfo.isExpanded.toggle()
+        allElements[section] = .sections(sectionInfo)
+        self.reloadData()
     }
 }
