@@ -1,5 +1,5 @@
 //
-//  InfoCell.swift
+//  InfoViewCell.swift
 //  AntiProcrastinator
 //
 //  Created by Артем Чжен on 25.01.2024.
@@ -7,18 +7,17 @@
 
 import UIKit
 
-final class InfoCell: UITableViewCell {
+final class InfoViewCell: UITableViewCell {
+    lazy var label = makeInfoLabel()
     private lazy var textAttrs = TextAttributes()
         .textColor(UIColor.black)
         .lineHeight(18.scale)
         .font(Fonts.Ubuntu.light(size: 16))
         .letterSpacing(-0.41.scale)
-
-    lazy var label = makeInfoLabel()
-
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        initialize()
         makeConstraints()
     }
     
@@ -28,15 +27,22 @@ final class InfoCell: UITableViewCell {
 }
 
 //MARK: Public
-extension InfoCell {
+extension InfoViewCell {
     func setup(text: String) {
         let attributedText = text.attributed(with: textAttrs)
         label.attributedText = attributedText
     }
 }
 
+//MARK: Private
+private extension InfoViewCell {
+    func initialize() {
+        selectionStyle = .none
+    }
+}
+
 //MARK: Make constraints
-private extension InfoCell {
+private extension InfoViewCell {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -48,7 +54,7 @@ private extension InfoCell {
 }
 
 //MARK: Lazy initialization
-private extension InfoCell {
+private extension InfoViewCell {
     func makeInfoLabel() -> UILabel {
         let view = UILabel()
         view.numberOfLines = 0
