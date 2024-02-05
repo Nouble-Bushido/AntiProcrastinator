@@ -41,10 +41,7 @@ extension SplashViewModel {
 private extension SplashViewModel {
     func makeRoute() -> Route {
         let name = userManager.getUser()?.name
-        if LaunchManager.isFirstLaunch {
-               return name == nil ? .requestName : .info
-           } else {
-               return name == nil ? .requestName : .main
-           }
+        let isFisrtLaunch = LaunchManager.shared.isFirstLaunch
+        return (!isFisrtLaunch || name == nil) ? .requestName : .main
     }
 }
