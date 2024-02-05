@@ -15,14 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       
         window = UIWindow(frame: UIScreen.main.bounds)
+
+        LaunchManager.shared.checkAndRecordFirstLaunch()
         
         if let window = window {
             let splashVc = SplashViewController.make()
             window.rootViewController = splashVc
             window.makeKeyAndVisible()
         }
-        LaunchManager.recordFirstLaunch()
-        
+    
         return true
     }
 }
