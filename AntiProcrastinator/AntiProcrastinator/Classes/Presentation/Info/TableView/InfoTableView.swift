@@ -47,7 +47,7 @@ extension InfoTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch allElements[indexPath.section] {
         case .imageCell(let imageName):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ImageCell.self)) as? ImageCell else { return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InfoImageCell.self)) as? InfoImageCell else { return UITableViewCell()}
             cell.setup(imageName: imageName)
             return cell
         case .sections(let section):
@@ -58,7 +58,7 @@ extension InfoTableView: UITableViewDataSource {
                 return cell
             }
         case .buttonCell(let name):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ButtonCell.self)) as? ButtonCell else { return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InfoButtonCell.self)) as? InfoButtonCell else { return UITableViewCell()}
             cell.setup(name: name)
             cell.continueButtonTappedHandler = { [weak self] in
                 self?.continueButtonTappedHandler?()
@@ -81,6 +81,7 @@ extension InfoTableView: UITableViewDelegate {
                                  target: self,
                                  action: #selector(toggleSection(sender:)),
                                  hasSeparator: sectionInfo.hasSeparator)
+            headerView.tag = section
             return headerView
         default:
             return nil
@@ -91,9 +92,9 @@ extension InfoTableView: UITableViewDelegate {
 // MARK: Private
 private extension InfoTableView {
     func initialize() {
-        register(ImageCell.self, forCellReuseIdentifier: String(describing: ImageCell.self))
+        register(InfoImageCell.self, forCellReuseIdentifier: String(describing: InfoImageCell.self))
         register(InfoCell.self, forCellReuseIdentifier: String(describing: InfoCell.self))
-        register(ButtonCell.self, forCellReuseIdentifier: String(describing: ButtonCell.self))
+        register(InfoButtonCell.self, forCellReuseIdentifier: String(describing: InfoButtonCell.self))
         showsVerticalScrollIndicator = false
         separatorStyle = .none
         dataSource = self
@@ -101,7 +102,7 @@ private extension InfoTableView {
     }
     
     @objc func toggleSection(sender: UIButton) {
-        let section = sender.tag
+        guard let section = sender.superview?.tag else { return }
         guard case var .sections(sectionInfo) = allElements[section] else { return }
         sectionInfo.isExpanded.toggle()
         sectionInfo.hasSeparator = !sectionInfo.isExpanded

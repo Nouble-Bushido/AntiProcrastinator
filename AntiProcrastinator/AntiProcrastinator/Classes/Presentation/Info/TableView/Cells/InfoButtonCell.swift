@@ -1,5 +1,5 @@
 //
-//  ButtonCell.swift
+//  InfoButtonCell.swift
 //  AntiProcrastinator
 //
 //  Created by Артем Чжен on 01.02.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ButtonCell: UITableViewCell {
+final class InfoButtonCell: UITableViewCell {
     lazy var continueButton = makeContinueButton()
     var continueButtonTappedHandler: (() -> Void)?
     private lazy var textAttrs = TextAttributes()
@@ -28,14 +28,14 @@ final class ButtonCell: UITableViewCell {
 }
 
 //MARK: Public
-extension ButtonCell {
+extension InfoButtonCell {
     func setup(name: String) {
         continueButton.setTitle(name, for: .normal)
     }
 }
 
 //MARK: Private
-private extension ButtonCell {
+private extension InfoButtonCell {
     func initialize() {
         selectionStyle = .none
     }
@@ -46,7 +46,7 @@ private extension ButtonCell {
 }
 
 //MARK: Make constraints
-private extension ButtonCell {
+private extension InfoButtonCell {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             continueButton.heightAnchor.constraint(equalToConstant: 50.scale),
@@ -59,7 +59,7 @@ private extension ButtonCell {
 }
 
 //MARK: Lazy initialization
-private extension ButtonCell {
+private extension InfoButtonCell {
     func makeContinueButton() -> UIButton {
         let view = UIButton()
         view.backgroundColor = UIColor(integralRed: 28, green: 55, blue: 209)

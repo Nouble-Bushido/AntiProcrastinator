@@ -9,16 +9,18 @@ import Foundation
 
 final class LaunchManager {
     static let shared = LaunchManager()
+    
     private let launchKey = "launchmanager_key"
-    var isFirstLaunch: Bool {
-        return UserDefaults.standard.integer(forKey: launchKey) <= 1
-    }
     
     private init() {}
 }
 
 //MARK: Public
 extension LaunchManager {
+    var isFirstLaunch: Bool {
+        return UserDefaults.standard.integer(forKey: launchKey) <= 1
+    }
+    
     func didFinishLaunchingWithOptions() {
         trackAppLaunch()
     }
@@ -26,9 +28,10 @@ extension LaunchManager {
 
 //MARK: Private
 private extension LaunchManager {
-    private func trackAppLaunch() {
-        let launchCount = UserDefaults.standard.integer(forKey: launchKey)
-        UserDefaults.standard.set((launchCount == 0) ? 1 : 2, forKey: launchKey)
+     func trackAppLaunch() {
+        var launchCount = UserDefaults.standard.integer(forKey: launchKey)
+        launchCount += 1
+        UserDefaults.standard.set(launchCount, forKey: launchKey)
     }
 }
 

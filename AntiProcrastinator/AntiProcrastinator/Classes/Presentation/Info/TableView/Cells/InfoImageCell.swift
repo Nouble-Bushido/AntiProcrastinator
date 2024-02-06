@@ -1,5 +1,5 @@
 //
-//  ImageCell.swift
+//  InfoImageCell.swift
 //  AntiProcrastinator
 //
 //  Created by Артем Чжен on 01.02.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ImageCell: UITableViewCell {
+final class InfoImageCell: UITableViewCell {
     lazy var picture = makeImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -22,21 +22,21 @@ final class ImageCell: UITableViewCell {
 }
 
 //MARK: Public
-extension ImageCell {
+extension InfoImageCell {
     func setup(imageName: String) {
      picture.image = UIImage(named: imageName)
     }
 }
 
 //MARK: Private
-private extension ImageCell {
+private extension InfoImageCell {
     func initialize() {
         selectionStyle = .none
     }
 }
 
 //MARK: Make constraints
-private extension ImageCell {
+private extension InfoImageCell {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             picture.heightAnchor.constraint(equalToConstant: 375.scale),
@@ -50,7 +50,7 @@ private extension ImageCell {
 }
 
 //MARK: Lazy initialization
-private extension ImageCell {
+private extension InfoImageCell {
     func makeImageView() -> UIImageView {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
