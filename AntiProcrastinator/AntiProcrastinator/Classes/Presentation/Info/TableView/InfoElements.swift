@@ -1,5 +1,5 @@
 //
-//  AllElements.swift
+//  InfoElements.swift
 //  AntiProcrastinator
 //
 //  Created by Артем Чжен on 25.01.2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AllElements {
+enum InfoElements {
     case imageCell(String)
     case sections(InfoTableSection)
     case buttonCell(String)
@@ -15,11 +15,12 @@ enum AllElements {
 
 struct InfoTableSection {
     let title: String
-    let elements: TypeSections
+    let elements: InfoTableSectionType
     var isExpanded: Bool
+    var hasSeparator: Bool
 }
 
-enum TypeSections {
+enum InfoTableSectionType {
     case fatigueLevels(String)
     case points(String)
     case punishment(String)

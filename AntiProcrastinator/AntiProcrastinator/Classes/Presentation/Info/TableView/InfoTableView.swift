@@ -8,7 +8,7 @@
 import UIKit
 
 final class InfoTableView: UITableView {
-    lazy var allElements = [AllElements]()
+    lazy var allElements = [InfoElements]()
     var continueButtonTappedHandler: (() -> Void)?
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -22,7 +22,7 @@ final class InfoTableView: UITableView {
 }
 
 extension InfoTableView {
-    func setup(allElements: [AllElements]) {
+    func setup(allElements: [InfoElements]) {
         self.allElements = allElements
         reloadData()
     }
@@ -39,6 +39,7 @@ extension InfoTableView: UITableViewDataSource {
         case .sections(let sectionInfo):
             return sectionInfo.isExpanded ? 1 : 0
         default:
+            
             return 1
         }
     }
@@ -46,22 +47,23 @@ extension InfoTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch allElements[indexPath.section] {
         case .imageCell(let imageName):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ImageViewCell.self)) as? ImageViewCell else { return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ImageCell.self)) as? ImageCell else { return UITableViewCell()}
             cell.setup(imageName: imageName)
             return cell
         case .sections(let section):
             switch section.elements {
             case .fatigueLevels(let text), .points(let text), .punishment(let text):
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InfoViewCell.self)) as? InfoViewCell else { return UITableViewCell()}
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InfoCell.self)) as? InfoCell else { return UITableViewCell()}
                 cell.setup(text: text)
                 return cell
             }
         case .buttonCell(let name):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ButtonViewCell.self)) as? ButtonViewCell else { return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ButtonCell.self)) as? ButtonCell else { return UITableViewCell()}
             cell.setup(name: name)
             cell.continueButtonTappedHandler = { [weak self] in
                 self?.continueButtonTappedHandler?()
             }
+            
             return cell
         }
     }
@@ -70,50 +72,28 @@ extension InfoTableView: UITableViewDataSource {
 //MARK: UITableViewDelegate
 extension InfoTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = InfoTableHeaderView()
         switch allElements[section] {
         case let .sections(sectionInfo):
+            let headerView = InfoTableHeaderView()
             headerView.configure(withTitle: sectionInfo.title,
                                  isExpanded: sectionInfo.isExpanded,
                                  section: section,
                                  target: self,
-                                 action: #selector(toggleSection(sender:)))
-        default:
-            break
-        }
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        switch allElements[section] {
-        case .sections:
-            let separatorView = UIView()
-            let insets = tableView.separatorInset
-            let width = tableView.bounds.width - insets.left - insets.right
-            let separatorFrame = CGRect(x: insets.left, y: 0, width: width, height: 0.5)
-            
-            let separator = CALayer()
-            separator.frame = separatorFrame
-            separator.backgroundColor = tableView.separatorColor?.cgColor
-            separatorView.layer.addSublayer(separator)
-            return separatorView
-            
+                                 action: #selector(toggleSection(sender:)),
+                                 hasSeparator: sectionInfo.hasSeparator)
+            return headerView
         default:
             return nil
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 1.0
     }
 }
 
 // MARK: Private
 private extension InfoTableView {
     func initialize() {
-        register(ImageViewCell.self, forCellReuseIdentifier: String(describing: ImageViewCell.self))
-        register(InfoViewCell.self, forCellReuseIdentifier: String(describing: InfoViewCell.self))
-        register(ButtonViewCell.self, forCellReuseIdentifier: String(describing: ButtonViewCell.self))
+        register(ImageCell.self, forCellReuseIdentifier: String(describing: ImageCell.self))
+        register(InfoCell.self, forCellReuseIdentifier: String(describing: InfoCell.self))
+        register(ButtonCell.self, forCellReuseIdentifier: String(describing: ButtonCell.self))
         showsVerticalScrollIndicator = false
         separatorStyle = .none
         dataSource = self
@@ -124,6 +104,7 @@ private extension InfoTableView {
         let section = sender.tag
         guard case var .sections(sectionInfo) = allElements[section] else { return }
         sectionInfo.isExpanded.toggle()
+        sectionInfo.hasSeparator = !sectionInfo.isExpanded
         allElements[section] = .sections(sectionInfo)
         self.reloadData()
     }

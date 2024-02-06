@@ -9,28 +9,26 @@ import Foundation
 
 final class LaunchManager {
     static let shared = LaunchManager()
-    
-    enum Constants {
-        static let launchKey = "launchmanager_key"
+    private let launchKey = "launchmanager_key"
+    var isFirstLaunch: Bool {
+        return UserDefaults.standard.integer(forKey: launchKey) <= 1
     }
+    
     private init() {}
 }
 
 //MARK: Public
 extension LaunchManager {
-    
-     func recordFirstLaunch() {
-        UserDefaults.standard.set(true, forKey: Constants.launchKey)
-         UserDefaults.standard.synchronize()
-    }
-    
-     var isFirstLaunch: Bool {
-        return UserDefaults.standard.bool(forKey: Constants.launchKey)
-    }
-    
-    func checkAndRecordFirstLaunch() {
-        if !isFirstLaunch {
-            recordFirstLaunch()
-        }
+    func didFinishLaunchingWithOptions() {
+        trackAppLaunch()
     }
 }
+
+//MARK: Private
+private extension LaunchManager {
+    private func trackAppLaunch() {
+        let launchCount = UserDefaults.standard.integer(forKey: launchKey)
+        UserDefaults.standard.set((launchCount == 0) ? 1 : 2, forKey: launchKey)
+    }
+}
+

@@ -10,10 +10,16 @@ import UIKit
 class InfoTableHeaderView: UIView {
     lazy var label = makeLabel()
     lazy var button = makeButton()
+    lazy var separatorView = makeSeparatorView()
+    private lazy var textAttrs = TextAttributes()
+        .textColor(UIColor(integralRed: 29, green: 29, blue: 29))
+        .textAlignment(.center)
+        .font(Fonts.Ubuntu.medium(size: 16))
+        .letterSpacing(-0.41.scale)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor(integralRed: 255, green: 255, blue: 255)
         makeConstraints()
     }
     
@@ -24,11 +30,13 @@ class InfoTableHeaderView: UIView {
     
 //MARK: Public
     extension InfoTableHeaderView {
-        func configure(withTitle title: String, isExpanded: Bool, section: Int, target: Any?, action: Selector) {
-            label.text = title
+        func configure(withTitle title: String, isExpanded: Bool, section: Int, target: Any?, action: Selector, hasSeparator: Bool) {
+            let attributedText = title.attributed(with: textAttrs)
+            label.attributedText = attributedText
             button.setImage(UIImage(systemName: isExpanded ? "chevron.up" : "chevron.down"), for: .normal)
             button.tag = section
             button.addTarget(target, action: action, for: .touchUpInside)
+            separatorView.isHidden = !hasSeparator
         }
     }
 
@@ -38,11 +46,16 @@ private extension InfoTableHeaderView {
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.scale),
             label.topAnchor.constraint(equalTo: topAnchor),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10.scale),
+            label.bottomAnchor.constraint(equalTo: separatorView.topAnchor, constant: -10.scale),
             
-            button.trailingAnchor.constraint(equalTo: trailingAnchor),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22.scale),
             button.topAnchor.constraint(equalTo: topAnchor),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10.scale)
+            button.bottomAnchor.constraint(equalTo: separatorView.topAnchor, constant: -10.scale),
+            
+            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.scale),
+            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25.scale),
+            separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 1.0)
         ])
     }
 }
@@ -59,7 +72,15 @@ private extension InfoTableHeaderView {
     
     func makeButton() -> UIButton {
         let view = UIButton()
-        view.tintColor = UIColor.black
+        view.tintColor = UIColor(integralRed: 0, green: 0, blue: 0)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeSeparatorView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = UIColor(integralRed: 200, green: 200, blue: 200)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        LaunchManager.shared.checkAndRecordFirstLaunch()
+        LaunchManager.shared.didFinishLaunchingWithOptions()
         
         if let window = window {
             let splashVc = SplashViewController.make()

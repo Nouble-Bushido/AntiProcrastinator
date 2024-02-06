@@ -36,12 +36,12 @@
 		1201E6912B61FF2D00682E71 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6902B61FF2D00682E71 /* InfoViewController.swift */; };
 		1201E6932B61FF3A00682E71 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6922B61FF3A00682E71 /* InfoViewModel.swift */; };
 		1201E6962B61FF6B00682E71 /* InfoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6952B61FF6B00682E71 /* InfoTableView.swift */; };
-		1201E6992B62000100682E71 /* InfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6982B62000100682E71 /* InfoViewCell.swift */; };
-		1201E69F2B6209E700682E71 /* AllElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E69E2B6209E700682E71 /* AllElements.swift */; };
+		1201E6992B62000100682E71 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6982B62000100682E71 /* InfoCell.swift */; };
+		1201E69F2B6209E700682E71 /* InfoElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E69E2B6209E700682E71 /* InfoElements.swift */; };
 		1201E6A22B69FF9900682E71 /* InfoTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6A12B69FF9900682E71 /* InfoTableHeaderView.swift */; };
 		1201E6A52B6A178900682E71 /* LaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6A42B6A178900682E71 /* LaunchManager.swift */; };
-		1201E6AB2B6B8F9D00682E71 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6AA2B6B8F9D00682E71 /* ImageViewCell.swift */; };
-		1201E6AD2B6B8FB300682E71 /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6AC2B6B8FB300682E71 /* ButtonViewCell.swift */; };
+		1201E6AB2B6B8F9D00682E71 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6AA2B6B8F9D00682E71 /* ImageCell.swift */; };
+		1201E6AD2B6B8FB300682E71 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6AC2B6B8FB300682E71 /* ButtonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,12 +76,12 @@
 		1201E6902B61FF2D00682E71 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		1201E6922B61FF3A00682E71 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		1201E6952B61FF6B00682E71 /* InfoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableView.swift; sourceTree = "<group>"; };
-		1201E6982B62000100682E71 /* InfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewCell.swift; sourceTree = "<group>"; };
-		1201E69E2B6209E700682E71 /* AllElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllElements.swift; sourceTree = "<group>"; };
+		1201E6982B62000100682E71 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		1201E69E2B6209E700682E71 /* InfoElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoElements.swift; sourceTree = "<group>"; };
 		1201E6A12B69FF9900682E71 /* InfoTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableHeaderView.swift; sourceTree = "<group>"; };
 		1201E6A42B6A178900682E71 /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
-		1201E6AA2B6B8F9D00682E71 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
-		1201E6AC2B6B8FB300682E71 /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
+		1201E6AA2B6B8F9D00682E71 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		1201E6AC2B6B8FB300682E71 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,7 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				1201E6952B61FF6B00682E71 /* InfoTableView.swift */,
-				1201E69E2B6209E700682E71 /* AllElements.swift */,
+				1201E69E2B6209E700682E71 /* InfoElements.swift */,
 				1201E6A12B69FF9900682E71 /* InfoTableHeaderView.swift */,
 				1201E6972B61FF7500682E71 /* Cells */,
 			);
@@ -291,9 +291,9 @@
 		1201E6972B61FF7500682E71 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				1201E6982B62000100682E71 /* InfoViewCell.swift */,
-				1201E6AA2B6B8F9D00682E71 /* ImageViewCell.swift */,
-				1201E6AC2B6B8FB300682E71 /* ButtonViewCell.swift */,
+				1201E6982B62000100682E71 /* InfoCell.swift */,
+				1201E6AA2B6B8F9D00682E71 /* ImageCell.swift */,
+				1201E6AC2B6B8FB300682E71 /* ButtonCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -375,10 +375,10 @@
 			files = (
 				1201E6342B5E194800682E71 /* UIColor+Extension.swift in Sources */,
 				1201E68B2B60FA1400682E71 /* PaddingLabel.swift in Sources */,
-				1201E6992B62000100682E71 /* InfoViewCell.swift in Sources */,
+				1201E6992B62000100682E71 /* InfoCell.swift in Sources */,
 				1201E6172B5E113100682E71 /* SplashViewController.swift in Sources */,
 				1201E6452B5E22C300682E71 /* Scalable.swift in Sources */,
-				1201E6AB2B6B8F9D00682E71 /* ImageViewCell.swift in Sources */,
+				1201E6AB2B6B8F9D00682E71 /* ImageCell.swift in Sources */,
 				1201E6502B5E427500682E71 /* UserManager.swift in Sources */,
 				1201E6132B5E113100682E71 /* AppDelegate.swift in Sources */,
 				1201E68F2B61FF0F00682E71 /* InfoView.swift in Sources */,
@@ -395,11 +395,11 @@
 				1201E6962B61FF6B00682E71 /* InfoTableView.swift in Sources */,
 				1201E6912B61FF2D00682E71 /* InfoViewController.swift in Sources */,
 				1201E64E2B5E423000682E71 /* User.swift in Sources */,
-				1201E69F2B6209E700682E71 /* AllElements.swift in Sources */,
+				1201E69F2B6209E700682E71 /* InfoElements.swift in Sources */,
 				1201E6552B5E475500682E71 /* NameRequestViewController.swift in Sources */,
 				1201E6472B5E22E200682E71 /* Fonts.swift in Sources */,
 				1201E6312B5E18E100682E71 /* String+Extension.swift in Sources */,
-				1201E6AD2B6B8FB300682E71 /* ButtonViewCell.swift in Sources */,
+				1201E6AD2B6B8FB300682E71 /* ButtonCell.swift in Sources */,
 				1201E62A2B5E177F00682E71 /* SplashViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

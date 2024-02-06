@@ -1,5 +1,5 @@
 //
-//  ButtonViewCell.swift
+//  ButtonCell.swift
 //  AntiProcrastinator
 //
 //  Created by Артем Чжен on 01.02.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ButtonViewCell: UITableViewCell {
+final class ButtonCell: UITableViewCell {
     lazy var continueButton = makeContinueButton()
     var continueButtonTappedHandler: (() -> Void)?
     private lazy var textAttrs = TextAttributes()
@@ -28,38 +28,38 @@ final class ButtonViewCell: UITableViewCell {
 }
 
 //MARK: Public
-extension ButtonViewCell {
+extension ButtonCell {
     func setup(name: String) {
         continueButton.setTitle(name, for: .normal)
     }
 }
 
 //MARK: Private
-private extension ButtonViewCell {
+private extension ButtonCell {
     func initialize() {
         selectionStyle = .none
     }
     
     @objc func continueButtonTapped() {
-              continueButtonTappedHandler?()
-          }
+        continueButtonTappedHandler?()
+    }
 }
 
 //MARK: Make constraints
-private extension ButtonViewCell {
+private extension ButtonCell {
     func makeConstraints() {
         NSLayoutConstraint.activate([
+            continueButton.heightAnchor.constraint(equalToConstant: 50.scale),
             continueButton.topAnchor.constraint(equalTo: contentView.topAnchor),
-            continueButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 50.scale),
             continueButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20.scale),
             continueButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20.scale),
-            continueButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            continueButton.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.bottomAnchor)
         ])
     }
 }
 
 //MARK: Lazy initialization
-private extension ButtonViewCell {
+private extension ButtonCell {
     func makeContinueButton() -> UIButton {
         let view = UIButton()
         view.backgroundColor = UIColor(integralRed: 28, green: 55, blue: 209)

@@ -32,8 +32,8 @@ private extension InfoView {
 private extension InfoView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15.scale),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             tableView.topAnchor.constraint(equalTo: topAnchor, constant: -47.scale),
         ])
@@ -44,7 +44,7 @@ private extension InfoView {
 private extension InfoView {
     func makeTableView() -> InfoTableView {
         let view = InfoTableView()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(integralRed: 255, green: 255, blue: 255)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

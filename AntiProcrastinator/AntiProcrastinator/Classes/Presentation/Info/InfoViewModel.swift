@@ -12,20 +12,28 @@ final class InfoViewModel {
 
 //MARK: Public
 extension InfoViewModel {
-    struct Input {
-        let bind: ([AllElements]) -> Void
-    }
-    
     struct Output {
-        let didSelect: (AllElements) -> ()
+        let allElements: [InfoElements]
     }
     
-    func configure(input: Input) -> Output {
-        let fatigueLevelsSection = InfoTableSection(title: "Info.FatigueLevels.Text".localized, elements: .fatigueLevels("Info.decriptionFatigueLevels.Text".localized), isExpanded: false)
-        let pointsSection = InfoTableSection(title: "Info.Points.Text".localized, elements: .points("Info.descriptionPoints.Text".localized), isExpanded: false)
-        let punishmentSection = InfoTableSection(title: "Info.Punishment.Text".localized, elements: .punishment("Info.descriptionPunishment.Text".localized), isExpanded: false)
+    func configure() -> Output {
+        let fatigueLevelsSection = InfoTableSection(
+            title: "Info.FatigueLevels.Text".localized,
+            elements: .fatigueLevels("Info.decriptionFatigueLevels.Text".localized),
+            isExpanded: false, hasSeparator: true
+        )
+        let pointsSection = InfoTableSection(
+            title: "Info.Points.Text".localized,
+            elements: .points("Info.descriptionPoints.Text".localized),
+            isExpanded: false, hasSeparator: true
+        )
+        let punishmentSection = InfoTableSection(
+            title: "Info.Punishment.Text".localized,
+            elements: .punishment("Info.descriptionPunishment.Text".localized),
+            isExpanded: false, hasSeparator: true
+        )
         
-        let allElements: [AllElements] = [
+        let allElements: [InfoElements] = [
             .imageCell("Info.Image"),
             .sections(fatigueLevelsSection),
             .sections(pointsSection),
@@ -33,8 +41,6 @@ extension InfoViewModel {
             .buttonCell("Info.Start.Text".localized)
         ]
         
-        input.bind(allElements)
-        return Output { selected in
-        }
+        return Output(allElements: allElements)
     }
 }

@@ -10,7 +10,6 @@ import UIKit
 final class InfoViewController: UIViewController {
     private lazy var mainView = InfoView()
     private var viewModel = InfoViewModel()
-    private var didSelectElements: ((AllElements) -> Void)?
     
     override func loadView() {
         super.loadView()
@@ -20,9 +19,9 @@ final class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-      let output = viewModel.configure(input: InfoViewModel.Input(bind: { [weak self] allElements in
-            self?.mainView.tableView.setup(allElements: allElements)}))
-        didSelectElements = output.didSelect
+        let output = viewModel.configure()
+        mainView.tableView.setup(allElements: output.allElements)
+        
         actionContinueButton()
     }
 }
