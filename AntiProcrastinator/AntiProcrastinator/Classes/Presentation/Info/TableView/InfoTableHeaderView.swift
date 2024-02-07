@@ -8,10 +8,10 @@
 import UIKit
 
 class InfoTableHeaderView: UIView {
-    var section: Int = 0
     lazy var label = makeLabel()
     lazy var button = makeButton()
     lazy var separatorView = makeSeparatorView()
+    var toggleSectionHandler: (() -> Void)?
     
     private lazy var textAttrs = TextAttributes()
         .textColor(UIColor(integralRed: 29, green: 29, blue: 29))
@@ -32,15 +32,20 @@ class InfoTableHeaderView: UIView {
     
 //MARK: Public
     extension InfoTableHeaderView {
-        func configure(withTitle title: String, isExpanded: Bool, section: Int, target: Any?, action: Selector, hasSeparator: Bool) {
+        func configure(withTitle title: String, isExpanded: Bool, section: Int, hasSeparator: Bool) {
             let attributedText = title.attributed(with: textAttrs)
             label.attributedText = attributedText
             button.setImage(UIImage(systemName: isExpanded ? "chevron.up" : "chevron.down"), for: .normal)
-            self.section = section
-            button.addTarget(target, action: action, for: .touchUpInside)
             separatorView.isHidden = !hasSeparator
         }
     }
+
+//MARK: Private
+private extension InfoTableHeaderView {
+    @objc func sectionToggleButtonTapped() {
+        toggleSectionHandler?()
+    }
+}
 
 //MARK: Make constraints
 private extension InfoTableHeaderView {
@@ -76,6 +81,7 @@ private extension InfoTableHeaderView {
         let view = UIButton()
         view.tintColor = UIColor(integralRed: 0, green: 0, blue: 0)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self, action: #selector(sectionToggleButtonTapped), for: .touchUpInside)
         addSubview(view)
         return view
     }

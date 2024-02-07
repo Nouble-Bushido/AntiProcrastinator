@@ -78,9 +78,10 @@ extension InfoTableView: UITableViewDelegate {
             headerView.configure(withTitle: sectionInfo.title,
                                  isExpanded: sectionInfo.isExpanded,
                                  section: section,
-                                 target: self,
-                                 action: #selector(toggleSection(sender:)),
                                  hasSeparator: sectionInfo.hasSeparator)
+            headerView.toggleSectionHandler = { [weak self] in
+                self?.toggleSection(section: section)
+            }
             return headerView
         default:
             return nil
@@ -100,9 +101,7 @@ private extension InfoTableView {
         delegate = self
     }
     
-    @objc func toggleSection(sender: UIButton) {
-        guard let headerView = sender.superview as? InfoTableHeaderView else { return }
-        let section = headerView.section
+    func toggleSection(section: Int) {
         guard case var .sections(sectionInfo) = infoElements[section] else { return }
         sectionInfo.isExpanded.toggle()
         sectionInfo.hasSeparator = !sectionInfo.isExpanded
