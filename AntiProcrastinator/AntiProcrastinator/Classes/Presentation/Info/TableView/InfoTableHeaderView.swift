@@ -8,9 +8,11 @@
 import UIKit
 
 class InfoTableHeaderView: UIView {
+    var section: Int = 0
     lazy var label = makeLabel()
     lazy var button = makeButton()
     lazy var separatorView = makeSeparatorView()
+    
     private lazy var textAttrs = TextAttributes()
         .textColor(UIColor(integralRed: 29, green: 29, blue: 29))
         .textAlignment(.center)
@@ -34,7 +36,7 @@ class InfoTableHeaderView: UIView {
             let attributedText = title.attributed(with: textAttrs)
             label.attributedText = attributedText
             button.setImage(UIImage(systemName: isExpanded ? "chevron.up" : "chevron.down"), for: .normal)
-            button.tag = section
+            self.section = section
             button.addTarget(target, action: action, for: .touchUpInside)
             separatorView.isHidden = !hasSeparator
         }

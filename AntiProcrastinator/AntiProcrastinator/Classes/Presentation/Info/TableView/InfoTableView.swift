@@ -8,7 +8,7 @@
 import UIKit
 
 final class InfoTableView: UITableView {
-    lazy var allElements = [InfoElements]()
+    lazy var infoElements = [InfoElements]()
     var continueButtonTappedHandler: (() -> Void)?
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -23,7 +23,7 @@ final class InfoTableView: UITableView {
 
 extension InfoTableView {
     func setup(allElements: [InfoElements]) {
-        self.allElements = allElements
+        self.infoElements = allElements
         reloadData()
     }
 }
@@ -31,11 +31,11 @@ extension InfoTableView {
 //MARK: UITableViewDataSourse
 extension InfoTableView: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        allElements.count
+        infoElements.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch allElements[section] {
+        switch infoElements[section] {
         case .sections(let sectionInfo):
             return sectionInfo.isExpanded ? 1 : 0
         default:
@@ -45,7 +45,7 @@ extension InfoTableView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch allElements[indexPath.section] {
+        switch infoElements[indexPath.section] {
         case .imageCell(let imageName):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InfoImageCell.self)) as? InfoImageCell else { return UITableViewCell()}
             cell.setup(imageName: imageName)
@@ -72,7 +72,7 @@ extension InfoTableView: UITableViewDataSource {
 //MARK: UITableViewDelegate
 extension InfoTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch allElements[section] {
+        switch infoElements[section] {
         case let .sections(sectionInfo):
             let headerView = InfoTableHeaderView()
             headerView.configure(withTitle: sectionInfo.title,
@@ -81,7 +81,6 @@ extension InfoTableView: UITableViewDelegate {
                                  target: self,
                                  action: #selector(toggleSection(sender:)),
                                  hasSeparator: sectionInfo.hasSeparator)
-            headerView.tag = section
             return headerView
         default:
             return nil
@@ -102,11 +101,12 @@ private extension InfoTableView {
     }
     
     @objc func toggleSection(sender: UIButton) {
-        guard let section = sender.superview?.tag else { return }
-        guard case var .sections(sectionInfo) = allElements[section] else { return }
+        guard let headerView = sender.superview as? InfoTableHeaderView else { return }
+        let section = headerView.section
+        guard case var .sections(sectionInfo) = infoElements[section] else { return }
         sectionInfo.isExpanded.toggle()
         sectionInfo.hasSeparator = !sectionInfo.isExpanded
-        allElements[section] = .sections(sectionInfo)
+        infoElements[section] = .sections(sectionInfo)
         self.reloadData()
     }
 }
