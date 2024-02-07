@@ -41,6 +41,3 @@ private extension NameRequestViewController {
         mainView.continueButton.backgroundColor = isNameEntered ? UIColor(integralRed: 28, green: 55, blue: 209, alpha: 1) : UIColor(integralRed: 28, green: 55, blue: 209, alpha: 0.6)
     }
 }
-
-
-

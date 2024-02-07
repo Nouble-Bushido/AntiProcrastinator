@@ -13,7 +13,6 @@ final class SplashView: GradientView {
     lazy var affairsLabel = makeTextAffairs()
     lazy var timePassesLabel = makeTextTimePasses()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
