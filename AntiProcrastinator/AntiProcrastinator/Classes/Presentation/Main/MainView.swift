@@ -33,14 +33,15 @@ private extension MainView {
 private extension MainView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: topAnchor, constant: 60.scale),
-            infoButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20.scale),
-            infoButton.widthAnchor.constraint(equalToConstant: 50),
-            infoButton.heightAnchor.constraint(equalToConstant: 50),
-            
+            infoButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -10.scale),
+            infoButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20.scale),
+            infoButton.widthAnchor.constraint(equalToConstant: 24.scale),
+            infoButton.heightAnchor.constraint(equalToConstant: 24.scale),
   
-            addTaskButton.topAnchor.constraint(equalTo: topAnchor, constant: 60.scale),
-            addTaskButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20.scale),
+            addTaskButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -10.scale),
+            addTaskButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20.scale),
+            addTaskButton.widthAnchor.constraint(equalToConstant: 24.scale),
+            addTaskButton.heightAnchor.constraint(equalToConstant: 24.scale),
         ])
     }
 }
@@ -51,6 +52,8 @@ private extension MainView {
         let view = UIButton()
         view.setImage(UIImage(systemName: "info.circle"), for: .normal)
         view.tintColor = UIColor(integralRed: 28, green: 55, blue: 209)
+        view.contentVerticalAlignment = .fill
+        view.contentHorizontalAlignment = .fill
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -60,6 +63,8 @@ private extension MainView {
         let view = UIButton()
         view.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         view.tintColor = UIColor(integralRed: 28, green: 55, blue: 209)
+        view.contentVerticalAlignment = .fill
+        view.contentHorizontalAlignment = .fill
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
