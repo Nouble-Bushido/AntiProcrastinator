@@ -9,5 +9,5 @@ import Foundation
 
 struct AddTaskSection {
     let title: (String)
-    let elements: [AddTaskElements]
+    let elements: [AddTaskElement]
 }
