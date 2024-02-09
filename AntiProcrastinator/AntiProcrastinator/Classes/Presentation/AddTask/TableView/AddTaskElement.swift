@@ -9,6 +9,6 @@ import Foundation
 
 enum AddTaskElement {
     case taskName(String)
-    case description(String)
-    case date(String)
+    case description(Task)
+    case date(Task)
 }

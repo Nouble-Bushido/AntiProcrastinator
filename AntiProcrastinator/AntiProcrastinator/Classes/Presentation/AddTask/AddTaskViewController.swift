@@ -9,6 +9,7 @@ import UIKit
 
 final class AddTaskViewController: UIViewController {
     private lazy var mainView = AddTaskView()
+    private lazy var viewModel = AddTaskViewModel()
     
     override func loadView() {
         super.loadView()
@@ -17,6 +18,8 @@ final class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let output = viewModel.configure()
+        self.mainView.tableView.setup(elements: output.elements)
     }
 }
 

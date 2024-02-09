@@ -17,3 +17,8 @@ enum AddTaskSection {
     case description(String)
     case date(String)
 }
+
+struct Elements {
+    let title: String
+    let description: String
+}

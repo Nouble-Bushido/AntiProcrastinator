@@ -47,7 +47,6 @@
 		125DCD2C2B747B3300DCFCD5 /* AddTaskSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD2B2B747B3300DCFCD5 /* AddTaskSection.swift */; };
 		125DCD302B74825A00DCFCD5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD2F2B74825A00DCFCD5 /* Task.swift */; };
 		125DCD322B7482DA00DCFCD5 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD312B7482DA00DCFCD5 /* TaskManager.swift */; };
-		125DCD342B748A9E00DCFCD5 /* AddTaskElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD332B748A9E00DCFCD5 /* AddTaskElement.swift */; };
 		125DCD372B748C3100DCFCD5 /* AddTaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD362B748C3100DCFCD5 /* AddTaskTableView.swift */; };
 		125DCD3A2B748C5500DCFCD5 /* AddTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD392B748C5500DCFCD5 /* AddTaskCell.swift */; };
 /* End PBXBuildFile section */
@@ -92,10 +91,9 @@
 		1201E6AC2B6B8FB300682E71 /* InfoButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButtonCell.swift; sourceTree = "<group>"; };
 		125DCD272B747A2300DCFCD5 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		125DCD292B747A2E00DCFCD5 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
-		125DCD2B2B747B3300DCFCD5 /* AddTaskSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskSection.swift; sourceTree = "<group>"; };
+		125DCD2B2B747B3300DCFCD5 /* AddTaskSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddTaskSection.swift; path = ../AddTaskSection.swift; sourceTree = "<group>"; };
 		125DCD2F2B74825A00DCFCD5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		125DCD312B7482DA00DCFCD5 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
-		125DCD332B748A9E00DCFCD5 /* AddTaskElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskElement.swift; sourceTree = "<group>"; };
 		125DCD362B748C3100DCFCD5 /* AddTaskTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTableView.swift; sourceTree = "<group>"; };
 		125DCD392B748C5500DCFCD5 /* AddTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -321,8 +319,6 @@
 			children = (
 				125DCD272B747A2300DCFCD5 /* AddTaskView.swift */,
 				125DCD292B747A2E00DCFCD5 /* AddTaskViewController.swift */,
-				125DCD2B2B747B3300DCFCD5 /* AddTaskSection.swift */,
-				125DCD332B748A9E00DCFCD5 /* AddTaskElement.swift */,
 				125DCD352B748C1800DCFCD5 /* TableView */,
 			);
 			path = AddTask;
@@ -349,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				125DCD362B748C3100DCFCD5 /* AddTaskTableView.swift */,
+				125DCD2B2B747B3300DCFCD5 /* AddTaskSection.swift */,
 				125DCD382B748C3E00DCFCD5 /* Cell */,
 			);
 			path = TableView;
@@ -456,7 +453,6 @@
 				1201E6282B5E177100682E71 /* SplashView.swift in Sources */,
 				1201E6932B61FF3A00682E71 /* InfoViewModel.swift in Sources */,
 				1201E6A22B69FF9900682E71 /* InfoTableHeaderView.swift in Sources */,
-				125DCD342B748A9E00DCFCD5 /* AddTaskElement.swift in Sources */,
 				1201E6432B5E229A00682E71 /* ScreenSize.swift in Sources */,
 				1201E6582B5E47B700682E71 /* MainView.swift in Sources */,
 				125DCD2A2B747A2E00DCFCD5 /* AddTaskViewController.swift in Sources */,

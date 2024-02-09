@@ -8,7 +8,7 @@
 import UIKit
 
 final class AddTaskTableView: UITableView {
-    lazy var addTaskSections = [AddTaskSection]()
+    lazy var elements = [AddTaskSection]()
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -20,23 +20,41 @@ final class AddTaskTableView: UITableView {
     }
 }
 
+//MARK: Public
+extension AddTaskTableView {
+    func setup(elements: [AddTaskSection]) {
+        self.elements = elements
+        reloadData()
+    }
+}
+
 //MARK: UITableViewDataSource
-//extension AddTaskTableView {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        addTaskSections[section].elements.count
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//}
+extension AddTaskTableView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        elements.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch elements[indexPath.row] {
+        case .taskName(let text), .description(let text):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddTaskCell.self)) as? AddTaskCell else { return UITableViewCell()}
+            cell.setup(task: text)
+            return cell
+        case .date(let text):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddTaskDateCell.self)) as? AddTaskDateCell else { return UITableViewCell()}
+            cell.setup(task: text)
+            return cell
+        }
+    }
+}
 
 //MARK: Private
 private extension AddTaskTableView {
     func initialize() {
         register(AddTaskCell.self, forCellReuseIdentifier: String(describing: AddTaskCell.self))
+        register(AddTaskDateCell.self, forCellReuseIdentifier: String(describing: AddTaskDateCell.self))
         showsVerticalScrollIndicator = false
         separatorStyle = .none
-//        dataSource = self
+        dataSource = self
     }
 }
