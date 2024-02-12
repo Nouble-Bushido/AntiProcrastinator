@@ -8,29 +8,12 @@
 import UIKit
 
 final class AddTaskViewModel {
-    
 }
 
 //MARK: Public
-extension AddTaskViewModel {
-    struct Input {
-        
+ extension AddTaskViewModel {
+    func saveTask(name: String, description: String, date: Date) {
+        let newTask = Task(id: UUID().hashValue, name: name, description: description, date: date, isCompleted: false)
+        TaskManager.share.addTask(task: newTask)
     }
-    
-    struct Output {
-        let elements: [AddTaskSection]
-    }
-    
-    func configure() -> Output {
-        let name = AddTaskSection.taskName("AddTask.TaskName.Text".localized)
-        let description = AddTaskSection.description("AddTask.TaskDescription.Text".localized)
-        let date = AddTaskSection.date("AddTask.TaskDate.Text".localized)
-        let elements: [AddTaskSection] = [name, description, date]
-        return Output(elements: elements)
-    }
-}
-
-//MARK: Private
-private extension AddTaskViewModel {
-    
 }

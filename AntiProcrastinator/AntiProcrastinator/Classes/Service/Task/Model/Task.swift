@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct Task {
+struct Task: Codable {
     let id: Int
     let name: String
     let description: String
     let date: Date
+    var isCompleted: Bool
 }
