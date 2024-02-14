@@ -11,9 +11,13 @@ final class AddTaskViewModel {
 }
 
 //MARK: Public
- extension AddTaskViewModel {
+extension AddTaskViewModel {
     func saveTask(name: String, description: String, date: Date) {
-        let newTask = Task(id: UUID().hashValue, name: name, description: description, date: date, isCompleted: false)
+        let newTask = Task(id: UUID().hashValue,
+                           name: name,
+                           description: description,
+                           date: date,
+                           isCompleted: false)
         TaskManager.share.addTask(task: newTask)
     }
 }

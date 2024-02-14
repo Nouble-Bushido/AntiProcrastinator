@@ -27,6 +27,7 @@ final class AddTaskView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         initialize()
         makeConstraints()
     }
@@ -128,7 +129,10 @@ private extension AddTaskView{
         view.attributedPlaceholder = "AddTask.TaskNameFormat.Text".localized.attributed(with: placeHolderAttrs)
         view.defaultTextAttributes = defaultTextAttrs.dictionary
         view.borderStyle = .none
-        view.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: view.frame.size.height))
+        view.leftView = UIView(frame: CGRect(x: 0,
+                                             y: 0,
+                                             width: 15,
+                                             height: view.frame.size.height))
         view.leftViewMode = .always
         view.layer.cornerRadius = 12.scale
         view.backgroundColor = UIColor(integralRed: 243, green: 244, blue: 247)
@@ -171,7 +175,10 @@ private extension AddTaskView{
         view.attributedPlaceholder = "AddTask.TaskDescriptionFormat.Text".localized.attributed(with: placeHolderAttrs)
         view.defaultTextAttributes = defaultTextAttrs.dictionary
         view.borderStyle = .none
-        view.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: view.frame.size.height))
+        view.leftView = UIView(frame: CGRect(x: 0,
+                                             y: 0,
+                                             width: 15,
+                                             height: view.frame.size.height))
         view.leftViewMode = .always
         view.layer.cornerRadius = 12.scale
         view.backgroundColor = UIColor(integralRed: 243, green: 244, blue: 247)
@@ -214,7 +221,10 @@ private extension AddTaskView{
         view.attributedPlaceholder = "AddTask.TaskDateFormat.Text".localized.attributed(with: placeHolderAttrs)
         view.defaultTextAttributes = defaultTextAttr.dictionary
         view.borderStyle = .none
-        view.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: view.frame.size.height))
+        view.leftView = UIView(frame: CGRect(x: 0,
+                                             y: 0,
+                                             width: 15,
+                                             height: view.frame.size.height))
         view.leftViewMode = .always
         view.layer.cornerRadius = 12.scale
         view.backgroundColor = UIColor(integralRed: 243, green: 244, blue: 247)
@@ -240,7 +250,9 @@ private extension AddTaskView{
     func makeToolBar() -> UIToolbar {
         let view = UIToolbar()
         view.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(pressDoneButton))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                         target: self,
+                                         action: #selector(pressDoneButton))
         view.setItems([doneButton], animated: true)
         return view
     }

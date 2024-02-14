@@ -13,7 +13,7 @@ final class AddTaskViewController: UIViewController {
     private var isDateSelected: Bool = false
     
     override func loadView() {
-        super.loadView()
+        
         view = mainView
     }
     
@@ -25,7 +25,7 @@ final class AddTaskViewController: UIViewController {
         for task in tasks {
             print("Task ID: \(task.id), Name: \(task.name), Description: \(task.description), Date: \(task.date)")
         }
-    
+        
         textFieldDidChange()
         actionReadyButton()
     }
@@ -57,11 +57,15 @@ private extension AddTaskViewController {
     }
     
     func textFieldDidChange() {
-        mainView.nameTextField.addTarget(self, action: #selector(textFieldEditingChangedHandler), for: .editingChanged)
-        mainView.descriptionTextField.addTarget(self, action: #selector(textFieldEditingChangedHandler), for: .editingChanged)
+        mainView.nameTextField.addTarget(self,
+                                         action: #selector(textFieldEditingChangedHandler),
+                                         for: .editingChanged)
+        mainView.descriptionTextField.addTarget(self,
+                                                action: #selector(textFieldEditingChangedHandler),
+                                                for: .editingChanged)
     }
     
-   @objc func textFieldEditingChangedHandler() {
+    @objc func textFieldEditingChangedHandler() {
         let isNameEntered = !(mainView.nameTextField.text?.isEmpty ?? true)
         let isDescriptionEntered = !(mainView.descriptionTextField.text?.isEmpty ?? true)
         

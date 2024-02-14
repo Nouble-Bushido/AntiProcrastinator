@@ -15,6 +15,7 @@ final class AlertView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         makeConstraints()
     }
     

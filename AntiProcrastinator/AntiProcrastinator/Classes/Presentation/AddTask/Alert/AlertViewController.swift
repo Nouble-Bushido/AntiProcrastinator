@@ -9,11 +9,12 @@ import UIKit
 
 final class AlertViewController: UIViewController {
     private lazy var mainView = AlertView()
-    private lazy var viewModel = AlertViewModel()
+    private let userManager = UserManager()
+    
     var completed: (() -> Void)?
     
     override func loadView() {
-        super.loadView()
+        
         view = mainView
         view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
     }
@@ -36,8 +37,13 @@ private extension AlertViewController {
     }
     
     func updateText() {
-        let userName = viewModel.getUserName()
+        let userName = userManager.getUser()
         let currentText = mainView.textLabel.text ?? ""
         mainView.textLabel.text = "\(userName) \(currentText)"
+    }
+    
+    func getUserName() -> String {
+        guard let userName = userManager.getUser() else { return "" }
+        return userName.name
     }
 }
