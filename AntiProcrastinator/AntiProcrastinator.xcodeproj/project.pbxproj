@@ -192,7 +192,6 @@
 		1201E6352B5E19C600682E71 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				1201E6562B5E479C00682E71 /* Main */,
 				1201E6262B5E174C00682E71 /* Splash */,
 				1201E68D2B61FEE600682E71 /* Info */,
 				125DCD262B747A0C00DCFCD5 /* AddTask */,
