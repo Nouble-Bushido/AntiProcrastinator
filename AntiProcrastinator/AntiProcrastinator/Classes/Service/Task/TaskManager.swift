@@ -10,24 +10,27 @@ import Foundation
 final class TaskManager {
     static let share = TaskManager()
     
+    enum Constants {
+        static let taskKey = "task_manager_task_key"
+    }
+    
     private var tasks: [Task] = []
-    private let taskKey = "task_manager_task_key"
     
     private init() {}
 }
 
 //MARK: Public
 extension TaskManager {
-     func configure() {
-         if let tasksData = UserDefaults.standard.data(forKey: taskKey) {
-                let decoder = JSONDecoder()
-                if let decodedTasks = try? decoder.decode([Task].self, from: tasksData) {
-                    tasks = decodedTasks
-                    return
-                }
+    func configure() {
+        if let tasksData = UserDefaults.standard.data(forKey: Constants.taskKey) {
+            let decoder = JSONDecoder()
+            if let decodedTasks = try? decoder.decode([Task].self, from: tasksData) {
+                tasks = decodedTasks
+                return
             }
-         tasks = []
-     }
+        }
+        tasks = []
+    }
     
     func addTask(task: Task) {
         tasks.append(task)
@@ -40,8 +43,8 @@ extension TaskManager {
     }
     
     func completeTask(withId id: Int) {
-        if let index = tasks.firstIndex(where: { $0.id == id && $0.isCompleted }) {
-            tasks.remove(at: index)
+        if let index = tasks.firstIndex(where: { $0.id == id }) {
+            tasks[index] = Task(id: tasks[index].id, name: tasks[index].name, description: tasks[index].description, date: tasks[index].date, isCompleted: true)
             saveTasks()
         }
     }
@@ -55,7 +58,7 @@ extension TaskManager {
 private extension TaskManager {
     func saveTasks() {
         if let encoded = try? JSONEncoder().encode(tasks) {
-            UserDefaults.standard.set(encoded, forKey: taskKey)
+            UserDefaults.standard.set(encoded, forKey: Constants.taskKey)
         }
     }
 }

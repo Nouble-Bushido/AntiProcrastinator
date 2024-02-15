@@ -10,7 +10,6 @@ import UIKit
 final class AddTaskViewController: UIViewController {
     private lazy var mainView = AddTaskView()
     private lazy var viewModel = AddTaskViewModel()
-    private var isDateSelected: Bool = false
     
     override func loadView() {
         
@@ -19,15 +18,18 @@ final class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "AddTask.Title.Text".localized
-        
-        let tasks = TaskManager.share.getAllTask()
-        for task in tasks {
-            print("Task ID: \(task.id), Name: \(task.name), Description: \(task.description), Date: \(task.date)")
-        }
         
         textFieldDidChange()
         actionReadyButton()
+    }
+}
+
+//MARK: Public
+extension AddTaskViewController {
+    static func make() -> AddTaskViewController {
+        let vc = AddTaskViewController()
+        vc.title = "AddTask.Title.Text".localized
+        return vc
     }
 }
 
@@ -46,14 +48,14 @@ private extension AddTaskViewController {
     }
     
     func showAlerVC() {
-        let vc = AlertViewController()
+        let vc = AddTaskAlertViewController()
         vc.completed = { [weak self] in
-            self?.dismiss(animated: true) { [weak self] in
+            self?.dismiss(animated: false) { [weak self] in
                 self?.navigationController?.popToRootViewController(animated: true)
             }
         }
         vc.modalPresentationStyle = .overFullScreen
-        present(vc, animated: true)
+        present(vc, animated: false)
     }
     
     func textFieldDidChange() {

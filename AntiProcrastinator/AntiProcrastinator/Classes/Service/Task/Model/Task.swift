@@ -12,5 +12,5 @@ struct Task: Codable {
     let name: String
     let description: String
     let date: Date
-    var isCompleted: Bool
+    let isCompleted: Bool
 }
