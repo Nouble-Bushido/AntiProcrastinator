@@ -49,6 +49,7 @@
 		125DCD462B75C0A200DCFCD5 /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD452B75C0A200DCFCD5 /* AddTaskViewModel.swift */; };
 		125DCD4D2B79BF9700DCFCD5 /* AddTaskAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD4C2B79BF9700DCFCD5 /* AddTaskAlertView.swift */; };
 		125DCD4F2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD4E2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift */; };
+		125DCD852B7EFB3000DCFCD5 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		125DCD452B75C0A200DCFCD5 /* AddTaskViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
 		125DCD4C2B79BF9700DCFCD5 /* AddTaskAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskAlertView.swift; sourceTree = "<group>"; };
 		125DCD4E2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskAlertViewController.swift; sourceTree = "<group>"; };
+		125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				1201E6402B5E227E00682E71 /* TextAttributes.swift */,
 				1201E68A2B60FA1400682E71 /* PaddingLabel.swift */,
 				1201E6A42B6A178900682E71 /* LaunchManager.swift */,
+				125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				1201E6AB2B6B8F9D00682E71 /* InfoImageCell.swift in Sources */,
 				1201E6502B5E427500682E71 /* UserManager.swift in Sources */,
 				1201E6132B5E113100682E71 /* AppDelegate.swift in Sources */,
+				125DCD852B7EFB3000DCFCD5 /* PaddingTextField.swift in Sources */,
 				1201E68F2B61FF0F00682E71 /* InfoView.swift in Sources */,
 				1201E6A52B6A178900682E71 /* LaunchManager.swift in Sources */,
 				1201E6412B5E227E00682E71 /* TextAttributes.swift in Sources */,

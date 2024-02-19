@@ -44,7 +44,12 @@ extension TaskManager {
     
     func completeTask(withId id: Int) {
         if let index = tasks.firstIndex(where: { $0.id == id }) {
-            tasks[index] = Task(id: tasks[index].id, name: tasks[index].name, description: tasks[index].description, date: tasks[index].date, isCompleted: true)
+        let task = tasks[index]
+            tasks[index] = Task(id: task.id,
+                                name: task.name,
+                                description: task.description,
+                                date: task.date,
+                                isCompleted: true)
             saveTasks()
         }
     }

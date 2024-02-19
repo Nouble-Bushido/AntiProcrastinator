@@ -17,7 +17,6 @@ final class AddTaskAlertViewController: UIViewController {
     override func loadView() {
         
         view = mainView
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
     }
     
     override func viewDidLoad() {
@@ -29,7 +28,7 @@ final class AddTaskAlertViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         animateIn()
     }
 }
@@ -41,7 +40,6 @@ private extension AddTaskAlertViewController {
     }
     
     @objc func pressCloseButton() {
-        animateOut()
         completed?()
     }
     
@@ -52,16 +50,14 @@ private extension AddTaskAlertViewController {
     }
     
     func animateIn() {
-        mainView.whiteBackgroundView.frame.origin.y = view.frame.height
-        UIView.animate(withDuration: 0.5) {
-            self.mainView.whiteBackgroundView.frame.origin.y = self.view.frame.height - 300
-         }
-     }
-    
-    func animateOut() {
-        UIView.animate(withDuration: 1) {
-            self.view.backgroundColor?.withAlphaComponent(0)
-            self.mainView.whiteBackgroundView.frame.origin.y = self.view.frame.height
-        }
+        UIView.animate(withDuration: 0.3, animations:  {
+            self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        }, completion: { done in
+            if done {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.mainView.whiteBackgroundView.center.y = self.view.frame.midY
+                })
+            }
+        })
     }
 }

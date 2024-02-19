@@ -141,7 +141,7 @@ private extension AddTaskView {
         return view
     }
     
-    func makeNameTextField() -> UITextField {
+    func makeNameTextField() -> PaddingTextField {
         let placeHolderAttrs = TextAttributes()
             .textColor(UIColor(integralRed: 170, green: 170, blue: 170))
             .lineHeight(18.scale)
@@ -155,15 +155,10 @@ private extension AddTaskView {
             .lineHeight(24.scale)
             .letterSpacing(-0.38.scale)
         
-        let view = UITextField()
+        let view = PaddingTextField()
         view.attributedPlaceholder = "AddTask.TaskNameFormat.Text".localized.attributed(with: placeHolderAttrs)
         view.defaultTextAttributes = defaultTextAttrs.dictionary
         view.borderStyle = .none
-        view.leftView = UIView(frame: CGRect(x: 0,
-                                             y: 0,
-                                             width: 15,
-                                             height: view.frame.size.height))
-        view.leftViewMode = .always
         view.layer.cornerRadius = 12.scale
         view.backgroundColor = UIColor(integralRed: 243, green: 244, blue: 247)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -187,7 +182,7 @@ private extension AddTaskView {
         return view
     }
     
-    func makeDescriptionTextField() -> UITextField {
+    func makeDescriptionTextField() -> PaddingTextField {
         let placeHolderAttrs = TextAttributes()
             .textColor(UIColor(integralRed: 170, green: 170, blue: 170))
             .lineHeight(18.scale)
@@ -201,15 +196,10 @@ private extension AddTaskView {
             .lineHeight(24.scale)
             .letterSpacing(-0.38.scale)
         
-        let view = UITextField()
+        let view = PaddingTextField()
         view.attributedPlaceholder = "AddTask.TaskDescriptionFormat.Text".localized.attributed(with: placeHolderAttrs)
         view.defaultTextAttributes = defaultTextAttrs.dictionary
         view.borderStyle = .none
-        view.leftView = UIView(frame: CGRect(x: 0,
-                                             y: 0,
-                                             width: 15,
-                                             height: view.frame.size.height))
-        view.leftViewMode = .always
         view.layer.cornerRadius = 12.scale
         view.backgroundColor = UIColor(integralRed: 243, green: 244, blue: 247)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -233,7 +223,7 @@ private extension AddTaskView {
         return view
     }
     
-    func makeTaskDateTextField() -> UITextField {
+    func makeTaskDateTextField() -> PaddingTextField {
         let placeHolderAttrs = TextAttributes()
             .textColor(UIColor(integralRed: 170, green: 170, blue: 170))
             .lineHeight(18.scale)
@@ -247,15 +237,10 @@ private extension AddTaskView {
             .lineHeight(24.scale)
             .letterSpacing(-0.38.scale)
         
-        let view = UITextField()
+        let view = PaddingTextField()
         view.attributedPlaceholder = "AddTask.TaskDateFormat.Text".localized.attributed(with: placeHolderAttrs)
         view.defaultTextAttributes = defaultTextAttr.dictionary
         view.borderStyle = .none
-        view.leftView = UIView(frame: CGRect(x: 0,
-                                             y: 0,
-                                             width: 15,
-                                             height: view.frame.size.height))
-        view.leftViewMode = .always
         view.layer.cornerRadius = 12.scale
         view.backgroundColor = UIColor(integralRed: 243, green: 244, blue: 247)
         view.inputAccessoryView = toolBar

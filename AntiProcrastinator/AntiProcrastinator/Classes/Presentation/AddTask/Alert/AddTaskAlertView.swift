@@ -23,6 +23,7 @@ final class AddTaskAlertView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        initialize()
         makeConstraints()
     }
     
@@ -33,6 +34,10 @@ final class AddTaskAlertView: UIView {
 
 // MARK: Public
 extension AddTaskAlertView {
+    func initialize() {
+        backgroundColor = UIColor.black.withAlphaComponent(0)
+    }
+    
     func updateTextLabel(userName: String) {
         let localizedText = "AddTask.Alert.Text".localized
         let fullText = "\(userName) \(localizedText)"
@@ -44,13 +49,12 @@ extension AddTaskAlertView {
 private extension AddTaskAlertView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            whiteBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -45.scale),
+            whiteBackgroundView.topAnchor.constraint(equalTo: bottomAnchor),
             whiteBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),
             whiteBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10.scale),
             
-            titleLabel.topAnchor.constraint(equalTo: whiteBackgroundView.topAnchor, constant: 15.scale),
+            titleLabel.topAnchor.constraint(equalTo: whiteBackgroundView.topAnchor, constant: 20.scale),
             titleLabel.centerXAnchor.constraint(equalTo: whiteBackgroundView.centerXAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 54.scale),
             
             textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             textLabel.leadingAnchor.constraint(equalTo: whiteBackgroundView.leadingAnchor, constant: 15.scale),
@@ -78,15 +82,13 @@ private extension AddTaskAlertView {
     
     func makeTitleLabel() -> UILabel {
         let attr = TextAttributes()
-            .lineHeight(28.scale)
+            .lineHeight(40.scale)
             .textAlignment(.center)
             .font(Fonts.Ubuntu.regular(size: 52))
             .letterSpacing(-0.41.scale)
         
         let view = UILabel()
         view.attributedText = "AddTasl.AlertTitle.Text".localized.attributed(with: attr)
-        
-        
         view.translatesAutoresizingMaskIntoConstraints = false
         whiteBackgroundView.addSubview(view)
         return view
