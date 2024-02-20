@@ -12,6 +12,7 @@ final class AddTaskAlertView: UIView {
     lazy var titleLabel = makeTitleLabel()
     lazy var textLabel = makeTextLabel()
     lazy var closeButton = makeCloseButton()
+    lazy var whiteBackgroundViewConstraint = NSLayoutConstraint()
     
     private lazy var textAttrs = TextAttributes()
         .textColor(UIColor(integralRed: 29, green: 29, blue: 29, alpha: 1))
@@ -48,11 +49,13 @@ extension AddTaskAlertView {
 // MARK: Make constraints
 private extension AddTaskAlertView {
     func makeConstraints() {
+        whiteBackgroundViewConstraint = whiteBackgroundView.topAnchor.constraint(equalTo: bottomAnchor)
+        whiteBackgroundViewConstraint.isActive = true
+        
         NSLayoutConstraint.activate([
-            whiteBackgroundView.topAnchor.constraint(equalTo: bottomAnchor),
             whiteBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),
             whiteBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10.scale),
-            
+        
             titleLabel.topAnchor.constraint(equalTo: whiteBackgroundView.topAnchor, constant: 20.scale),
             titleLabel.centerXAnchor.constraint(equalTo: whiteBackgroundView.centerXAnchor),
             

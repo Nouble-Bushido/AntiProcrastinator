@@ -8,19 +8,18 @@
 import UIKit
 
 class PaddingTextField: UITextField {
-    var paddingLeft: CGFloat = 15.scale
+    var padding: UIEdgeInsets = UIEdgeInsets(top: 0, left: 15.scale, bottom: 0, right: 0)
+    var placeholderPadding: UIEdgeInsets = UIEdgeInsets(top: 0, left: 15.scale, bottom: 0, right: 0)
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: UIEdgeInsets(top: 0,
-                                             left: paddingLeft,
-                                             bottom: 0,
-                                             right: 0))
+        return bounds.inset(by: padding)
     }
     
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: UIEdgeInsets(top: 0,
-                                             left: paddingLeft,
-                                             bottom: 0,
-                                             right: 0))
+        return bounds.inset(by: padding)
+    }
+    
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: placeholderPadding)
     }
 }

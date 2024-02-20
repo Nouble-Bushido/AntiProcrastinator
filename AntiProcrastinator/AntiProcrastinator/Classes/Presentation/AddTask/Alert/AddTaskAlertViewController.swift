@@ -8,14 +8,12 @@
 import UIKit
 
 final class AddTaskAlertViewController: UIViewController {
-    private lazy var mainView = AddTaskAlertView()
-    private let userManager = UserManager()
-    weak var bottomConstraint: NSLayoutConstraint!
-    
     var completed: (() -> Void)?
     
+    private lazy var mainView = AddTaskAlertView()
+    private let userManager = UserManager()
+    
     override func loadView() {
-        
         view = mainView
     }
     
@@ -26,8 +24,8 @@ final class AddTaskAlertViewController: UIViewController {
         updateText()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         animateIn()
     }
@@ -50,14 +48,12 @@ private extension AddTaskAlertViewController {
     }
     
     func animateIn() {
-        UIView.animate(withDuration: 0.3, animations:  {
+        UIView.animate(withDuration: 0.3) {
+            self.mainView.whiteBackgroundViewConstraint.isActive = false
+            self.mainView.whiteBackgroundViewConstraint = self.mainView.whiteBackgroundView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            self.mainView.whiteBackgroundViewConstraint.isActive = true
+            self.view.layoutIfNeeded()
             self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
-        }, completion: { done in
-            if done {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.mainView.whiteBackgroundView.center.y = self.view.frame.midY
-                })
-            }
-        })
+        }
     }
 }

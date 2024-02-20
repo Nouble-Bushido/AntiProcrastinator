@@ -12,7 +12,6 @@ final class AddTaskViewController: UIViewController {
     private lazy var viewModel = AddTaskViewModel()
     
     override func loadView() {
-        
         view = mainView
     }
     
@@ -28,6 +27,7 @@ final class AddTaskViewController: UIViewController {
 extension AddTaskViewController {
     static func make() -> AddTaskViewController {
         let vc = AddTaskViewController()
+        vc.navigationItem.backButtonTitle = " "
         vc.title = "AddTask.Title.Text".localized
         return vc
     }
@@ -36,14 +36,18 @@ extension AddTaskViewController {
 //MARK: Private
 private extension AddTaskViewController {
     func actionReadyButton() {
-        mainView.readyButton.addTarget(self, action: #selector(readyButtonTapped), for: .touchUpInside)
+        mainView.readyButton.addTarget(self,
+                                       action: #selector(readyButtonTapped),
+                                       for: .touchUpInside)
     }
     
     @objc func readyButtonTapped() {
         let name = mainView.nameTextField.text ?? ""
         let description = mainView.descriptionTextField.text ?? ""
         let date = mainView.datePicker.date
-        viewModel.saveTask(name: name, description: description, date: date)
+        viewModel.saveTask(name: name,
+                           description: description,
+                           date: date)
         showAlerVC()
     }
     
@@ -71,12 +75,11 @@ private extension AddTaskViewController {
         let isNameEntered = !(mainView.nameTextField.text?.isEmpty ?? true)
         let isDescriptionEntered = !(mainView.descriptionTextField.text?.isEmpty ?? true)
         
-        if isNameEntered && isDescriptionEntered {
-            mainView.readyButton.isEnabled = true
-            mainView.readyButton.backgroundColor = UIColor(integralRed: 28, green: 55, blue: 209, alpha: 1)
-        } else {
-            mainView.readyButton.isEnabled = false
-            mainView.readyButton.backgroundColor = UIColor(integralRed: 28, green: 55, blue: 209, alpha: 0.6)
-        }
+        let entered = isNameEntered && isDescriptionEntered
+        mainView.readyButton.isEnabled = entered
+        mainView.readyButton.backgroundColor = UIColor(integralRed: 28,
+                                                       green: 55,
+                                                       blue: 209,
+                                                       alpha: entered ? 1 : 0.6)
     }
 }
