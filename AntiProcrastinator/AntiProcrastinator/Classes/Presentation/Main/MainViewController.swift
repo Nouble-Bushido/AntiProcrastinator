@@ -12,11 +12,13 @@ final class MainViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        
         view = mainView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         actionButtons()
     }
 }
@@ -35,6 +37,7 @@ private extension MainViewController {
     }
     
     @objc func pressAddTaskButton() {
-        
+        let vc = AddTaskViewController.make()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

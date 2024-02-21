@@ -42,6 +42,14 @@
 		1201E6A52B6A178900682E71 /* LaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6A42B6A178900682E71 /* LaunchManager.swift */; };
 		1201E6AB2B6B8F9D00682E71 /* InfoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6AA2B6B8F9D00682E71 /* InfoImageCell.swift */; };
 		1201E6AD2B6B8FB300682E71 /* InfoButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6AC2B6B8FB300682E71 /* InfoButtonCell.swift */; };
+		125DCD282B747A2300DCFCD5 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD272B747A2300DCFCD5 /* AddTaskView.swift */; };
+		125DCD2A2B747A2E00DCFCD5 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD292B747A2E00DCFCD5 /* AddTaskViewController.swift */; };
+		125DCD302B74825A00DCFCD5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD2F2B74825A00DCFCD5 /* Task.swift */; };
+		125DCD322B7482DA00DCFCD5 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD312B7482DA00DCFCD5 /* TaskManager.swift */; };
+		125DCD462B75C0A200DCFCD5 /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD452B75C0A200DCFCD5 /* AddTaskViewModel.swift */; };
+		125DCD4D2B79BF9700DCFCD5 /* AddTaskAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD4C2B79BF9700DCFCD5 /* AddTaskAlertView.swift */; };
+		125DCD4F2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD4E2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift */; };
+		125DCD852B7EFB3000DCFCD5 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +90,14 @@
 		1201E6A42B6A178900682E71 /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
 		1201E6AA2B6B8F9D00682E71 /* InfoImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoImageCell.swift; sourceTree = "<group>"; };
 		1201E6AC2B6B8FB300682E71 /* InfoButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButtonCell.swift; sourceTree = "<group>"; };
+		125DCD272B747A2300DCFCD5 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		125DCD292B747A2E00DCFCD5 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		125DCD2F2B74825A00DCFCD5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		125DCD312B7482DA00DCFCD5 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		125DCD452B75C0A200DCFCD5 /* AddTaskViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
+		125DCD4C2B79BF9700DCFCD5 /* AddTaskAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskAlertView.swift; sourceTree = "<group>"; };
+		125DCD4E2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskAlertViewController.swift; sourceTree = "<group>"; };
+		125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +185,7 @@
 				1201E6402B5E227E00682E71 /* TextAttributes.swift */,
 				1201E68A2B60FA1400682E71 /* PaddingLabel.swift */,
 				1201E6A42B6A178900682E71 /* LaunchManager.swift */,
+				125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -176,9 +193,10 @@
 		1201E6352B5E19C600682E71 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1201E6562B5E479C00682E71 /* Main */,
 				1201E6262B5E174C00682E71 /* Splash */,
 				1201E68D2B61FEE600682E71 /* Info */,
-				1201E6562B5E479C00682E71 /* Main */,
+				125DCD262B747A0C00DCFCD5 /* AddTask */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -226,6 +244,7 @@
 		1201E64A2B5E41BE00682E71 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				125DCD2D2B74823F00DCFCD5 /* Task */,
 				1201E64B2B5E420C00682E71 /* User */,
 			);
 			path = Service;
@@ -296,6 +315,43 @@
 				1201E6AC2B6B8FB300682E71 /* InfoButtonCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		125DCD262B747A0C00DCFCD5 /* AddTask */ = {
+			isa = PBXGroup;
+			children = (
+				125DCD272B747A2300DCFCD5 /* AddTaskView.swift */,
+				125DCD292B747A2E00DCFCD5 /* AddTaskViewController.swift */,
+				125DCD452B75C0A200DCFCD5 /* AddTaskViewModel.swift */,
+				125DCD4B2B79BF6C00DCFCD5 /* Alert */,
+			);
+			path = AddTask;
+			sourceTree = "<group>";
+		};
+		125DCD2D2B74823F00DCFCD5 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				125DCD2E2B74824C00DCFCD5 /* Model */,
+				125DCD312B7482DA00DCFCD5 /* TaskManager.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		125DCD2E2B74824C00DCFCD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				125DCD2F2B74825A00DCFCD5 /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		125DCD4B2B79BF6C00DCFCD5 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				125DCD4C2B79BF9700DCFCD5 /* AddTaskAlertView.swift */,
+				125DCD4E2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,14 +429,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				125DCD282B747A2300DCFCD5 /* AddTaskView.swift in Sources */,
 				1201E6342B5E194800682E71 /* UIColor+Extension.swift in Sources */,
 				1201E68B2B60FA1400682E71 /* PaddingLabel.swift in Sources */,
+				125DCD4F2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift in Sources */,
+				125DCD322B7482DA00DCFCD5 /* TaskManager.swift in Sources */,
 				1201E6992B62000100682E71 /* InfoCell.swift in Sources */,
 				1201E6172B5E113100682E71 /* SplashViewController.swift in Sources */,
 				1201E6452B5E22C300682E71 /* Scalable.swift in Sources */,
+				125DCD4D2B79BF9700DCFCD5 /* AddTaskAlertView.swift in Sources */,
+				125DCD462B75C0A200DCFCD5 /* AddTaskViewModel.swift in Sources */,
 				1201E6AB2B6B8F9D00682E71 /* InfoImageCell.swift in Sources */,
 				1201E6502B5E427500682E71 /* UserManager.swift in Sources */,
 				1201E6132B5E113100682E71 /* AppDelegate.swift in Sources */,
+				125DCD852B7EFB3000DCFCD5 /* PaddingTextField.swift in Sources */,
 				1201E68F2B61FF0F00682E71 /* InfoView.swift in Sources */,
 				1201E6A52B6A178900682E71 /* LaunchManager.swift in Sources */,
 				1201E6412B5E227E00682E71 /* TextAttributes.swift in Sources */,
@@ -391,9 +453,11 @@
 				1201E6A22B69FF9900682E71 /* InfoTableHeaderView.swift in Sources */,
 				1201E6432B5E229A00682E71 /* ScreenSize.swift in Sources */,
 				1201E6582B5E47B700682E71 /* MainView.swift in Sources */,
+				125DCD2A2B747A2E00DCFCD5 /* AddTaskViewController.swift in Sources */,
 				1201E6532B5E474400682E71 /* NameView.swift in Sources */,
 				1201E6962B61FF6B00682E71 /* InfoTableView.swift in Sources */,
 				1201E6912B61FF2D00682E71 /* InfoViewController.swift in Sources */,
+				125DCD302B74825A00DCFCD5 /* Task.swift in Sources */,
 				1201E64E2B5E423000682E71 /* User.swift in Sources */,
 				1201E69F2B6209E700682E71 /* InfoElements.swift in Sources */,
 				1201E6552B5E475500682E71 /* NameRequestViewController.swift in Sources */,
