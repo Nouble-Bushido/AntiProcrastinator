@@ -50,6 +50,9 @@
 		125DCD4D2B79BF9700DCFCD5 /* AddTaskAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD4C2B79BF9700DCFCD5 /* AddTaskAlertView.swift */; };
 		125DCD4F2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD4E2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift */; };
 		125DCD852B7EFB3000DCFCD5 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */; };
+		12C986522B86F4B700DA0D98 /* OpenTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986512B86F4B700DA0D98 /* OpenTaskView.swift */; };
+		12C986542B86F4C900DA0D98 /* ClosedTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986532B86F4C900DA0D98 /* ClosedTaskView.swift */; };
+		12C986562B86F4E600DA0D98 /* TaskPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986552B86F4E600DA0D98 /* TaskPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +101,9 @@
 		125DCD4C2B79BF9700DCFCD5 /* AddTaskAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskAlertView.swift; sourceTree = "<group>"; };
 		125DCD4E2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskAlertViewController.swift; sourceTree = "<group>"; };
 		125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
+		12C986512B86F4B700DA0D98 /* OpenTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTaskView.swift; sourceTree = "<group>"; };
+		12C986532B86F4C900DA0D98 /* ClosedTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedTaskView.swift; sourceTree = "<group>"; };
+		12C986552B86F4E600DA0D98 /* TaskPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +203,7 @@
 				1201E6262B5E174C00682E71 /* Splash */,
 				1201E68D2B61FEE600682E71 /* Info */,
 				125DCD262B747A0C00DCFCD5 /* AddTask */,
+				12C986502B86F3DD00DA0D98 /* TaskPage */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -354,6 +361,16 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		12C986502B86F3DD00DA0D98 /* TaskPage */ = {
+			isa = PBXGroup;
+			children = (
+				12C986512B86F4B700DA0D98 /* OpenTaskView.swift */,
+				12C986532B86F4C900DA0D98 /* ClosedTaskView.swift */,
+				12C986552B86F4E600DA0D98 /* TaskPageViewController.swift */,
+			);
+			path = TaskPage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -430,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				125DCD282B747A2300DCFCD5 /* AddTaskView.swift in Sources */,
+				12C986542B86F4C900DA0D98 /* ClosedTaskView.swift in Sources */,
 				1201E6342B5E194800682E71 /* UIColor+Extension.swift in Sources */,
 				1201E68B2B60FA1400682E71 /* PaddingLabel.swift in Sources */,
 				125DCD4F2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift in Sources */,
@@ -440,6 +458,7 @@
 				125DCD4D2B79BF9700DCFCD5 /* AddTaskAlertView.swift in Sources */,
 				125DCD462B75C0A200DCFCD5 /* AddTaskViewModel.swift in Sources */,
 				1201E6AB2B6B8F9D00682E71 /* InfoImageCell.swift in Sources */,
+				12C986522B86F4B700DA0D98 /* OpenTaskView.swift in Sources */,
 				1201E6502B5E427500682E71 /* UserManager.swift in Sources */,
 				1201E6132B5E113100682E71 /* AppDelegate.swift in Sources */,
 				125DCD852B7EFB3000DCFCD5 /* PaddingTextField.swift in Sources */,
@@ -460,6 +479,7 @@
 				125DCD302B74825A00DCFCD5 /* Task.swift in Sources */,
 				1201E64E2B5E423000682E71 /* User.swift in Sources */,
 				1201E69F2B6209E700682E71 /* InfoElements.swift in Sources */,
+				12C986562B86F4E600DA0D98 /* TaskPageViewController.swift in Sources */,
 				1201E6552B5E475500682E71 /* NameRequestViewController.swift in Sources */,
 				1201E6472B5E22E200682E71 /* Fonts.swift in Sources */,
 				1201E6312B5E18E100682E71 /* String+Extension.swift in Sources */,
