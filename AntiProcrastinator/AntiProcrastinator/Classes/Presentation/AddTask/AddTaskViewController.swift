@@ -10,6 +10,7 @@ import UIKit
 final class AddTaskViewController: UIViewController {
     private lazy var mainView = AddTaskView()
     private lazy var viewModel = AddTaskViewModel()
+    var didAddNewTask: (() -> Void)?
     
     override func loadView() {
         view = mainView
@@ -48,6 +49,8 @@ private extension AddTaskViewController {
         viewModel.saveTask(name: name,
                            description: description,
                            date: date)
+        
+        didAddNewTask?()
         showAlerVC()
     }
     

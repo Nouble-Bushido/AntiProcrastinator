@@ -10,7 +10,7 @@ import UIKit
 final class MainView: UIView {
     lazy var infoButton = makeInfoButton()
     lazy var addTaskButton = makeAddTaskButton()
-    lazy var taskPageButton = makeTaskPageButton()
+    lazy var tableView = makeTableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,8 +45,10 @@ private extension MainView {
             addTaskButton.widthAnchor.constraint(equalToConstant: 24.scale),
             addTaskButton.heightAnchor.constraint(equalToConstant: 24.scale),
             
-            taskPageButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            taskPageButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -45.scale)
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: infoButton.bottomAnchor, constant: 10.scale),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
@@ -75,10 +77,8 @@ private extension MainView {
         return view
     }
     
-    func makeTaskPageButton() -> UIButton {
-        let view = UIButton()
-        view.setImage(UIImage(systemName: "list.bullet"), for: .normal)
-        view.tintColor = UIColor(integralRed: 28, green: 55, blue: 209)
+    func makeTableView() -> MainTableView {
+        let view = MainTableView()
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
