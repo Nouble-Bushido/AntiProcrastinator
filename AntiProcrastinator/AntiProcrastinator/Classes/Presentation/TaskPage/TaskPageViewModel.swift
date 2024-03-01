@@ -6,14 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 final class TaskPageViewModel {
-    enum Route {
-        case openTask, closeTask
-    }
+    let task: Task
     
-     let task: Task
-
     init(task: Task) {
         self.task = task
     }
@@ -22,17 +19,47 @@ final class TaskPageViewModel {
 //MARK: Public
 extension TaskPageViewModel {
     struct Input {
-        let route: (Route) -> Void
+        let bind: ([TaskPageElements]) -> Void
+    }
+    
+    struct Output {
+        let didSelectTask: (TaskPageElements) -> Void
     }
     
     func configure(input: Input) {
-        input.route(makeRoute())
+        var elements: [TaskPageElements] = []
+        
+        let taskType = generateTaskType()
+        elements.append(.image(taskType))
+        
+        let taskDetails = generateTaskDetails()
+        elements.append(.details(task, taskDetails))
+        
+        if !task.isCompleted {
+            elements.append(.buttons)
+        }
+        
+        input.bind(elements)
     }
 }
 
-// MARK: Private
+//MARK: Private
 private extension TaskPageViewModel {
-    func makeRoute() -> Route {
-        task.isCompleted ? Route.closeTask : Route.openTask
+    func generateTaskType() -> TaskStatus {
+        let closeImage = UIImage(named: "CloseTask.Image") ?? UIImage()
+        let openImage = UIImage(named: "OpenTask.Image") ?? UIImage()
+        let closeText = "TaskPage.CloseTask.Persuade.Text".localized
+        let openText = "TaskPage.OpenTask.Persuade.Text".localized
+        
+        return task.isCompleted ? .completed(closeImage, closeText) : .open(openImage, openText)
+    }
+    
+    func generateTaskDetails() -> TaskStatus {
+        let closeIndicator = UIImage(named: "CloseIndicator.Image") ?? UIImage()
+        let openIndicator = UIImage(named: "OpenIndicator.Image") ?? UIImage()
+        let closeStatusText = "TaskPage.CloseStatusTask.Text".localized
+        let openStatusText = "TaskPage.OpenStatusTask.Text".localized
+        
+        return task.isCompleted ? .completed(closeIndicator, closeStatusText) : .open(openIndicator, openStatusText)
     }
 }

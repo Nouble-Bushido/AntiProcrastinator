@@ -8,7 +8,8 @@
 import UIKit
 
 final class TaskPageViewController: UIViewController {
-    var taskСloseCompletionHandler: (() -> Void)?
+    lazy var mainView = TaskPageView()
+    var taskCloseCompletionHandler: (() -> Void)?
     var taskRemoveCompletionHandler: (() -> Void)?
     
     private var viewModel: TaskPageViewModel
@@ -22,59 +23,52 @@ final class TaskPageViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func loadView() {
+        view = mainView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.configure(input: TaskPageViewModel.Input(route: route))
+        
+        viewModel.configure(input: TaskPageViewModel.Input(bind: { [weak self] elements in
+            self?.mainView.tableView.setup(elements: elements)
+        }))
+        
+        actionButtons()
     }
 }
 
 //MARK: Private
 private extension TaskPageViewController {
-    var route: (TaskPageViewModel.Route) -> Void {
-        { route in
-            switch route {
-            case .openTask:
-                self.openTask()
-            case .closeTask:
-                self.closeTask()
-            }
+    func actionButtons() {
+        mainView.tableView.completeButtonTappedHandler = { [weak self] in
+            self?.goToTaskPageAlertCloseTaskVC()
+        }
+        mainView.tableView.removeButtonTappedHandler = { [weak self] in
+            self?.goToTaskPageAlertRemoveTaskVC()
         }
     }
     
-    func openTask() {
-        let vc = TaskPageOpenTaskView()
-        view = vc
-        vc.closeTaskButton.addTarget(self, action: #selector(pressedCloseButton), for: .touchUpInside)
-        vc.removeTaskButton.addTarget(self, action: #selector(pressedRemoveButton), for: .touchUpInside)
-        vc.setupTask(task: viewModel.task)
-    }
-    
-    func closeTask() {
-        let vc = TaskPageClosedTaskView()
-        view = vc
-        vc.setupTask(task: viewModel.task)
-    }
-    
-    @objc func pressedCloseButton() {
+    func goToTaskPageAlertCloseTaskVC() {
         let vc = TaskPageAlertCloseTaskViewController()
-        TaskManager.share.completeTask(withId: self.viewModel.task.id)
-        taskСloseCompletionHandler?()
+        TaskManager.share.completeTask(withId: viewModel.task.id)
         vc.completed = { [weak self] in
             self?.dismiss(animated: false) { [weak self] in
                 self?.navigationController?.popToRootViewController(animated: true)
+                self?.taskCloseCompletionHandler?()
             }
         }
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
     }
     
-    @objc func pressedRemoveButton() {
+    func goToTaskPageAlertRemoveTaskVC() {
         let vc = TaskPageAlertRemoveTaskViewController()
-        TaskManager.share.removeTask(withId: self.viewModel.task.id)
-        taskRemoveCompletionHandler?()
+        TaskManager.share.removeTask(withId: viewModel.task.id)
         vc.completed = { [weak self] in
             self?.dismiss(animated: false) { [weak self] in
                 self?.navigationController?.popToRootViewController(animated: true)
+                self?.taskRemoveCompletionHandler?()
             }
         }
         vc.modalPresentationStyle = .overFullScreen
