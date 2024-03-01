@@ -37,7 +37,9 @@ private extension TaskPageAlertCloseTaskViewController {
     }
     
     @objc func pressCloseButton() {
-        completed?()
+        animateOut {
+            self.completed?()
+        }
     }
     
     func animateIn() {
@@ -48,5 +50,17 @@ private extension TaskPageAlertCloseTaskViewController {
             self.view.layoutIfNeeded()
             self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         }
+    }
+    
+    func animateOut(completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.mainView.whiteBackgroundViewConstraint.isActive = false
+            self.mainView.whiteBackgroundViewConstraint = self.mainView.whiteBackgroundView.centerYAnchor.constraint(equalTo: self.view.bottomAnchor)
+            self.mainView.whiteBackgroundViewConstraint.isActive = true
+            self.view.layoutIfNeeded()
+            self.view.backgroundColor = UIColor.black.withAlphaComponent(0)
+        }, completion: { _ in
+            completion()
+        })
     }
 }

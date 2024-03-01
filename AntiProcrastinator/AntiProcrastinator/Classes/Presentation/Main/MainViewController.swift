@@ -25,7 +25,7 @@ final class MainViewController: UIViewController {
         mainView.tableView.didSelectItem = { [weak self] selectedTask in
             let vc = TaskPageViewController(task: selectedTask)
             vc.title = "TaskPage.Title.Text".localized
-            vc.taskСloseCompletionHandler = { [weak self] in
+            vc.taskCloseCompletionHandler = { [weak self] in
                 let updatedOutput = self?.viewModel.configure() ?? output
                 self?.mainView.tableView.setup(tasks: updatedOutput.tasks)
             }
