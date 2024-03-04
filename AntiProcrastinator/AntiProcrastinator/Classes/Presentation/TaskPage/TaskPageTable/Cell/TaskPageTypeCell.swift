@@ -32,17 +32,11 @@ final class TaskPageTypeCell: UITableViewCell {
 
 //MARK: Public
 extension TaskPageTypeCell {
-    func setup(status: TaskStatus) {
-        switch status {
-        case .open(let image, let text):
-            mainImageView.image = image
-            let attributedText = text.attributed(with: textAttrsPersuade)
-            persuadeLabel.attributedText = attributedText
-        case .completed(let image, let text):
-            mainImageView.image = image
-            let attributedText = text.attributed(with: textAttrsPersuade)
-            persuadeLabel.attributedText = attributedText
-        }
+    func setup(representation: TaskRepresentation) {
+        mainImageView.image = UIImage(named: representation.imageName)
+        
+        let attributed = representation.text.attributed(with: textAttrsPersuade)
+        persuadeLabel.attributedText = attributed
     }
 }
 
@@ -50,6 +44,8 @@ extension TaskPageTypeCell {
 private extension TaskPageTypeCell {
     func initialize() {
         selectionStyle = .none
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
     }
 }
 
@@ -75,7 +71,6 @@ private extension TaskPageTypeCell {
     func makeImageView() -> UIImageView {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.image = UIImage(named: "OpenTask.Image")
         view.clipsToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
@@ -83,15 +78,7 @@ private extension TaskPageTypeCell {
     }
     
     func makePersuadeLabel() -> UILabel {
-        let attr = TextAttributes()
-            .textColor(UIColor(integralRed: 29, green: 29, blue: 29))
-            .font(Fonts.Ubuntu.regular(size: 16))
-            .lineHeight(20.scale)
-            .textAlignment(.center)
-            .letterSpacing(-0.41.scale)
-        
         let view = UILabel()
-        view.attributedText = "TaskPage.OpenTask.Persuade.Text".localized.attributed(with: attr)
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)

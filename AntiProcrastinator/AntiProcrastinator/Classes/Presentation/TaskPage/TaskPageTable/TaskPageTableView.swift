@@ -39,9 +39,9 @@ extension TaskPageTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch elements[indexPath.row] {
-        case .image(let status):
+        case .image(let representation):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskPageTypeCell.self)) as? TaskPageTypeCell else { return UITableViewCell()}
-            cell.setup(status: status)
+            cell.setup(representation: representation)
             return cell
         case .details(let task, let status):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskPageDetailsCell.self)) as? TaskPageDetailsCell else { return UITableViewCell()}

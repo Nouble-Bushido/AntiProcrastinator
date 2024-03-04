@@ -9,8 +9,9 @@ import UIKit
 
 final class TaskPageDetailsCell: UITableViewCell {
     lazy var taskNameLabel = makeNameTaskLabel()
-    lazy var taskStatusImageView = makeStatusTaskImageView()
-    lazy var taskStatusLabel = makeStatusTaskLabel()
+    lazy var statusView = makeStatusView()
+    lazy var statusIconView = makeStatusIconView()
+    lazy var statusLabel = makeStatusLabel()
     lazy var taskDescriptionLabel = makeTaskDescriptionLabel()
     lazy var taskDateImageView = makeDateTaskImageView()
     lazy var taskDateLabel = makeDateTaskLabel()
@@ -21,23 +22,29 @@ final class TaskPageDetailsCell: UITableViewCell {
         return formater
     }()
     
+    private lazy var textAttrsTaskName = TextAttributes()
+        .textColor(UIColor(integralRed: 31, green: 31, blue: 31))
+        .font(Fonts.Ubuntu.medium(size: 18))
+        .lineHeight(28.scale)
+        .textAlignment(.left)
+        .letterSpacing(-0.41.scale)
+    
+    private lazy var textAttrsStatus = TextAttributes()
+        .font(Fonts.Ubuntu.regular(size: 14))
+        .lineHeight(28.scale)
+        .textAlignment(.center)
+        .letterSpacing(-0.41.scale)
+
+    private lazy var textAttrsDescription = TextAttributes()
+        .textColor(UIColor(integralRed: 31, green: 31, blue: 31))
+        .font(Fonts.Ubuntu.light(size: 14))
+        .lineHeight(28.scale)
+        .textAlignment(.left)
+        .letterSpacing(-0.41.scale)
+    
     private lazy var textAttrsDate = TextAttributes()
         .textColor(UIColor(integralRed: 28, green: 28, blue: 28))
         .font(Fonts.Ubuntu.regular(size: 16))
-        .lineHeight(28.scale)
-        .textAlignment(.center)
-        .letterSpacing(-0.41.scale)
-    
-    private lazy var textAttrsStatusOpen = TextAttributes()
-        .textColor(UIColor(integralRed: 25, green: 178, blue: 0))
-        .font(Fonts.Ubuntu.regular(size: 14))
-        .lineHeight(28.scale)
-        .textAlignment(.center)
-        .letterSpacing(-0.41.scale)
-    
-    private lazy var textAttrsStatusClose = TextAttributes()
-        .textColor(UIColor(integralRed: 242, green: 155, blue: 25))
-        .font(Fonts.Ubuntu.regular(size: 14))
         .lineHeight(28.scale)
         .textAlignment(.center)
         .letterSpacing(-0.41.scale)
@@ -46,6 +53,7 @@ final class TaskPageDetailsCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         initialize()
+        makeConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -56,29 +64,35 @@ final class TaskPageDetailsCell: UITableViewCell {
 //MARK: Public
 extension TaskPageDetailsCell {
     func setup(task: Task, status: TaskStatus) {
-        taskNameLabel.text = task.name
-        taskDescriptionLabel.text = task.description
+        let attributedTaskName = task.name.attributed(with: textAttrsTaskName)
+        taskNameLabel.attributedText = attributedTaskName
+        
+        let attributedDescription = task.description.attributed(with: textAttrsDescription)
+        taskDescriptionLabel.attributedText = attributedDescription
+        
         let attributedDate = formater.string(from: task.date).attributed(with: textAttrsDate)
         taskDateLabel.attributedText = attributedDate
         
-        switch status {
-        case .open(let image, let text):
-            taskStatusImageView.image = image
-            let attributedText = text.attributed(with: textAttrsStatusOpen)
-            taskStatusLabel.attributedText = attributedText
-        case .completed(let image, let text):
-            taskStatusImageView.image = image
-            let attributedText = text.attributed(with: textAttrsStatusClose)
-            taskStatusLabel.attributedText = attributedText
-        }
+        let textColor = UIColor(integralRed: status.colorComponents.red,
+                                green: status.colorComponents.green,
+                                blue: status.colorComponents.blue)
+        let currentTextAttrStatus = textAttrsStatus.textColor(textColor)
+        
+        let attributedStatus = status.text.attributed(with: currentTextAttrStatus)
+        statusLabel.attributedText = attributedStatus
+        
+        statusIconView.backgroundColor = UIColor(integralRed: status.colorComponents.red,
+                                                 green: status.colorComponents.green,
+                                                 blue: status.colorComponents.blue)
     }
 }
 
 //MARK: Private
 private extension TaskPageDetailsCell {
     func initialize() {
-        makeConstraints()
         selectionStyle = .none
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
     }
 }
 
@@ -88,15 +102,19 @@ private extension TaskPageDetailsCell {
         NSLayoutConstraint.activate([
             taskNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30.scale),
             taskNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
-            taskNameLabel.trailingAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 30.scale),
+            taskNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusView.leadingAnchor, constant: -10.scale),
             
-            taskStatusLabel.centerYAnchor.constraint(equalTo: taskNameLabel.centerYAnchor, constant: -1.scale),
-            taskStatusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale),
+            statusView.centerYAnchor.constraint(equalTo: taskNameLabel.centerYAnchor),
+            statusView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale),
             
-            taskStatusImageView.heightAnchor.constraint(equalToConstant: 8.scale),
-            taskStatusImageView.widthAnchor.constraint(equalToConstant: 8.scale),
-            taskStatusImageView.centerYAnchor.constraint(equalTo: taskNameLabel.centerYAnchor),
-            taskStatusImageView.trailingAnchor.constraint(equalTo: taskStatusLabel.leadingAnchor, constant: -5.scale),
+            statusIconView.leadingAnchor.constraint(equalTo: statusView.leadingAnchor),
+            statusIconView.centerYAnchor.constraint(equalTo: statusView.centerYAnchor),
+            statusIconView.widthAnchor.constraint(equalToConstant: 8.scale),
+            statusIconView.heightAnchor.constraint(equalToConstant: 8.scale),
+            
+            statusLabel.leadingAnchor.constraint(equalTo: statusIconView.trailingAnchor, constant: 5.scale),
+            statusLabel.centerYAnchor.constraint(equalTo: statusView.centerYAnchor),
+            statusLabel.trailingAnchor.constraint(equalTo: statusView.trailingAnchor),
             
             taskDescriptionLabel.topAnchor.constraint(equalTo: taskNameLabel.bottomAnchor, constant: 10.scale),
             taskDescriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
@@ -111,6 +129,9 @@ private extension TaskPageDetailsCell {
             taskDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 39.scale),
             taskDateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+
+        taskNameLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        taskNameLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
     }
 }
 
@@ -124,20 +145,26 @@ private extension TaskPageDetailsCell {
         return view
     }
     
-    func makeStatusTaskImageView() -> UIImageView {
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFit
-        view.clipsToBounds = true
+    func makeStatusView() -> UIView {
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
         return view
     }
     
-    func makeStatusTaskLabel() -> UILabel {
+    func makeStatusIconView() -> UIView {
+        let view = UIView()
+        view.layer.cornerRadius = 4
+        view.translatesAutoresizingMaskIntoConstraints = false
+        statusView.addSubview(view)
+        return view
+    }
+    
+    func makeStatusLabel() -> UILabel {
         let view = UILabel()
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(view)
+        statusView.addSubview(view)
         return view
     }
     

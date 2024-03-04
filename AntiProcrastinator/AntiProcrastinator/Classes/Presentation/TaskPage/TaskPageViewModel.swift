@@ -5,7 +5,6 @@
 //  Created by Артем Чжен on 22.02.2024.
 //
 
-import Foundation
 import UIKit
 
 final class TaskPageViewModel {
@@ -20,10 +19,6 @@ final class TaskPageViewModel {
 extension TaskPageViewModel {
     struct Input {
         let bind: ([TaskPageElements]) -> Void
-    }
-    
-    struct Output {
-        let didSelectTask: (TaskPageElements) -> Void
     }
     
     func configure(input: Input) {
@@ -45,21 +40,23 @@ extension TaskPageViewModel {
 
 //MARK: Private
 private extension TaskPageViewModel {
-    func generateTaskType() -> TaskStatus {
-        let closeImage = UIImage(named: "CloseTask.Image") ?? UIImage()
-        let openImage = UIImage(named: "OpenTask.Image") ?? UIImage()
-        let closeText = "TaskPage.CloseTask.Persuade.Text".localized
-        let openText = "TaskPage.OpenTask.Persuade.Text".localized
+    func generateTaskType() -> TaskRepresentation {
+        let openTask = TaskRepresentation(imageName: "OpenTask.Image", text: "TaskPage.OpenTask.Persuade.Text".localized)
+        let completedTask = TaskRepresentation(imageName: "CloseTask.Image", text: "TaskPage.CloseTask.Persuade.Text".localized)
         
-        return task.isCompleted ? .completed(closeImage, closeText) : .open(openImage, openText)
+        return task.isCompleted ? completedTask : openTask
     }
     
     func generateTaskDetails() -> TaskStatus {
-        let closeIndicator = UIImage(named: "CloseIndicator.Image") ?? UIImage()
-        let openIndicator = UIImage(named: "OpenIndicator.Image") ?? UIImage()
-        let closeStatusText = "TaskPage.CloseStatusTask.Text".localized
-        let openStatusText = "TaskPage.OpenStatusTask.Text".localized
-        
-        return task.isCompleted ? .completed(closeIndicator, closeStatusText) : .open(openIndicator, openStatusText)
+        let openTask = TaskStatus(colorComponents: (red: 22,
+                                                    green: 188,
+                                                    blue: 0),
+                                  text: "TaskPage.OpenStatusTask.Text".localized)
+        let completedTask = TaskStatus(colorComponents: (red: 242,
+                                                         green: 155,
+                                                         blue: 25),
+                                       text: "TaskPage.CloseStatusTask.Text".localized)
+
+        return task.isCompleted ? completedTask : openTask
     }
 }

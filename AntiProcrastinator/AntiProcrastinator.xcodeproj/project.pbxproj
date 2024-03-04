@@ -393,7 +393,6 @@
 				12C986742B8F14CE00DA0D98 /* TaskPageView.swift */,
 				12C986552B86F4E600DA0D98 /* TaskPageViewController.swift */,
 				12C986572B873F7F00DA0D98 /* TaskPageViewModel.swift */,
-				12C986782B8F261400DA0D98 /* TaskPageElements.swift */,
 				12C9866E2B8F140200DA0D98 /* TaskPageTable */,
 				12C986632B8C13F100DA0D98 /* TaskPageAlert */,
 			);
@@ -448,6 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				12C9866F2B8F141800DA0D98 /* TaskPageTableView.swift */,
+				12C986782B8F261400DA0D98 /* TaskPageElements.swift */,
 				12C986712B8F145100DA0D98 /* Cell */,
 			);
 			path = TaskPageTable;

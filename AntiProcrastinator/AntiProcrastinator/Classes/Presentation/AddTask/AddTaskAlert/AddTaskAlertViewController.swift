@@ -38,7 +38,9 @@ private extension AddTaskAlertViewController {
     }
     
     @objc func pressCloseButton() {
-        completed?()
+        animateOut { [weak self] in
+            self?.completed?()
+        }
     }
     
     func updateText() {
@@ -48,12 +50,26 @@ private extension AddTaskAlertViewController {
     }
     
     func animateIn() {
-        UIView.animate(withDuration: 0.3) {
-            self.mainView.whiteBackgroundViewConstraint.isActive = false
-            self.mainView.whiteBackgroundViewConstraint = self.mainView.whiteBackgroundView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-            self.mainView.whiteBackgroundViewConstraint.isActive = true
-            self.view.layoutIfNeeded()
-            self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        self.mainView.whiteBackgroundViewConstraint.isActive = false
+        self.mainView.whiteBackgroundViewConstraint = self.mainView.whiteBackgroundView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        self.mainView.whiteBackgroundViewConstraint.isActive = true
+        
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.view.layoutIfNeeded()
+            self?.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         }
+    }
+    
+    func animateOut(completion: @escaping () -> Void) {
+        self.mainView.whiteBackgroundViewConstraint.isActive = false
+        self.mainView.whiteBackgroundViewConstraint = self.mainView.whiteBackgroundView.topAnchor.constraint(equalTo: self.view.bottomAnchor)
+        self.mainView.whiteBackgroundViewConstraint.isActive = true
+        
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.view.layoutIfNeeded()
+            self?.view.backgroundColor = UIColor.black.withAlphaComponent(0)
+        }, completion: { _ in
+            completion()
+        })
     }
 }
