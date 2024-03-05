@@ -5,7 +5,7 @@
 //  Created by Артем Чжен on 28.02.2024.
 //
 
-import Foundation
+import UIKit
 
 enum TaskPageElements {
     case image(TaskRepresentation)
@@ -19,6 +19,6 @@ struct TaskRepresentation {
 }
 
 struct TaskStatus {
-    let colorComponents: (red: CGFloat, green: CGFloat, blue: CGFloat)
+    let color: UIColor
     let text: String
 }

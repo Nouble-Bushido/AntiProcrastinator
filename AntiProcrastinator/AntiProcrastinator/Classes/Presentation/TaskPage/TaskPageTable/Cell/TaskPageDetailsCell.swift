@@ -10,8 +10,6 @@ import UIKit
 final class TaskPageDetailsCell: UITableViewCell {
     lazy var taskNameLabel = makeNameTaskLabel()
     lazy var statusView = makeStatusView()
-    lazy var statusIconView = makeStatusIconView()
-    lazy var statusLabel = makeStatusLabel()
     lazy var taskDescriptionLabel = makeTaskDescriptionLabel()
     lazy var taskDateImageView = makeDateTaskImageView()
     lazy var taskDateLabel = makeDateTaskLabel()
@@ -28,17 +26,11 @@ final class TaskPageDetailsCell: UITableViewCell {
         .lineHeight(28.scale)
         .textAlignment(.left)
         .letterSpacing(-0.41.scale)
-    
-    private lazy var textAttrsStatus = TextAttributes()
-        .font(Fonts.Ubuntu.regular(size: 14))
-        .lineHeight(28.scale)
-        .textAlignment(.center)
-        .letterSpacing(-0.41.scale)
 
     private lazy var textAttrsDescription = TextAttributes()
         .textColor(UIColor(integralRed: 31, green: 31, blue: 31))
         .font(Fonts.Ubuntu.light(size: 14))
-        .lineHeight(28.scale)
+        .lineHeight(20.scale)
         .textAlignment(.left)
         .letterSpacing(-0.41.scale)
     
@@ -54,6 +46,7 @@ final class TaskPageDetailsCell: UITableViewCell {
         
         initialize()
         makeConstraints()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -73,17 +66,7 @@ extension TaskPageDetailsCell {
         let attributedDate = formater.string(from: task.date).attributed(with: textAttrsDate)
         taskDateLabel.attributedText = attributedDate
         
-        let textColor = UIColor(integralRed: status.colorComponents.red,
-                                green: status.colorComponents.green,
-                                blue: status.colorComponents.blue)
-        let currentTextAttrStatus = textAttrsStatus.textColor(textColor)
-        
-        let attributedStatus = status.text.attributed(with: currentTextAttrStatus)
-        statusLabel.attributedText = attributedStatus
-        
-        statusIconView.backgroundColor = UIColor(integralRed: status.colorComponents.red,
-                                                 green: status.colorComponents.green,
-                                                 blue: status.colorComponents.blue)
+        statusView.setup(status: status)
     }
 }
 
@@ -107,15 +90,6 @@ private extension TaskPageDetailsCell {
             statusView.centerYAnchor.constraint(equalTo: taskNameLabel.centerYAnchor),
             statusView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale),
             
-            statusIconView.leadingAnchor.constraint(equalTo: statusView.leadingAnchor),
-            statusIconView.centerYAnchor.constraint(equalTo: statusView.centerYAnchor),
-            statusIconView.widthAnchor.constraint(equalToConstant: 8.scale),
-            statusIconView.heightAnchor.constraint(equalToConstant: 8.scale),
-            
-            statusLabel.leadingAnchor.constraint(equalTo: statusIconView.trailingAnchor, constant: 5.scale),
-            statusLabel.centerYAnchor.constraint(equalTo: statusView.centerYAnchor),
-            statusLabel.trailingAnchor.constraint(equalTo: statusView.trailingAnchor),
-            
             taskDescriptionLabel.topAnchor.constraint(equalTo: taskNameLabel.bottomAnchor, constant: 10.scale),
             taskDescriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
             taskDescriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale),
@@ -129,9 +103,8 @@ private extension TaskPageDetailsCell {
             taskDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 39.scale),
             taskDateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
-
-        taskNameLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        taskNameLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        taskNameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        statusView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
 }
 
@@ -145,26 +118,10 @@ private extension TaskPageDetailsCell {
         return view
     }
     
-    func makeStatusView() -> UIView {
-        let view = UIView()
+    func makeStatusView() -> TaskPageStatusVIew {
+        let view = TaskPageStatusVIew()
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
-        return view
-    }
-    
-    func makeStatusIconView() -> UIView {
-        let view = UIView()
-        view.layer.cornerRadius = 4
-        view.translatesAutoresizingMaskIntoConstraints = false
-        statusView.addSubview(view)
-        return view
-    }
-    
-    func makeStatusLabel() -> UILabel {
-        let view = UILabel()
-        view.numberOfLines = 0
-        view.translatesAutoresizingMaskIntoConstraints = false
-        statusView.addSubview(view)
         return view
     }
     

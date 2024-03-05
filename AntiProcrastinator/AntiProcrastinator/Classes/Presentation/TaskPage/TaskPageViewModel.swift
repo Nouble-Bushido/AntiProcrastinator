@@ -48,13 +48,13 @@ private extension TaskPageViewModel {
     }
     
     func generateTaskDetails() -> TaskStatus {
-        let openTask = TaskStatus(colorComponents: (red: 22,
-                                                    green: 188,
-                                                    blue: 0),
+        let openTask = TaskStatus(color: UIColor(integralRed: 22,
+                                                 green: 188,
+                                                 blue: 0),
                                   text: "TaskPage.OpenStatusTask.Text".localized)
-        let completedTask = TaskStatus(colorComponents: (red: 242,
-                                                         green: 155,
-                                                         blue: 25),
+        let completedTask = TaskStatus(color: UIColor(integralRed: 242,
+                                                      green: 155,
+                                                      blue: 25),
                                        text: "TaskPage.CloseStatusTask.Text".localized)
 
         return task.isCompleted ? completedTask : openTask
