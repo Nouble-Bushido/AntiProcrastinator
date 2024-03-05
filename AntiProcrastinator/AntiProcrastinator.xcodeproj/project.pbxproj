@@ -65,6 +65,7 @@
 		12C986772B8F25C500DA0D98 /* TaskPageDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986762B8F25C500DA0D98 /* TaskPageDetailsCell.swift */; };
 		12C986792B8F261400DA0D98 /* TaskPageElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986782B8F261400DA0D98 /* TaskPageElements.swift */; };
 		12C9867B2B906D2200DA0D98 /* TaskPageButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9867A2B906D2200DA0D98 /* TaskPageButtonsCell.swift */; };
+		12C986802B96B64700DA0D98 /* TaskPageStatusVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9867F2B96B64700DA0D98 /* TaskPageStatusVIew.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,7 @@
 		12C986762B8F25C500DA0D98 /* TaskPageDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageDetailsCell.swift; sourceTree = "<group>"; };
 		12C986782B8F261400DA0D98 /* TaskPageElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageElements.swift; sourceTree = "<group>"; };
 		12C9867A2B906D2200DA0D98 /* TaskPageButtonsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageButtonsCell.swift; sourceTree = "<group>"; };
+		12C9867F2B96B64700DA0D98 /* TaskPageStatusVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageStatusVIew.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,8 +461,17 @@
 				12C986722B8F148500DA0D98 /* TaskPageTypeCell.swift */,
 				12C986762B8F25C500DA0D98 /* TaskPageDetailsCell.swift */,
 				12C9867A2B906D2200DA0D98 /* TaskPageButtonsCell.swift */,
+				12C9867E2B96B61800DA0D98 /* Atoms */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		12C9867E2B96B61800DA0D98 /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				12C9867F2B96B64700DA0D98 /* TaskPageStatusVIew.swift */,
+			);
+			path = Atoms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -540,6 +551,7 @@
 			files = (
 				125DCD282B747A2300DCFCD5 /* AddTaskView.swift in Sources */,
 				1201E6342B5E194800682E71 /* UIColor+Extension.swift in Sources */,
+				12C986802B96B64700DA0D98 /* TaskPageStatusVIew.swift in Sources */,
 				1201E68B2B60FA1400682E71 /* PaddingLabel.swift in Sources */,
 				125DCD4F2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift in Sources */,
 				125DCD322B7482DA00DCFCD5 /* TaskManager.swift in Sources */,
