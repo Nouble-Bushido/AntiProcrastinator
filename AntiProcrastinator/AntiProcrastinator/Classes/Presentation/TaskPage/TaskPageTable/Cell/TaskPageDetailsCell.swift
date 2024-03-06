@@ -38,7 +38,7 @@ final class TaskPageDetailsCell: UITableViewCell {
         .textColor(UIColor(integralRed: 28, green: 28, blue: 28))
         .font(Fonts.Ubuntu.regular(size: 16))
         .lineHeight(28.scale)
-        .textAlignment(.center)
+        .textAlignment(.left)
         .letterSpacing(-0.41.scale)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -46,7 +46,6 @@ final class TaskPageDetailsCell: UITableViewCell {
         
         initialize()
         makeConstraints()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -101,7 +100,7 @@ private extension TaskPageDetailsCell {
             
             taskDateLabel.centerYAnchor.constraint(equalTo: taskDateImageView.centerYAnchor),
             taskDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 39.scale),
-            taskDateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            taskDateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale),
         ])
         taskNameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         statusView.setContentHuggingPriority(.defaultHigh, for: .horizontal)

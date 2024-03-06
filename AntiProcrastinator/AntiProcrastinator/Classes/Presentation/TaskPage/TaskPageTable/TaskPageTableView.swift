@@ -46,6 +46,7 @@ extension TaskPageTableView: UITableViewDataSource {
         case .details(let task, let status):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskPageDetailsCell.self)) as? TaskPageDetailsCell else { return UITableViewCell()}
             cell.setup(task: task, status: status)
+            cell.layoutIfNeeded()
             return cell
         case .buttons:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskPageButtonsCell.self)) as? TaskPageButtonsCell else { return UITableViewCell()}
