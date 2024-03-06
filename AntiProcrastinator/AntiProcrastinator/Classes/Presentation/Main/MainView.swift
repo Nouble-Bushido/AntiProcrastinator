@@ -10,6 +10,7 @@ import UIKit
 final class MainView: UIView {
     lazy var infoButton = makeInfoButton()
     lazy var addTaskButton = makeAddTaskButton()
+    lazy var tableView = makeTableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,6 +44,11 @@ private extension MainView {
             addTaskButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20.scale),
             addTaskButton.widthAnchor.constraint(equalToConstant: 24.scale),
             addTaskButton.heightAnchor.constraint(equalToConstant: 24.scale),
+            
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: infoButton.bottomAnchor, constant: 10.scale),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
@@ -66,6 +72,13 @@ private extension MainView {
         view.tintColor = UIColor(integralRed: 28, green: 55, blue: 209)
         view.contentVerticalAlignment = .fill
         view.contentHorizontalAlignment = .fill
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeTableView() -> MainTableView {
+        let view = MainTableView()
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
