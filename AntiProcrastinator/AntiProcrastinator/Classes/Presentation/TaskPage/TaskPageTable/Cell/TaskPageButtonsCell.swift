@@ -51,11 +51,11 @@ private extension TaskPageButtonsCell {
             closeTaskButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
             closeTaskButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale),
             
-            removeTaskButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 46.scale),
+            removeTaskButton.heightAnchor.constraint(equalToConstant: 46.scale),
             removeTaskButton.topAnchor.constraint(equalTo: closeTaskButton.bottomAnchor, constant: 10.scale),
             removeTaskButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
             removeTaskButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale),
-            removeTaskButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            removeTaskButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5.scale)
         ])
     }
 }

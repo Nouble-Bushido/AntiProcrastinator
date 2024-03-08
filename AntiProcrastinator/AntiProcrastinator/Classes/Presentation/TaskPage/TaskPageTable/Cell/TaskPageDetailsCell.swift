@@ -101,6 +101,7 @@ private extension TaskPageDetailsCell {
             taskDateLabel.centerYAnchor.constraint(equalTo: taskDateImageView.centerYAnchor),
             taskDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 39.scale),
             taskDateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale),
+            taskDateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
         taskNameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         statusView.setContentHuggingPriority(.defaultHigh, for: .horizontal)

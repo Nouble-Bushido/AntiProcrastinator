@@ -14,12 +14,10 @@ final class FatigueManager {
         static let fatiguePointsKey = "fatigue_points_manager_key"
     }
     
-    private var fatiguePoints: FatiguePoints
+    private var fatiguePoints: FatiguePoints = FatiguePoints(value: 0)
     private var fatigueLevel: FatigueLevel = .low
     
-    private init() {
-        self.fatiguePoints = FatiguePoints(value: 0)
-    }
+    private init() {}
 }
 
 //MARK: Public
@@ -49,6 +47,10 @@ extension FatigueManager {
         checkAndUpdateFatigueLevel()
         return fatiguePoints
     }
+    
+    func getFatigueLevel() -> FatigueLevel {
+        return fatigueLevel
+    }
 }
 
 //MARK: Private
@@ -56,21 +58,20 @@ private extension FatigueManager {
     func saveFatiguePoints() {
         if let encoded = try? JSONEncoder().encode(fatiguePoints) {
             UserDefaults.standard.set(encoded, forKey: Constants.fatiguePointsKey)
-            fatigueLevel = calculateFatigueLevel()
         }
     }
     
     func calculateFatigueLevel() -> FatigueLevel {
         switch fatiguePoints.value {
-        case ..<0:
+        case ..<50:
             return .low
-        case 0..<40:
+        case 50..<100:
             return .low
-        case 40..<80:
+        case 100..<150:
             return .moderate
-        case 80..<120:
+        case 150..<200:
             return .high
-        case 120..<160:
+        case 200..<250:
             return .veryHigh
         default:
             return .extreme
