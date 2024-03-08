@@ -18,6 +18,6 @@ extension AddTaskViewModel {
                            description: description,
                            date: date,
                            isCompleted: false)
-        TaskManager.share.addTask(task: newTask)
+        TaskManager.shared.addTask(task: newTask)
     }
 }

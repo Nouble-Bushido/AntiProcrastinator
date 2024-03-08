@@ -51,7 +51,7 @@ private extension TaskPageViewController {
     
     func goToTaskPageAlertCloseTaskVC() {
         let vc = TaskPageAlertCloseTaskViewController()
-        TaskManager.share.completeTask(withId: viewModel.task.id)
+        TaskManager.shared.completeTask(withId: viewModel.task.id)
         vc.completed = { [weak self] in
             self?.dismiss(animated: false) { [weak self] in
                 self?.navigationController?.popToRootViewController(animated: true)
@@ -64,7 +64,7 @@ private extension TaskPageViewController {
     
     func goToTaskPageAlertRemoveTaskVC() {
         let vc = TaskPageAlertRemoveTaskViewController()
-        TaskManager.share.removeTask(withId: viewModel.task.id)
+        TaskManager.shared.removeTask(withId: viewModel.task.id)
         vc.completed = { [weak self] in
             self?.dismiss(animated: false) { [weak self] in
                 self?.navigationController?.popToRootViewController(animated: true)
