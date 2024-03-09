@@ -34,13 +34,11 @@ extension FatigueManager {
       }
 
     func increaseFatigueForCompletedTask() {
-        fatiguePoints.value += 10
-        saveFatiguePoints()
+        adjustFatiguePoints(by: 10)
     }
     
-    func decreaseFatigueUncompletedTask() {
-        fatiguePoints.value -= 10
-        saveFatiguePoints()
+    func decreaseFatigueRemovedTask() {
+        adjustFatiguePoints(by: -10)
     }
     
     func getAllFatuguePoints() -> FatiguePoints {
@@ -55,6 +53,11 @@ extension FatigueManager {
 
 //MARK: Private
 private extension FatigueManager {
+    func adjustFatiguePoints(by amount: Int) {
+        fatiguePoints.value += amount
+        saveFatiguePoints()
+    }
+    
     func saveFatiguePoints() {
         if let encoded = try? JSONEncoder().encode(fatiguePoints) {
             UserDefaults.standard.set(encoded, forKey: Constants.fatiguePointsKey)
@@ -66,12 +69,10 @@ private extension FatigueManager {
         case ..<50:
             return .low
         case 50..<100:
-            return .low
-        case 100..<150:
             return .moderate
-        case 150..<200:
+        case 100..<150:
             return .high
-        case 200..<250:
+        case 150..<200:
             return .veryHigh
         default:
             return .extreme
