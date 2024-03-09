@@ -92,7 +92,7 @@ private extension MainView {
             
             motivationView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 10.scale),
             motivationView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),
-            motivationView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -150.scale),
+            motivationView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -70.scale),
             
             fatigueLabel.topAnchor.constraint(equalTo: motivationView.bottomAnchor, constant: 10.scale),
             fatigueLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),

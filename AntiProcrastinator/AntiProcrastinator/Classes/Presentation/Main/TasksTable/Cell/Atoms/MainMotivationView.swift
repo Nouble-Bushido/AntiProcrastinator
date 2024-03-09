@@ -73,10 +73,16 @@ private extension MainMotivationView {
         return view
     }
 
-    func makeMotivationLabel() -> PaddingLabel {
-        let view = PaddingLabel()
+    func makeMotivationLabel() -> UILabel {
+        let textAttrs = TextAttributes()
+            .textColor(UIColor(integralRed: 255, green: 255, blue: 255))
+            .lineHeight(16.scale)
+            .font(Fonts.Ubuntu.regular(size: 14))
+            .letterSpacing(-0.20.scale)
+
+        let view = UILabel()
         view.numberOfLines = 0
-        view.text = "fihgesafjheahghgfalkesjhfkjaeshfjhasehfas"
+        view.attributedText = "Помнишь девушку из кафе? Может, она сейчас там сидит. Иди познакомься".attributed(with: textAttrs)
         view.layer.cornerRadius = 15.scale
         view.layer.masksToBounds = true
         view.backgroundColor = UIColor(integralRed: 28, green: 55, blue: 209)
