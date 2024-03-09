@@ -20,11 +20,11 @@ enum FatigueLevel {
     
     var description: String {
         switch self {
-        case .low: return "Low"
-        case .moderate: return "Moderate"
-        case .high: return "High"
-        case .veryHigh: return "Very High"
-        case .extreme: return "Extreme"
+        case .low: return "Main.FatigueLevel.Low.Description.Text".localized
+        case .moderate: return "Main.FatigueLevel.Moderate.Description.Text".localized
+        case .high: return "Main.FatigueLevel.High.Description.Text".localized
+        case .veryHigh: return "Main.FatigueLevel.VeryHigh.Description.Text".localized
+        case .extreme: return "Main.FatigueLevel.Extreme.Description.Text".localized
         }
     }
 }
