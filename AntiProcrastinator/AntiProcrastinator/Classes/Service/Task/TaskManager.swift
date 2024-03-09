@@ -57,19 +57,6 @@ extension TaskManager {
     func getAllTask() -> [Task] {
         return tasks
     }
-    
-    func getNewTasks(from tasks: [Task]) -> [Task] {
-        let storedTasks = getAllTask()
-        
-        var newTasks: [Task] = []
-        
-        for task in tasks {
-            if !storedTasks.contains(where: { $0.id == task.id }) {
-                newTasks.append(task)
-            }
-        }
-        return newTasks
-    }
 }
 
 //MARK: Private
