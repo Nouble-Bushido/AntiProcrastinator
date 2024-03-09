@@ -65,10 +65,8 @@ private extension SplashViewController {
     }
     
     func presentMain() {
-        let vc = MainViewController()
+        let vc = MainViewController.make()
         let navigationController = UINavigationController(rootViewController: vc)
-        vc.navigationItem.backButtonTitle = " "
-        vc.modalPresentationStyle = .overFullScreen
         UIApplication.shared.keyWindow?.rootViewController = navigationController
     }
 }

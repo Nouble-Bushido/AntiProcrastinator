@@ -40,6 +40,16 @@ final class MainViewController: UIViewController {
     }
 }
 
+//MARK: Public
+extension MainViewController {
+    static func make() -> MainViewController {
+        let vc = MainViewController()
+        vc.navigationItem.backButtonTitle = " "
+        vc.modalPresentationStyle = .overFullScreen
+        return vc
+    }
+}
+
 //MARK: Private
 private extension MainViewController {
     func actionButtons() {
