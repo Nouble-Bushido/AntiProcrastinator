@@ -54,6 +54,7 @@
 "TaskPage.AlertRemoveTaskButton.Text" = "Закрыть";
 
 // MARK: Main
+"Main.Greeting.Text" = "Привет,";
 "Main.FatigueLevel.Name.Text" = "Твой уровень:";
 "Main.FatigueLevel.Low.Description.Text" = "😌 наслаждаюсь паузой между задачами";
 "Main.FatigueLevel.Moderate.Description.Text" = "😓начинаю чувствовать некоторую усталость ";
