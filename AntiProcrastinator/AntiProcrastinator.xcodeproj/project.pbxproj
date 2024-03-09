@@ -68,6 +68,7 @@
 		12C986802B96B64700DA0D98 /* TaskPageStatusVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9867F2B96B64700DA0D98 /* TaskPageStatusVIew.swift */; };
 		12C986832B995EC400DA0D98 /* FatiguePoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986822B995EC400DA0D98 /* FatiguePoints.swift */; };
 		12C986862B995F2500DA0D98 /* FatigueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986852B995F2500DA0D98 /* FatigueManager.swift */; };
+		12C986892B9C3A6000DA0D98 /* MainMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986882B9C3A6000DA0D98 /* MainMotivationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +135,7 @@
 		12C9867F2B96B64700DA0D98 /* TaskPageStatusVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageStatusVIew.swift; sourceTree = "<group>"; };
 		12C986822B995EC400DA0D98 /* FatiguePoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatiguePoints.swift; sourceTree = "<group>"; };
 		12C986852B995F2500DA0D98 /* FatigueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatigueManager.swift; sourceTree = "<group>"; };
+		12C986882B9C3A6000DA0D98 /* MainMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMotivationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				12C9865D2B87425700DA0D98 /* MainCell.swift */,
+				12C986872B9C3A3100DA0D98 /* Atoms */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -494,6 +497,14 @@
 				12C986822B995EC400DA0D98 /* FatiguePoints.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		12C986872B9C3A3100DA0D98 /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				12C986882B9C3A6000DA0D98 /* MainMotivationView.swift */,
+			);
+			path = Atoms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -592,6 +603,7 @@
 				1201E6502B5E427500682E71 /* UserManager.swift in Sources */,
 				12C986732B8F148500DA0D98 /* TaskPageTypeCell.swift in Sources */,
 				1201E6132B5E113100682E71 /* AppDelegate.swift in Sources */,
+				12C986892B9C3A6000DA0D98 /* MainMotivationView.swift in Sources */,
 				125DCD852B7EFB3000DCFCD5 /* PaddingTextField.swift in Sources */,
 				1201E68F2B61FF0F00682E71 /* InfoView.swift in Sources */,
 				1201E6A52B6A178900682E71 /* LaunchManager.swift in Sources */,

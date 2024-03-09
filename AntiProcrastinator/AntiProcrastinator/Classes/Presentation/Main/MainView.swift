@@ -10,11 +10,18 @@ import UIKit
 final class MainView: UIView {
     lazy var infoButton = makeInfoButton()
     lazy var addTaskButton = makeAddTaskButton()
-    lazy var tableView = makeTableView()
+    lazy var motivationView = makeMotivationView()
     lazy var greetingLabel = makeGreetingLabel()
     lazy var fatigueLabel = makeFatigueLevelLabel()
     lazy var fatigueLevelDescriptionLabel = makeFatigueLevelDescriptionLabel()
     lazy var fatiguePointsLabel = makeFatiguePointsLabel()
+    lazy var tableView = makeTableView()
+    
+    lazy var textAttrsPoints = TextAttributes()
+        .textColor(UIColor(integralRed: 28, green: 28, blue: 28))
+        .lineHeight(20.scale)
+        .font(Fonts.Ubuntu.regular(size: 16))
+        .letterSpacing(-0.20.scale)
     
     lazy var textAttrsGreeting = TextAttributes()
         .textColor(UIColor(integralRed: 28, green: 28, blue: 28))
@@ -43,14 +50,16 @@ final class MainView: UIView {
 //MARK: Public
 extension MainView {
     func setup(fatiguePoints: FatiguePoints, fatigueLevel: FatigueLevel, userName: String) {
-        fatiguePointsLabel.text = String(fatiguePoints.value)
+        let localizedTextPoints = "Main.Balls.Text".localized
+        let fullTextPoints = "\(String(fatiguePoints.value)) \(localizedTextPoints)"
+        fatiguePointsLabel.attributedText = fullTextPoints.attributed(with: textAttrsPoints)
         
         let attributedDescription = fatigueLevel.description.attributed(with: textAttrsDescription)
         fatigueLevelDescriptionLabel.attributedText = attributedDescription
         
-        let localizedText = "Main.Greeting.Text".localized
-        let fullText = "\(localizedText) \(userName)"
-        greetingLabel.attributedText = fullText.attributed(with: textAttrsGreeting)
+        let localizedTextGreeting = "Main.Greeting.Text".localized
+        let fullTextGreeting = "\(localizedTextGreeting) \(userName)"
+        greetingLabel.attributedText = fullTextGreeting.attributed(with: textAttrsGreeting)
     }
 }
 
@@ -78,24 +87,25 @@ private extension MainView {
             greetingLabel.topAnchor.constraint(equalTo: infoButton.bottomAnchor, constant: 10.scale),
             greetingLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),
             
-            fatigueLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 10.scale),
+            fatiguePointsLabel.topAnchor.constraint(equalTo: addTaskButton.bottomAnchor, constant: 10.scale),
+            fatiguePointsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10.scale),
+            
+            motivationView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 10.scale),
+            motivationView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),
+            motivationView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -150.scale),
+            
+            fatigueLabel.topAnchor.constraint(equalTo: motivationView.bottomAnchor, constant: 10.scale),
             fatigueLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),
             
             fatigueLevelDescriptionLabel.topAnchor.constraint(equalTo: fatigueLabel.bottomAnchor),
             fatigueLevelDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),
-            fatigueLevelDescriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: fatiguePointsLabel.leadingAnchor, constant: -10.scale),
-            fatigueLevelDescriptionLabel.bottomAnchor.constraint(equalTo: tableView.topAnchor, constant: 5.scale),
-            
-            fatiguePointsLabel.centerYAnchor.constraint(equalTo: fatigueLevelDescriptionLabel.centerYAnchor),
-            fatiguePointsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10.scale),
+            fatigueLevelDescriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -40.scale),
             
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: fatiguePointsLabel.bottomAnchor, constant: 10.scale),
+            tableView.topAnchor.constraint(equalTo: fatigueLevelDescriptionLabel.bottomAnchor, constant: 10.scale),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-        fatigueLevelDescriptionLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        fatiguePointsLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
 }
 
@@ -118,6 +128,13 @@ private extension MainView {
         view.tintColor = UIColor(integralRed: 28, green: 55, blue: 209)
         view.contentVerticalAlignment = .fill
         view.contentHorizontalAlignment = .fill
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeMotivationView() -> MainMotivationView {
+        let view = MainMotivationView()
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
