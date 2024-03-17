@@ -276,6 +276,7 @@ private extension AddTaskView {
         let view = UIDatePicker()
         view.preferredDatePickerStyle = .wheels
         view.datePickerMode = .date
+        view.minimumDate = Date()
         return view
     }
     

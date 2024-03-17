@@ -15,7 +15,7 @@ final class FatigueManager {
     }
     
     private var fatiguePoints: FatiguePoints = FatiguePoints(value: 0)
-    private var fatigueLevel: FatigueLevel = .low
+    private var fatigueLevel: FatiguePoints.FatigueLevel = .low
     
     private init() {}
 }
@@ -46,7 +46,7 @@ extension FatigueManager {
         return fatiguePoints
     }
     
-    func getFatigueLevel() -> FatigueLevel {
+    func getFatigueLevel() -> FatiguePoints.FatigueLevel {
         return fatigueLevel
     }
 }
@@ -64,7 +64,7 @@ private extension FatigueManager {
         }
     }
     
-    func calculateFatigueLevel() -> FatigueLevel {
+    func calculateFatigueLevel() -> FatiguePoints.FatigueLevel {
         switch fatiguePoints.value {
         case ..<50:
             return .low

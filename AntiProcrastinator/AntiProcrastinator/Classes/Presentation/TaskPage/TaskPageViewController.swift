@@ -66,7 +66,6 @@ private extension TaskPageViewController {
     func goToTaskPageAlertRemoveTaskVC() {
         let vc = TaskPageAlertRemoveTaskViewController()
         TaskManager.shared.removeTask(withId: viewModel.task.id)
-        FatigueManager.shared.decreaseFatigueRemovedTask()
         vc.completed = { [weak self] in
             self?.dismiss(animated: false) { [weak self] in
                 self?.navigationController?.popToRootViewController(animated: true)
