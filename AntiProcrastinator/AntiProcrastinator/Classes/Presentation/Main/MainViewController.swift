@@ -48,6 +48,7 @@ extension MainViewController {
     static func make() -> MainViewController {
         let vc = MainViewController()
         vc.navigationItem.backButtonTitle = " "
+        vc.title = "Main.Title.Scheduler.Text".localized
         vc.modalPresentationStyle = .overFullScreen
         return vc
     }

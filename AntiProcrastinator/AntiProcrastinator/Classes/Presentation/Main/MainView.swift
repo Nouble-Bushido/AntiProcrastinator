@@ -74,20 +74,20 @@ private extension MainView {
 private extension MainView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -10.scale),
+            infoButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -30.scale),
             infoButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20.scale),
             infoButton.widthAnchor.constraint(equalToConstant: 24.scale),
             infoButton.heightAnchor.constraint(equalToConstant: 24.scale),
   
-            addTaskButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -10.scale),
+            addTaskButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -30.scale),
             addTaskButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20.scale),
             addTaskButton.widthAnchor.constraint(equalToConstant: 24.scale),
             addTaskButton.heightAnchor.constraint(equalToConstant: 24.scale),
             
-            greetingLabel.topAnchor.constraint(equalTo: infoButton.bottomAnchor, constant: 10.scale),
+            greetingLabel.topAnchor.constraint(equalTo: infoButton.bottomAnchor, constant: 30.scale),
             greetingLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),
             
-            fatiguePointsLabel.topAnchor.constraint(equalTo: addTaskButton.bottomAnchor, constant: 10.scale),
+            fatiguePointsLabel.topAnchor.constraint(equalTo: addTaskButton.bottomAnchor, constant: 35.scale),
             fatiguePointsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10.scale),
             
             motivationView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 10.scale),

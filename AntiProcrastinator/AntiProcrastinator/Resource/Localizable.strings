@@ -54,6 +54,7 @@
 "TaskPage.AlertRemoveTaskButton.Text" = "Закрыть";
 
 // MARK: Main
+"Main.Title.Scheduler.Text" = "Планировщик";
 "Main.Greeting.Text" = "Привет,";
 "Main.Balls.Text" = "баллов";
 "Main.FatigueLevel.Name.Text" = "Твой уровень:";
