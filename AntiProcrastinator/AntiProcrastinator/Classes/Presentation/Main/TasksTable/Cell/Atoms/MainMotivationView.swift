@@ -36,7 +36,7 @@ private extension MainMotivationView {
    func makeConstraints(){
         NSLayoutConstraint.activate([
             motivationLabel.topAnchor.constraint(equalTo: topAnchor),
-            motivationLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            motivationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -65.scale),
             motivationLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28.scale),
             
             bigCyrcleView.widthAnchor.constraint(equalToConstant: 17.scale),
@@ -73,18 +73,21 @@ private extension MainMotivationView {
         return view
     }
 
-    func makeMotivationLabel() -> UILabel {
+    func makeMotivationLabel() -> PaddingLabel {
         let textAttrs = TextAttributes()
             .textColor(UIColor(integralRed: 255, green: 255, blue: 255))
-            .lineHeight(16.scale)
+            .lineHeight(18.scale)
             .font(Fonts.Ubuntu.regular(size: 14))
-            .letterSpacing(-0.20.scale)
+            .letterSpacing(-0.41.scale)
 
-        let view = UILabel()
+        let view = PaddingLabel()
         view.numberOfLines = 0
         view.attributedText = "Помнишь девушку из кафе? Может, она сейчас там сидит. Иди познакомься".attributed(with: textAttrs)
+        view.paddingLeft = 10.scale
+        view.paddingRight = 20.scale
         view.layer.cornerRadius = 15.scale
         view.layer.masksToBounds = true
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner]
         view.backgroundColor = UIColor(integralRed: 28, green: 55, blue: 209)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
