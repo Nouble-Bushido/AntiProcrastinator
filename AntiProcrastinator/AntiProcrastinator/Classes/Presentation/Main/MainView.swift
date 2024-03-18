@@ -49,12 +49,12 @@ final class MainView: UIView {
 
 //MARK: Public
 extension MainView {
-    func setup(fatiguePoints: FatiguePoints, fatigueLevel: FatigueLevel, userName: String) {
+    func setup(fatiguePoints: FatiguePoints, description: String, userName: String) {
         let localizedTextPoints = "Main.Balls.Text".localized
         let fullTextPoints = "\(String(fatiguePoints.value)) \(localizedTextPoints)"
         fatiguePointsLabel.attributedText = fullTextPoints.attributed(with: textAttrsPoints)
         
-        let attributedDescription = fatigueLevel.description.attributed(with: textAttrsDescription)
+        let attributedDescription = description.attributed(with: textAttrsDescription)
         fatigueLevelDescriptionLabel.attributedText = attributedDescription
         
         let localizedTextGreeting = "Main.Greeting.Text".localized
