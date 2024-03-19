@@ -60,7 +60,7 @@ extension TaskManager {
         return tasks
     }
     
-    func recalculateFatiguePointsAtEndOfDay(tasks: [Task]) {
+    func recalculateFatiguePointsAtEndOfDay() {
         let currentDate = Date()
         let calendar = Calendar.current
         let startOfDay = calendar.startOfDay(for: currentDate)

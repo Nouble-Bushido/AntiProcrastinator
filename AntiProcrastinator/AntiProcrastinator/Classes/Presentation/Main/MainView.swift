@@ -49,7 +49,7 @@ final class MainView: UIView {
 
 //MARK: Public
 extension MainView {
-    func setup(fatiguePoints: FatiguePoints, description: String, userName: String) {
+    func setup(fatiguePoints: Fatigue, description: String, userName: String) {
         let localizedTextPoints = "Main.Balls.Text".localized
         let fullTextPoints = "\(String(fatiguePoints.value)) \(localizedTextPoints)"
         fatiguePointsLabel.attributedText = fullTextPoints.attributed(with: textAttrsPoints)
@@ -74,12 +74,12 @@ private extension MainView {
 private extension MainView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -30.scale),
+            infoButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -10.scale),
             infoButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20.scale),
             infoButton.widthAnchor.constraint(equalToConstant: 24.scale),
             infoButton.heightAnchor.constraint(equalToConstant: 24.scale),
   
-            addTaskButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -30.scale),
+            addTaskButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -10.scale),
             addTaskButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20.scale),
             addTaskButton.widthAnchor.constraint(equalToConstant: 24.scale),
             addTaskButton.heightAnchor.constraint(equalToConstant: 24.scale),

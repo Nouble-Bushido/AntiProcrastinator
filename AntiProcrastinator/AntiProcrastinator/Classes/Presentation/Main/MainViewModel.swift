@@ -16,7 +16,7 @@ final class MainViewModel {
 extension MainViewModel {
     struct Output {
         let tasks: [Task]
-        let fatiguePoints: FatiguePoints
+        let fatiguePoints: Fatigue
         var description: String
         let name: String
     }
@@ -36,9 +36,8 @@ extension MainViewModel {
             case .extreme:  return "Main.FatigueLevel.Extreme.Description.Text".localized
             }
         }
-        
-        TaskManager.shared.recalculateFatiguePointsAtEndOfDay(tasks: tasks)
-        
+  
         return Output(tasks: tasks, fatiguePoints: fatiguePoints, description: description, name: name)
     }
 }
+

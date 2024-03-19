@@ -14,8 +14,7 @@ final class FatigueManager {
         static let fatiguePointsKey = "fatigue_points_manager_key"
     }
     
-    private var fatiguePoints: FatiguePoints = FatiguePoints(value: 0)
-    private var fatigueLevel: FatiguePoints.FatigueLevel = .low
+    private var fatigue: Fatigue = Fatigue(value: 0)
     
     private init() {}
 }
@@ -25,12 +24,12 @@ extension FatigueManager {
     func configure() {
           if let fatiguePointsData = UserDefaults.standard.data(forKey: Constants.fatiguePointsKey) {
               let decoder = JSONDecoder()
-              if let decodedFatiguePoints = try? decoder.decode(FatiguePoints.self, from: fatiguePointsData) {
-                  fatiguePoints = decodedFatiguePoints
+              if let decodedFatiguePoints = try? decoder.decode(Fatigue.self, from: fatiguePointsData) {
+                  fatigue = decodedFatiguePoints
                   return
               }
           }
-        fatiguePoints = FatiguePoints(value: 0)
+        fatigue = Fatigue(value: 0)
       }
 
     func increaseFatigueForCompletedTask() {
@@ -41,48 +40,25 @@ extension FatigueManager {
         adjustFatiguePoints(by: -10)
     }
     
-    func getAllFatuguePoints() -> FatiguePoints {
-        checkAndUpdateFatigueLevel()
-        return fatiguePoints
+    func getAllFatuguePoints() -> Fatigue {
+        return fatigue
     }
     
-    func getFatigueLevel() -> FatiguePoints.FatigueLevel {
-        return fatigueLevel
+    func getFatigueLevel() -> Fatigue.FatigueLevel {
+        return fatigue.level
     }
 }
 
 //MARK: Private
 private extension FatigueManager {
     func adjustFatiguePoints(by amount: Int) {
-        fatiguePoints.value += amount
+        fatigue.value += amount
         saveFatiguePoints()
     }
     
     func saveFatiguePoints() {
-        if let encoded = try? JSONEncoder().encode(fatiguePoints) {
+        if let encoded = try? JSONEncoder().encode(fatigue) {
             UserDefaults.standard.set(encoded, forKey: Constants.fatiguePointsKey)
-        }
-    }
-    
-    func calculateFatigueLevel() -> FatiguePoints.FatigueLevel {
-        switch fatiguePoints.value {
-        case ..<50:
-            return .low
-        case 50..<100:
-            return .moderate
-        case 100..<150:
-            return .high
-        case 150..<200:
-            return .veryHigh
-        default:
-            return .extreme
-        }
-    }
-    
-    func checkAndUpdateFatigueLevel() {
-        let newLevel = calculateFatigueLevel()
-        if newLevel != fatigueLevel {
-            fatigueLevel = newLevel
         }
     }
 }

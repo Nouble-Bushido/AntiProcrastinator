@@ -20,6 +20,8 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        TaskManager.shared.recalculateFatiguePointsAtEndOfDay()
+   
         let output = viewModel.configure()
         mainView.tableView.setup(tasks: output.tasks)
         mainView.setup(fatiguePoints: output.fatiguePoints, description: output.description, userName: output.name)
