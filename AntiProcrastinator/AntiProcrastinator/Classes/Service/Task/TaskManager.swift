@@ -12,11 +12,15 @@ final class TaskManager {
     
     enum Constants {
         static let taskKey = "task_manager_task_key"
-        static let subtractedTaskIdsKey = "task_manager_subtracted_task_ids_key"
+        static let lastCalculationDate = "task_manager_last_recalculation_date_key"
     }
     
     private var tasks: [Task] = []
-    private var subtractedTaskIdsForToday: Set<Int> = []
+    private var lastCalculationDate: Date? {
+        didSet {
+            saveLastCalculationDate()
+        }
+    }
     
     private init() {}
 }
@@ -28,10 +32,11 @@ extension TaskManager {
             let decoder = JSONDecoder()
             if let decodedTasks = try? decoder.decode([Task].self, from: tasksData) {
                 tasks = decodedTasks
+                recalculateFatigueAtEndOfDay()
                 return
             }
+            tasks = []
         }
-        tasks = []
     }
     
     func addTask(task: Task) {
@@ -59,28 +64,6 @@ extension TaskManager {
     func getAllTask() -> [Task] {
         return tasks
     }
-    
-    func recalculateFatiguePointsAtEndOfDay() {
-        let currentDate = Date()
-        let calendar = Calendar.current
-        let startOfDay = calendar.startOfDay(for: currentDate)
-        let yesterday = calendar.date(byAdding: .day, value: -1, to: currentDate)!
-        let startYesterday = calendar.startOfDay(for: yesterday)
-        
-        loadSubtractedTaskIdsForToday()
-        
-        tasks.filter {
-            !$0.isCompleted &&
-            $0.date >= startYesterday &&
-            $0.date <= startOfDay &&
-            !subtractedTaskIdsForToday.contains($0.id)
-        }.forEach {
-            FatigueManager.shared.decreaseFatigueRemovedTask()
-            subtractedTaskIdsForToday.insert($0.id)
-        }
-        
-        saveSubtractedTaskIdsForToday()
-    }
 }
 
 //MARK: Private
@@ -91,16 +74,37 @@ private extension TaskManager {
         }
     }
     
-    private func loadSubtractedTaskIdsForToday() {
-        if let data = UserDefaults.standard.data(forKey: Constants.subtractedTaskIdsKey),
-           let ids = try? JSONDecoder().decode(Set<Int>.self, from: data) {
-            subtractedTaskIdsForToday = ids
+    func loadLastCalculationDate() {
+        if let date = UserDefaults.standard.object(forKey: Constants.lastCalculationDate) as? Date {
+            lastCalculationDate = date
         }
     }
     
-    private func saveSubtractedTaskIdsForToday() {
-        if let encoded = try? JSONEncoder().encode(subtractedTaskIdsForToday) {
-            UserDefaults.standard.set(encoded, forKey: Constants.subtractedTaskIdsKey)
+    func saveLastCalculationDate() {
+        UserDefaults.standard.set(lastCalculationDate, forKey: Constants.lastCalculationDate)
+    }
+    
+    func recalculateFatigueAtEndOfDay() {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let startOfDay = calendar.startOfDay(for: currentDate)
+        let yesterday = calendar.date(byAdding: .day, value: -1, to: currentDate)!
+        
+        loadLastCalculationDate()
+        
+        guard let lastCalculationDates = lastCalculationDate else {
+            self.lastCalculationDate = startOfDay
+            return
         }
+        
+        tasks.filter {
+            !$0.isCompleted &&
+            $0.date >= lastCalculationDates &&
+            $0.date <= startOfDay
+        }.forEach {_ in
+            FatigueManager.shared.decreaseFatigueRemovedTask()
+        }
+        
+        self.lastCalculationDate = yesterday
     }
 }

@@ -43,10 +43,6 @@ extension FatigueManager {
     func getAllFatuguePoints() -> Fatigue {
         return fatigue
     }
-    
-    func getFatigueLevel() -> Fatigue.FatigueLevel {
-        return fatigue.level
-    }
 }
 
 //MARK: Private

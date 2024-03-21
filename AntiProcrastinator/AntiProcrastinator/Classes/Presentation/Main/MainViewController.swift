@@ -20,23 +20,21 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TaskManager.shared.recalculateFatiguePointsAtEndOfDay()
-   
         let output = viewModel.configure()
         mainView.tableView.setup(tasks: output.tasks)
-        mainView.setup(fatiguePoints: output.fatiguePoints, description: output.description, userName: output.name)
+        mainView.setup(fatiguePoints: output.fatigue, description: output.description, userName: output.name)
         mainView.tableView.didSelectItem = { [weak self] selectedTask in
             let vc = TaskPageViewController(task: selectedTask)
             vc.title = "TaskPage.Title.Text".localized
             vc.taskCloseCompletionHandler = { [weak self] in
                 let updatedOutput = self?.viewModel.configure() ?? output
                 self?.mainView.tableView.setup(tasks: updatedOutput.tasks)
-                self?.mainView.setup(fatiguePoints: updatedOutput.fatiguePoints, description: updatedOutput.description, userName: updatedOutput.name)
+                self?.mainView.setup(fatiguePoints: updatedOutput.fatigue, description: updatedOutput.description, userName: updatedOutput.name)
             }
             vc.taskRemoveCompletionHandler = { [weak self] in
                 let updatedOutput = self?.viewModel.configure() ?? output
                 self?.mainView.tableView.setup(tasks: updatedOutput.tasks)
-                self?.mainView.setup(fatiguePoints: updatedOutput.fatiguePoints, description: updatedOutput.description, userName: updatedOutput.name)
+                self?.mainView.setup(fatiguePoints: updatedOutput.fatigue, description: updatedOutput.description, userName: updatedOutput.name)
             }
             self?.navigationController?.pushViewController(vc, animated: true)
         }

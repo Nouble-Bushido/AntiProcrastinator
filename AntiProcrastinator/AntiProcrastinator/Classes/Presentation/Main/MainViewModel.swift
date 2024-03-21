@@ -16,15 +16,15 @@ final class MainViewModel {
 extension MainViewModel {
     struct Output {
         let tasks: [Task]
-        let fatiguePoints: Fatigue
+        let fatigue: Fatigue
         var description: String
         let name: String
     }
     
     func configure() -> Output {
         let tasks = TaskManager.shared.getAllTask()
-        let fatiguePoints = fatigueManager.getAllFatuguePoints()
-        let fatigueLevel = fatigueManager.getFatigueLevel()
+        let fatigue = fatigueManager.getAllFatuguePoints()
+        let fatigueLevel = fatigue.level
         let name = userManager.getUser()?.name ?? ""
         
         var description: String {
@@ -37,7 +37,7 @@ extension MainViewModel {
             }
         }
   
-        return Output(tasks: tasks, fatiguePoints: fatiguePoints, description: description, name: name)
+        return Output(tasks: tasks, fatigue: fatigue, description: description, name: name)
     }
 }
 
