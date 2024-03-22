@@ -91,7 +91,7 @@ private extension TaskManager {
         let yesterday = calendar.date(byAdding: .day, value: -1, to: currentDate)!
         
         loadLastCalculationDate()
-        
+         
         guard let lastCalculationDates = lastCalculationDate else {
             self.lastCalculationDate = startOfDay
             return
