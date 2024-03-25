@@ -40,4 +40,3 @@ extension MainViewModel {
         return Output(tasks: tasks, fatigue: fatigue, description: description, name: name)
     }
 }
-

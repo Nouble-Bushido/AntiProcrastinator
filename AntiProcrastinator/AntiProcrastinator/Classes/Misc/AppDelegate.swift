@@ -17,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
 
         LaunchManager.shared.didFinishLaunchingWithOptions()
-        FatigueManager.shared.configure()
-        TaskManager.shared.configure()
+        TaskManager.shared.decreaseFatigueHandler = { [weak fatigueManager = FatigueManager.shared] in
+              fatigueManager?.decreaseFatigueRemovedTask()
+          }
         
         if let window = window {
             let splashVc = SplashViewController.make()
@@ -29,4 +30,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

@@ -10,6 +10,8 @@ import Foundation
 final class TaskManager {
     static let shared = TaskManager()
     
+    var decreaseFatigueHandler: (() -> Void)?
+    
     enum Constants {
         static let taskKey = "task_manager_task_key"
         static let lastCalculationDate = "task_manager_last_recalculation_date_key"
@@ -102,7 +104,7 @@ private extension TaskManager {
             $0.date >= lastCalculationDates &&
             $0.date <= startOfDay
         }.forEach {_ in
-            FatigueManager.shared.decreaseFatigueRemovedTask()
+            decreaseFatigueHandler?()
         }
         
         self.lastCalculationDate = yesterday
