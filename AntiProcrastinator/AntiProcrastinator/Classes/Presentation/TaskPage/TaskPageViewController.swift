@@ -13,6 +13,8 @@ final class TaskPageViewController: UIViewController {
     var taskRemoveCompletionHandler: (() -> Void)?
     
     private var viewModel: TaskPageViewModel
+    private let taskManager = TaskManager()
+    private let fatigueManager = FatigueManager()
     
     init(task: Task) {
         self.viewModel = TaskPageViewModel(task: task)
@@ -51,8 +53,8 @@ private extension TaskPageViewController {
     
     func goToTaskPageAlertCloseTaskVC() {
         let vc = TaskPageAlertCloseTaskViewController()
-        TaskManager.shared.completeTask(withId: viewModel.task.id)
-        FatigueManager.shared.increaseFatigueForCompletedTask()
+        taskManager.completeTask(withId: viewModel.task.id)
+        fatigueManager.increaseFatigueForCompletedTask()
         vc.completed = { [weak self] in
             self?.dismiss(animated: false) { [weak self] in
                 self?.navigationController?.popToRootViewController(animated: true)
@@ -65,7 +67,7 @@ private extension TaskPageViewController {
     
     func goToTaskPageAlertRemoveTaskVC() {
         let vc = TaskPageAlertRemoveTaskViewController()
-        TaskManager.shared.removeTask(withId: viewModel.task.id)
+        taskManager.removeTask(withId: viewModel.task.id)
         vc.completed = { [weak self] in
             self?.dismiss(animated: false) { [weak self] in
                 self?.navigationController?.popToRootViewController(animated: true)

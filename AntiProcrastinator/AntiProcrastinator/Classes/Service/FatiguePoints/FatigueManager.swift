@@ -8,13 +8,9 @@
 import Foundation
 
 final class FatigueManager {
-    static let shared = FatigueManager()
-    
     enum Constants {
         static let fatiguePointsKey = "fatigue_points_manager_key"
     }
-    
-    private init() {}
 }
 
 //MARK: Public
@@ -45,8 +41,9 @@ private extension FatigueManager {
     }
     
     func saveFatiguePoints(fatigue: Fatigue) {
-        if let encoded = try? JSONEncoder().encode(fatigue) {
-            UserDefaults.standard.set(encoded, forKey: Constants.fatiguePointsKey)
+        guard let encoded = try? JSONEncoder().encode(fatigue) else {
+            return
         }
+        UserDefaults.standard.setValue(encoded, forKey: Constants.fatiguePointsKey)
     }
 }

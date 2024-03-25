@@ -9,7 +9,8 @@ import Foundation
 
 final class MainViewModel {
     private let userManager = UserManager()
-    private let fatigueManager = FatigueManager.shared
+    private let fatigueManager = FatigueManager()
+    private let taskManager = TaskManager()
 }
 
 //MARK: Public
@@ -22,7 +23,7 @@ extension MainViewModel {
     }
     
     func configure() -> Output {
-        let tasks = TaskManager.shared.getAllTask()
+        let tasks = taskManager.getAllTask()
         let fatigue = fatigueManager.getAllFatuguePoints()
         let fatigueLevel = fatigue.level
         let name = userManager.getUser()?.name ?? ""

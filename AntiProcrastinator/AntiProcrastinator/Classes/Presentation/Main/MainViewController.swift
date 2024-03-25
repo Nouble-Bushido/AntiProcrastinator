@@ -69,9 +69,10 @@ private extension MainViewController {
     
     @objc func pressAddTaskButton() {
         let vc = AddTaskViewController.make()
+        let taskManager = TaskManager()
         vc.didAddNewTask = { [weak self] in
             guard let self = self else { return }
-            let tasks = TaskManager.shared.getAllTask()
+            let tasks = taskManager.getAllTask()
             self.mainView.tableView.setup(tasks: tasks)
         }
         navigationController?.pushViewController(vc, animated: true)
