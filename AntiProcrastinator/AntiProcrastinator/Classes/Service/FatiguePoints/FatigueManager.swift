@@ -8,30 +8,17 @@
 import Foundation
 
 final class FatigueManager {
-   static let shared = FatigueManager()
+    static let shared = FatigueManager()
     
     enum Constants {
         static let fatiguePointsKey = "fatigue_points_manager_key"
     }
-    
-    private var fatigue: Fatigue = Fatigue(value: 0)
     
     private init() {}
 }
 
 //MARK: Public
 extension FatigueManager {
-    func configure() {
-          if let fatiguePointsData = UserDefaults.standard.data(forKey: Constants.fatiguePointsKey) {
-              let decoder = JSONDecoder()
-              if let decodedFatiguePoints = try? decoder.decode(Fatigue.self, from: fatiguePointsData) {
-                  fatigue = decodedFatiguePoints
-                  return
-              }
-          }
-        fatigue = Fatigue(value: 0)
-      }
-
     func increaseFatigueForCompletedTask() {
         adjustFatiguePoints(by: 10)
     }
@@ -41,18 +28,23 @@ extension FatigueManager {
     }
     
     func getAllFatuguePoints() -> Fatigue {
-        return fatigue
+        guard let fatiguePointsData = UserDefaults.standard.data(forKey: Constants.fatiguePointsKey),
+              let decodedFatiguePoints = try? JSONDecoder().decode(Fatigue.self, from: fatiguePointsData) else {
+            return Fatigue(value: 0)
+        }
+        return decodedFatiguePoints
     }
 }
 
 //MARK: Private
 private extension FatigueManager {
     func adjustFatiguePoints(by amount: Int) {
+        var fatigue = getAllFatuguePoints()
         fatigue.value += amount
-        saveFatiguePoints()
+        saveFatiguePoints(fatigue: fatigue)
     }
     
-    func saveFatiguePoints() {
+    func saveFatiguePoints(fatigue: Fatigue) {
         if let encoded = try? JSONEncoder().encode(fatigue) {
             UserDefaults.standard.set(encoded, forKey: Constants.fatiguePointsKey)
         }

@@ -10,14 +10,11 @@ import Foundation
 final class TaskManager {
     static let shared = TaskManager()
     
-    var decreaseFatigueHandler: (() -> Void)?
-    
     enum Constants {
         static let taskKey = "task_manager_task_key"
         static let lastCalculationDate = "task_manager_last_recalculation_date_key"
     }
     
-    private var tasks: [Task] = []
     private var lastCalculationDate: Date? {
         didSet {
             saveLastCalculationDate()
@@ -33,25 +30,26 @@ extension TaskManager {
         if let tasksData = UserDefaults.standard.data(forKey: Constants.taskKey) {
             let decoder = JSONDecoder()
             if let decodedTasks = try? decoder.decode([Task].self, from: tasksData) {
-                tasks = decodedTasks
-                recalculateFatigueAtEndOfDay()
+                recalculateFatigueAtEndOfDay(tasks: decodedTasks)
                 return
             }
-            tasks = []
         }
     }
     
     func addTask(task: Task) {
+        var tasks = getAllTask()
         tasks.append(task)
-        saveTasks()
+        saveTasks(tasks)
     }
     
     func removeTask(withId id: Int) {
+        var tasks = getAllTask()
         tasks.removeAll { $0.id == id }
-        saveTasks()
+        saveTasks(tasks)
     }
     
     func completeTask(withId id: Int) {
+        var tasks = getAllTask()
         if let index = tasks.firstIndex(where: { $0.id == id }) {
             let task = tasks[index]
             tasks[index] = Task(id: task.id,
@@ -59,21 +57,26 @@ extension TaskManager {
                                 description: task.description,
                                 date: task.date,
                                 isCompleted: true)
-            saveTasks()
+            saveTasks(tasks)
         }
     }
     
     func getAllTask() -> [Task] {
-        return tasks
+        guard let tasksData = UserDefaults.standard.data(forKey: Constants.taskKey),
+              let decodedTasks = try? JSONDecoder().decode([Task].self, from: tasksData) else {
+            return []
+        }
+        return decodedTasks
     }
 }
 
 //MARK: Private
 private extension TaskManager {
-    func saveTasks() {
-        if let encoded = try? JSONEncoder().encode(tasks) {
-            UserDefaults.standard.set(encoded, forKey: Constants.taskKey)
+    func saveTasks(_ tasks: [Task]) {
+        guard let encoded = try? JSONEncoder().encode(tasks) else {
+            return
         }
+            UserDefaults.standard.set(encoded, forKey: Constants.taskKey)
     }
     
     func loadLastCalculationDate() {
@@ -86,7 +89,7 @@ private extension TaskManager {
         UserDefaults.standard.set(lastCalculationDate, forKey: Constants.lastCalculationDate)
     }
     
-    func recalculateFatigueAtEndOfDay() {
+    func recalculateFatigueAtEndOfDay(tasks: [Task]) {
         let currentDate = Date()
         let calendar = Calendar.current
         let startOfDay = calendar.startOfDay(for: currentDate)
@@ -98,13 +101,13 @@ private extension TaskManager {
             self.lastCalculationDate = startOfDay
             return
         }
-        
+
         tasks.filter {
             !$0.isCompleted &&
-            $0.date >= lastCalculationDates &&
+            $0.date > lastCalculationDates &&
             $0.date <= startOfDay
         }.forEach {_ in
-            decreaseFatigueHandler?()
+            FatigueManager.shared.decreaseFatigueRemovedTask()
         }
         
         self.lastCalculationDate = yesterday
