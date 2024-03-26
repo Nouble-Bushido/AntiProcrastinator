@@ -52,3 +52,16 @@
 "TaskPage.AlertRemoveTaskTitle.Text" = "🥹";
 "TaskPage.AlertRemoveDescription.Text" = "Я тобой горжусь! Ты освободил время, чтобы сделать что-то для себя. Так держать!";
 "TaskPage.AlertRemoveTaskButton.Text" = "Закрыть";
+
+// MARK: Main
+"Main.Title.Scheduler.Text" = "Планировщик";
+"Main.Greeting.Text" = "Привет,";
+"Main.Balls.Text" = "баллов";
+"Main.FatigueLevel.Name.Text" = "Твой уровень:";
+"Main.FatigueLevel.Low.Description.Text" = "😌 наслаждаюсь паузой между задачами";
+"Main.FatigueLevel.Moderate.Description.Text" = "😓начинаю чувствовать некоторую усталость ";
+"Main.FatigueLevel.High.Description.Text" = "👀 не свожу глаз с часов в ожидании завершения рабочего дня";
+"Main.FatigueLevel.VeryHigh.Description.Text" = "😩чувствую нарастающую усталость";
+"Main.FatigueLevel.Extreme.Description.Text" = "энергия иссякает, мечтаю только об одном — о полном покое 😴";
+
+

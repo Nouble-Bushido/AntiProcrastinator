@@ -35,8 +35,7 @@ private extension InfoViewController {
     }
     
      func pressContinueButton() {
-        let mainViewController = MainViewController()
-        mainViewController.modalPresentationStyle = .overFullScreen
-        UIApplication.shared.keyWindow?.rootViewController = mainViewController
+         let vc = MainViewController.make()
+        UIApplication.shared.keyWindow?.rootViewController = vc
     }
 }

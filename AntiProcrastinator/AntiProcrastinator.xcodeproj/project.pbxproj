@@ -66,6 +66,9 @@
 		12C986792B8F261400DA0D98 /* TaskPageElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986782B8F261400DA0D98 /* TaskPageElements.swift */; };
 		12C9867B2B906D2200DA0D98 /* TaskPageButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9867A2B906D2200DA0D98 /* TaskPageButtonsCell.swift */; };
 		12C986802B96B64700DA0D98 /* TaskPageStatusVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9867F2B96B64700DA0D98 /* TaskPageStatusVIew.swift */; };
+		12C986832B995EC400DA0D98 /* Fatigue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986822B995EC400DA0D98 /* Fatigue.swift */; };
+		12C986862B995F2500DA0D98 /* FatigueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986852B995F2500DA0D98 /* FatigueManager.swift */; };
+		12C986892B9C3A6000DA0D98 /* MainMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986882B9C3A6000DA0D98 /* MainMotivationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +133,9 @@
 		12C986782B8F261400DA0D98 /* TaskPageElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageElements.swift; sourceTree = "<group>"; };
 		12C9867A2B906D2200DA0D98 /* TaskPageButtonsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageButtonsCell.swift; sourceTree = "<group>"; };
 		12C9867F2B96B64700DA0D98 /* TaskPageStatusVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageStatusVIew.swift; sourceTree = "<group>"; };
+		12C986822B995EC400DA0D98 /* Fatigue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fatigue.swift; sourceTree = "<group>"; };
+		12C986852B995F2500DA0D98 /* FatigueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatigueManager.swift; sourceTree = "<group>"; };
+		12C986882B9C3A6000DA0D98 /* MainMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMotivationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +283,7 @@
 		1201E64A2B5E41BE00682E71 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				12C986812B995E6F00DA0D98 /* FatiguePoints */,
 				125DCD2D2B74823F00DCFCD5 /* Task */,
 				1201E64B2B5E420C00682E71 /* User */,
 			);
@@ -414,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				12C9865D2B87425700DA0D98 /* MainCell.swift */,
+				12C986872B9C3A3100DA0D98 /* Atoms */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -470,6 +478,31 @@
 			isa = PBXGroup;
 			children = (
 				12C9867F2B96B64700DA0D98 /* TaskPageStatusVIew.swift */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
+		12C986812B995E6F00DA0D98 /* FatiguePoints */ = {
+			isa = PBXGroup;
+			children = (
+				12C986842B995F0700DA0D98 /* Model */,
+				12C986852B995F2500DA0D98 /* FatigueManager.swift */,
+			);
+			path = FatiguePoints;
+			sourceTree = "<group>";
+		};
+		12C986842B995F0700DA0D98 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				12C986822B995EC400DA0D98 /* Fatigue.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		12C986872B9C3A3100DA0D98 /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				12C986882B9C3A6000DA0D98 /* MainMotivationView.swift */,
 			);
 			path = Atoms;
 			sourceTree = "<group>";
@@ -561,6 +594,7 @@
 				12C9865E2B87425700DA0D98 /* MainCell.swift in Sources */,
 				12C986792B8F261400DA0D98 /* TaskPageElements.swift in Sources */,
 				12C9866B2B8C150B00DA0D98 /* TaskPageAlertRemoveTaskViewController.swift in Sources */,
+				12C986862B995F2500DA0D98 /* FatigueManager.swift in Sources */,
 				12C9866D2B8C151600DA0D98 /* TaskPageAlertCloseTaskViewController.swift in Sources */,
 				1201E6452B5E22C300682E71 /* Scalable.swift in Sources */,
 				125DCD4D2B79BF9700DCFCD5 /* AddTaskAlertView.swift in Sources */,
@@ -569,6 +603,7 @@
 				1201E6502B5E427500682E71 /* UserManager.swift in Sources */,
 				12C986732B8F148500DA0D98 /* TaskPageTypeCell.swift in Sources */,
 				1201E6132B5E113100682E71 /* AppDelegate.swift in Sources */,
+				12C986892B9C3A6000DA0D98 /* MainMotivationView.swift in Sources */,
 				125DCD852B7EFB3000DCFCD5 /* PaddingTextField.swift in Sources */,
 				1201E68F2B61FF0F00682E71 /* InfoView.swift in Sources */,
 				1201E6A52B6A178900682E71 /* LaunchManager.swift in Sources */,
@@ -580,6 +615,7 @@
 				1201E6A22B69FF9900682E71 /* InfoTableHeaderView.swift in Sources */,
 				1201E6432B5E229A00682E71 /* ScreenSize.swift in Sources */,
 				1201E6582B5E47B700682E71 /* MainView.swift in Sources */,
+				12C986832B995EC400DA0D98 /* Fatigue.swift in Sources */,
 				125DCD2A2B747A2E00DCFCD5 /* AddTaskViewController.swift in Sources */,
 				12C986772B8F25C500DA0D98 /* TaskPageDetailsCell.swift in Sources */,
 				1201E6532B5E474400682E71 /* NameView.swift in Sources */,

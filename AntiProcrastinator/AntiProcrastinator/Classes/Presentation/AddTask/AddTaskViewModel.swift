@@ -8,6 +8,7 @@
 import UIKit
 
 final class AddTaskViewModel {
+    private let taskManager = TaskManager()
 }
 
 //MARK: Public
@@ -18,6 +19,6 @@ extension AddTaskViewModel {
                            description: description,
                            date: date,
                            isCompleted: false)
-        TaskManager.share.addTask(task: newTask)
+        taskManager.addTask(task: newTask)
     }
 }
