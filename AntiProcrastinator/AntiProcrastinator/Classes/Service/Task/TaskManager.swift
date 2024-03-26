@@ -18,9 +18,7 @@ final class TaskManager {
 extension TaskManager {
     static func configure() {
         let taskManager = TaskManager()
-        let tasks = taskManager.loadTasks()
-        
-        taskManager.recalculateFatigueAtEndOfDay(tasks: tasks)
+        taskManager.recalculateFatigueAtEndOfDay()
     }
     
     func addTask(task: Task) {
@@ -71,11 +69,12 @@ private extension TaskManager {
         return decodedTasks
     }
     
-   func recalculateFatigueAtEndOfDay(tasks: [Task]) {
+    func recalculateFatigueAtEndOfDay() {
         let currentDate = Date()
         let calendar = Calendar.current
         let startOfDay = calendar.startOfDay(for: currentDate)
         let yesterday = calendar.date(byAdding: .day, value: -1, to: currentDate)!
+        let tasks = getAllTask()
         let fatigueManager = FatigueManager()
         
         guard let lastCalculationDate = UserDefaults.standard.object(forKey: Constants.lastCalculationDate) as? Date else {
