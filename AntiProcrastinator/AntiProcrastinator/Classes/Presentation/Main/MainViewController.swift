@@ -69,7 +69,7 @@ private extension MainViewController {
     
     @objc func pressAddTaskButton() {
         let vc = AddTaskViewController.make()
-        let taskManager = TaskManager()
+        let taskManager = TaskManager.shared
         vc.didAddNewTask = { [weak self] in
             guard let self = self else { return }
             let tasks = taskManager.getAllTask()
