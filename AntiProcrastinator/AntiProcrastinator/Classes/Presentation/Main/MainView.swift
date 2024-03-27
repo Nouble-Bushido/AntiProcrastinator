@@ -10,11 +10,12 @@ import UIKit
 final class MainView: UIView {
     lazy var infoButton = makeInfoButton()
     lazy var addTaskButton = makeAddTaskButton()
-    lazy var motivationView = makeMotivationView()
     lazy var greetingLabel = makeGreetingLabel()
+    lazy var fatiguePointsLabel = makeFatiguePointsLabel()
+    lazy var vesselView = makeVesselView()
+    lazy var motivationView = makeMotivationView()
     lazy var fatigueLabel = makeFatigueLevelLabel()
     lazy var fatigueLevelDescriptionLabel = makeFatigueLevelDescriptionLabel()
-    lazy var fatiguePointsLabel = makeFatiguePointsLabel()
     lazy var tableView = makeTableView()
     
     lazy var textAttrsPoints = TextAttributes()
@@ -60,6 +61,8 @@ extension MainView {
         let localizedTextGreeting = "Main.Greeting.Text".localized
         let fullTextGreeting = "\(localizedTextGreeting) \(userName)"
         greetingLabel.attributedText = fullTextGreeting.attributed(with: textAttrsGreeting)
+        
+        vesselView.setup(points: fatiguePoints)
     }
 }
 
@@ -90,9 +93,14 @@ private extension MainView {
             fatiguePointsLabel.topAnchor.constraint(equalTo: addTaskButton.bottomAnchor, constant: 35.scale),
             fatiguePointsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10.scale),
             
+            vesselView.topAnchor.constraint(equalTo: fatiguePointsLabel.bottomAnchor, constant: 10.scale),
+            vesselView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10.scale),
+            vesselView.leadingAnchor.constraint(equalTo: motivationView.trailingAnchor, constant: -5.scale),
+            vesselView.bottomAnchor.constraint(equalTo: tableView.topAnchor),
+            
             motivationView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 10.scale),
             motivationView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),
-            motivationView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -70.scale),
+            motivationView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80.scale),
             
             fatigueLabel.topAnchor.constraint(equalTo: motivationView.bottomAnchor, constant: 10.scale),
             fatigueLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),
@@ -133,16 +141,31 @@ private extension MainView {
         return view
     }
     
-    func makeMotivationView() -> MainMotivationView {
-        let view = MainMotivationView()
+    func makeGreetingLabel() -> UILabel {
+        let view = UILabel()
+        view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
     }
     
-    func makeGreetingLabel() -> UILabel {
+    func makeFatiguePointsLabel() -> UILabel {
         let view = UILabel()
         view.numberOfLines = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeVesselView() -> MainPointsVesselView {
+        let view = MainPointsVesselView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeMotivationView() -> MainMotivationView {
+        let view = MainMotivationView()
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -164,14 +187,6 @@ private extension MainView {
     }
     
     func makeFatigueLevelDescriptionLabel() -> UILabel {
-        let view = UILabel()
-        view.numberOfLines = 0
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    func makeFatiguePointsLabel() -> UILabel {
         let view = UILabel()
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
