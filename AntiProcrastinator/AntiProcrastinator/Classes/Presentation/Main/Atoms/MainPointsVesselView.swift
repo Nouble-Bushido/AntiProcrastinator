@@ -41,9 +41,8 @@ private extension MainPointsVesselView {
         let maxHeight: CGFloat = 100
         let fillHeight = min(maxHeight, points)
         
-        NSLayoutConstraint.deactivate(contentFillView.constraints)
-        let heightConstraint = contentFillView.heightAnchor.constraint(equalToConstant: fillHeight)
-        heightConstraint.isActive = true
+        contentFillHeightConstraint = contentFillView.heightAnchor.constraint(equalToConstant: fillHeight)
+        contentFillHeightConstraint.isActive = true
         
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.layoutIfNeeded()
@@ -88,3 +87,4 @@ private extension MainPointsVesselView {
         return view
     }
 }
+    
