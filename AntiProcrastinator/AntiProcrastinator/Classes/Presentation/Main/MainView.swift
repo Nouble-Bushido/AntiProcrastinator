@@ -95,7 +95,7 @@ private extension MainView {
             
             vesselView.topAnchor.constraint(equalTo: fatiguePointsLabel.bottomAnchor, constant: 10.scale),
             vesselView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10.scale),
-            vesselView.leadingAnchor.constraint(equalTo: motivationView.trailingAnchor, constant: -5.scale),
+            vesselView.leadingAnchor.constraint(equalTo: motivationView.trailingAnchor, constant: -10.scale),
             vesselView.bottomAnchor.constraint(equalTo: tableView.topAnchor),
             
             motivationView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 10.scale),
@@ -107,7 +107,7 @@ private extension MainView {
             
             fatigueLevelDescriptionLabel.topAnchor.constraint(equalTo: fatigueLabel.bottomAnchor),
             fatigueLevelDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.scale),
-            fatigueLevelDescriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -40.scale),
+            fatigueLevelDescriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: vesselView.leadingAnchor, constant: -5.scale),
             
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
