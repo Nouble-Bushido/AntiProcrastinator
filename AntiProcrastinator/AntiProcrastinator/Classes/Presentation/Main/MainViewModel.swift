@@ -18,15 +18,20 @@ extension MainViewModel {
     struct Output {
         let tasks: [Task]
         let fatigue: Fatigue
+        let selectedDate: Date
         var description: String
         let name: String
     }
     
-    func configure() -> Output {
+    func configure(selectedDate: Date) -> Output {
         let tasks = taskManager.getAllTask()
         let fatigue = fatigueManager.getAllFatuguePoints()
         let fatigueLevel = fatigue.level
         let name = userManager.getUser()?.name ?? ""
+        
+        let filteredTasks = tasks.filter {
+            Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+        }
         
         var description: String {
             switch fatigueLevel {
@@ -37,7 +42,7 @@ extension MainViewModel {
             case .extreme:  return "Main.FatigueLevel.Extreme.Description.Text".localized
             }
         }
-  
-        return Output(tasks: tasks, fatigue: fatigue, description: description, name: name)
+        print("MainViewModel\(selectedDate)")
+        return Output(tasks: filteredTasks, fatigue: fatigue, selectedDate: selectedDate, description: description, name: name)
     }
 }
