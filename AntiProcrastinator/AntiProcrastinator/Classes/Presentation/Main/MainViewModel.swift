@@ -16,11 +16,8 @@ final class MainViewModel {
 //MARK: Public
 extension MainViewModel {
     struct Output {
-        let tasks: [Task]
-        let fatigue: Fatigue
+        let allElements: [MainTableElements]
         let selectedDate: Date
-        var description: String
-        let name: String
     }
     
     func configure(selectedDate: Date) -> Output {
@@ -28,10 +25,6 @@ extension MainViewModel {
         let fatigue = fatigueManager.getAllFatuguePoints()
         let fatigueLevel = fatigue.level
         let name = userManager.getUser()?.name ?? ""
-        
-        let filteredTasks = tasks.filter {
-            Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
-        }
         
         var description: String {
             switch fatigueLevel {
@@ -42,7 +35,32 @@ extension MainViewModel {
             case .extreme:  return "Main.FatigueLevel.Extreme.Description.Text".localized
             }
         }
-        print("MainViewModel\(selectedDate)")
-        return Output(tasks: filteredTasks, fatigue: fatigue, selectedDate: selectedDate, description: description, name: name)
+        
+        var allElements: [MainTableElements] = [.Info(MainInfo(fatiguePoints: fatigue,
+                                                               description: description,
+                                                               userName: name))]
+
+        let filteredTasks = filterTasks(for: selectedDate, from: tasks)
+        
+        if let taskForCalendar = filteredTasks.first {
+            allElements.append(.Calendar(taskForCalendar))
+        }
+        
+        let task = filteredTasks.map { MainTableElements.Tasks($0)}
+        allElements.append(contentsOf: task)
+        
+        return Output(allElements: allElements, selectedDate: selectedDate)
+    }
+}
+
+//MARK: Private
+private extension MainViewModel {
+    func filterTasks(for date: Date, from tasks: [Task]) -> [Task] {
+        let startOfDay = Calendar.current.startOfDay(for: date)
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
+        
+        return tasks.filter {
+            $0.date > startOfDay && $0.date <= tomorrow
+        }
     }
 }
