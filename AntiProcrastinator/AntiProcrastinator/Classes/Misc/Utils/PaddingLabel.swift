@@ -10,9 +10,10 @@ import UIKit
 class PaddingLabel: UILabel {
     var paddingLeft: CGFloat = 20.scale
     var paddingRight: CGFloat = 25.scale
+    var paddingBottom: CGFloat = 0.scale
 
     override func drawText(in rect: CGRect) {
-        let insets = UIEdgeInsets(top: 0, left: paddingLeft, bottom: 0, right: paddingRight)
+        let insets = UIEdgeInsets(top: 0, left: paddingLeft, bottom: paddingBottom, right: paddingRight)
         super.drawText(in: rect.inset(by: insets))
     }
 
