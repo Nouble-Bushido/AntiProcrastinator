@@ -41,6 +41,7 @@ private extension MainPointsVesselView {
         let maxHeight: CGFloat = 100
         let fillHeight = min(maxHeight, points)
         
+        contentFillHeightConstraint.isActive = false
         contentFillHeightConstraint = contentFillView.heightAnchor.constraint(equalToConstant: fillHeight)
         contentFillHeightConstraint.isActive = true
         
@@ -87,4 +88,3 @@ private extension MainPointsVesselView {
         return view
     }
 }
-    
