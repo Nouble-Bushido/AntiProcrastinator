@@ -81,26 +81,27 @@ private extension MainInfoCell {
             greetingLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -60.scale),
             
             fatiguePointsLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25.scale),
-            fatiguePointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20.scale),
+            fatiguePointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale),
             
-            vesselView.topAnchor.constraint(equalTo: fatiguePointsLabel.bottomAnchor, constant: 5.scale),
             vesselView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale),
+            vesselView.topAnchor.constraint(equalTo: fatiguePointsLabel.bottomAnchor, constant: 5.scale),
+            vesselView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             vesselView.widthAnchor.constraint(equalToConstant: 95.scale),
-            vesselView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 10.scale),
             
-            motivationView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 25.scale),
+            
+            motivationView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 30.scale),
             motivationView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
             motivationView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -60.scale),
-            motivationView.bottomAnchor.constraint(equalTo: fatigueLabel.topAnchor, constant: -10.scale),
+            motivationView.heightAnchor.constraint(greaterThanOrEqualToConstant: 80.scale),
             
             fatigueLabel.topAnchor.constraint(equalTo: motivationView.bottomAnchor, constant: 10.scale),
             fatigueLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
-            fatigueLabel.trailingAnchor.constraint(equalTo: vesselView.leadingAnchor, constant: -30.scale),
+            fatigueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -60.scale),
             
             fatigueLevelDescriptionLabel.topAnchor.constraint(equalTo: fatigueLabel.bottomAnchor, constant: 5.scale),
             fatigueLevelDescriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
-            fatigueLevelDescriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: vesselView.leadingAnchor, constant: -20.scale),
-            fatigueLevelDescriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            fatigueLevelDescriptionLabel.trailingAnchor.constraint(equalTo: vesselView.leadingAnchor, constant: -20.scale),
+            fatigueLevelDescriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
     }
 }

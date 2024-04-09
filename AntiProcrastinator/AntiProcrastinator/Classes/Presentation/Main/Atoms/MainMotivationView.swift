@@ -31,27 +31,27 @@ private extension MainMotivationView {
     }
 }
 
-//MARK: Make Constraints
-private extension MainMotivationView {
-    func makeConstraints(){
-        NSLayoutConstraint.activate([
-            motivationLabel.topAnchor.constraint(equalTo: topAnchor),
-            motivationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -65.scale),
-            motivationLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28.scale),
-            
-            bigCyrcleView.widthAnchor.constraint(equalToConstant: 17.scale),
-            bigCyrcleView.heightAnchor.constraint(equalToConstant: 17.scale),
-            bigCyrcleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11.scale),
-            bigCyrcleView.topAnchor.constraint(equalTo: motivationLabel.bottomAnchor),
-            
-            smallCyrcleView.widthAnchor.constraint(greaterThanOrEqualToConstant: 11.scale),
-            smallCyrcleView.heightAnchor.constraint(greaterThanOrEqualToConstant: 11.scale),
-            smallCyrcleView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            smallCyrcleView.topAnchor.constraint(equalTo: bigCyrcleView.bottomAnchor),
-            smallCyrcleView.bottomAnchor.constraint(equalTo: bottomAnchor),
-        ])
+    //MARK: Make Constraints
+    private extension MainMotivationView {
+        func makeConstraints(){
+            NSLayoutConstraint.activate([
+                motivationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -65.scale),
+                motivationLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28.scale),
+                motivationLabel.heightAnchor.constraint(equalToConstant: 70.scale),
+                motivationLabel.bottomAnchor.constraint(equalTo: bigCyrcleView.topAnchor),
+                
+                bigCyrcleView.widthAnchor.constraint(equalToConstant: 17.scale),
+                bigCyrcleView.heightAnchor.constraint(equalToConstant: 17.scale),
+                bigCyrcleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11.scale),
+                bigCyrcleView.bottomAnchor.constraint(equalTo: smallCyrcleView.topAnchor),
+                
+                smallCyrcleView.widthAnchor.constraint(greaterThanOrEqualToConstant: 11.scale),
+                smallCyrcleView.heightAnchor.constraint(greaterThanOrEqualToConstant: 11.scale),
+                smallCyrcleView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                smallCyrcleView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            ])
+        }
     }
-}
 
 //MARK: Lazy initialization
 private extension MainMotivationView {
