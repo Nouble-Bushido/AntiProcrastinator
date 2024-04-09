@@ -75,21 +75,19 @@ private extension MainMotivationView {
     
     func makeMotivationLabel() -> PaddingLabel {
         let textAttrs = TextAttributes()
-            .textColor(UIColor(integralRed: 255, green: 255, blue: 255))
-            .lineHeight(18.scale)
-            .font(Fonts.Ubuntu.regular(size: 14))
+            .lineHeight(20.scale)
             .letterSpacing(-0.41.scale)
+            .font(Fonts.Ubuntu.regular(size: 16))
+            .textColor(UIColor(integralRed: 255, green: 255, blue: 255))
         
         let view = PaddingLabel()
         view.numberOfLines = 0
-        view.attributedText = "Помнишь девушку из кафе? Может, она сейчас там сидит. Иди познакомься".attributed(with: textAttrs)
-        view.paddingLeft = 10.scale
-        view.paddingRight = 20.scale
-        view.layer.cornerRadius = 15.scale
         view.layer.masksToBounds = true
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner]
+        view.layer.cornerRadius = 15.scale
         view.backgroundColor = UIColor(integralRed: 28, green: 55, blue: 209)
         view.attributedText = "Main.Motivation.Text".localized.attributed(with: textAttrs)
+        view.padding = UIEdgeInsets(top: 1, left: 10.scale, bottom: 0.scale, right: 25.scale)
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner]
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

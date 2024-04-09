@@ -38,11 +38,11 @@ private extension MainPointsVesselView {
     }
     
     func updateContentFillHeight(with points: CGFloat) {
-        let maxHeight: CGFloat = 100
+        let maxHeight: CGFloat = 200
         let fillHeight = min(maxHeight, points)
         
         contentFillHeightConstraint.isActive = false
-        contentFillHeightConstraint = contentFillView.heightAnchor.constraint(equalToConstant: fillHeight)
+        contentFillHeightConstraint = contentFillView.heightAnchor.constraint(equalToConstant: fillHeight.scale)
         contentFillHeightConstraint.isActive = true
         
         UIView.animate(withDuration: 0.3) { [weak self] in
@@ -82,7 +82,6 @@ private extension MainPointsVesselView {
         let view = UIView()
         view.backgroundColor = UIColor(integralRed: 242, green: 155, blue: 25)
         view.layer.cornerRadius = 12.scale
-        view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

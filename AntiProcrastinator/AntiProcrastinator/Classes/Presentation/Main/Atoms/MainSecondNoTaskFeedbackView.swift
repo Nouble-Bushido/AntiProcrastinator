@@ -83,8 +83,7 @@ private extension MainSecondNoTaskFeedbackView {
         let view = PaddingLabel()
         view.numberOfLines = 0
         view.attributedText = "Main.NoTask.Second.Text".localized.attributed(with: textAttrs)
-        view.paddingLeft = 10.scale
-        view.paddingBottom = 15.scale
+        view.padding = UIEdgeInsets(top: 0, left: 10.scale, bottom: 15.scale, right: 0)
         view.layer.cornerRadius = 12.scale
         view.layer.masksToBounds = true
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner]
