@@ -222,6 +222,8 @@
 			children = (
 				1201E62D2B5E186200682E71 /* GradientView.swift */,
 				121F36452BBCE3EA00EE57B0 /* MotivationView.swift */,
+				1201E68A2B60FA1400682E71 /* PaddingLabel.swift */,
+				125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -242,9 +244,7 @@
 				1201E6442B5E22C300682E71 /* Scalable.swift */,
 				1201E6422B5E229A00682E71 /* ScreenSize.swift */,
 				1201E6402B5E227E00682E71 /* TextAttributes.swift */,
-				1201E68A2B60FA1400682E71 /* PaddingLabel.swift */,
 				1201E6A42B6A178900682E71 /* LaunchManager.swift */,
-				125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
