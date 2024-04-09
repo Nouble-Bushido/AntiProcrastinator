@@ -27,7 +27,7 @@ extension MainViewModel {
         let selectedDate = input.selectedDate
         let tasks = taskManager.getAllTask()
         let fatigue = fatigueManager.getAllFatuguePoints()
-        let fatigueLevel = fatigue.level
+        let fatigueLevel = fatigue.determineFatigueLevel
         let name = userManager.getUser()?.name ?? ""
         let description = getDescription(for: fatigueLevel)
         let allElements = buildAllElements(with: tasks,
