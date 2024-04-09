@@ -74,15 +74,15 @@ private extension MainCalendarCell {
 private extension MainCalendarCell {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10.scale),
+            collectionView.heightAnchor.constraint(equalToConstant: 56.scale),
             collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 56.scale),
+            collectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30.scale),
             
-            selectedDateLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
-            selectedDateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            selectedDateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale),
-            selectedDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale)
+            selectedDateLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 15.scale),
+            selectedDateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5.scale),
+            selectedDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
+            selectedDateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale)
         ])
     }
 }

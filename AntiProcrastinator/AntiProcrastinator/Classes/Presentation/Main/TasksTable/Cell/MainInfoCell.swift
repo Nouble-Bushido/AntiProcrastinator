@@ -19,8 +19,8 @@ final class MainInfoCell: UITableViewCell {
     private lazy var textAttrsPoints = TextAttributes()
         .textColor(UIColor(integralRed: 28, green: 28, blue: 28))
         .lineHeight(20.scale)
-        .font(Fonts.Ubuntu.regular(size: 16))
-        .letterSpacing(-0.20.scale)
+        .font(Fonts.Ubuntu.regular(size: 18))
+        .letterSpacing(-0.41.scale)
     
     private lazy var textAttrsGreeting = TextAttributes()
         .textColor(UIColor(integralRed: 28, green: 28, blue: 28))
@@ -31,7 +31,7 @@ final class MainInfoCell: UITableViewCell {
     private lazy var textAttrsDescription = TextAttributes()
         .textColor(UIColor(integralRed: 28, green: 28, blue: 28))
         .lineHeight(16.scale)
-        .font(Fonts.Ubuntu.regular(size: 14))
+        .font(Fonts.Ubuntu.regular(size: 16))
         .letterSpacing(-0.20.scale)
     
     private lazy var textAttrs = TextAttributes()
@@ -83,15 +83,15 @@ private extension MainInfoCell {
             fatiguePointsLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25.scale),
             fatiguePointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20.scale),
             
-            motivationView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 25.scale),
-            motivationView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
-            motivationView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -70.scale),
-            motivationView.bottomAnchor.constraint(equalTo: fatigueLabel.topAnchor, constant: -10.scale),
-            
             vesselView.topAnchor.constraint(equalTo: fatiguePointsLabel.bottomAnchor, constant: 5.scale),
             vesselView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale),
-            vesselView.leadingAnchor.constraint(lessThanOrEqualTo: motivationView.trailingAnchor, constant: -30.scale),
-            vesselView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            vesselView.widthAnchor.constraint(equalToConstant: 95.scale),
+            vesselView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 10.scale),
+            
+            motivationView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 25.scale),
+            motivationView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
+            motivationView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -60.scale),
+            motivationView.bottomAnchor.constraint(equalTo: fatigueLabel.topAnchor, constant: -10.scale),
             
             fatigueLabel.topAnchor.constraint(equalTo: motivationView.bottomAnchor, constant: 10.scale),
             fatigueLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
@@ -99,7 +99,7 @@ private extension MainInfoCell {
             
             fatigueLevelDescriptionLabel.topAnchor.constraint(equalTo: fatigueLabel.bottomAnchor, constant: 5.scale),
             fatigueLevelDescriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
-            fatigueLevelDescriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: vesselView.leadingAnchor, constant: -30.scale),
+            fatigueLevelDescriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: vesselView.leadingAnchor, constant: -20.scale),
             fatigueLevelDescriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
@@ -141,7 +141,7 @@ private extension MainInfoCell {
         let textAttrs = TextAttributes()
             .textColor(UIColor(integralRed: 28, green: 55, blue: 209))
             .lineHeight(20.scale)
-            .font(Fonts.Ubuntu.regular(size: 16))
+            .font(Fonts.Ubuntu.regular(size: 18))
             .letterSpacing(-0.20.scale)
         
         let view = UILabel()

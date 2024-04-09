@@ -61,7 +61,7 @@ private extension MainTaskCell {
 private extension MainTaskCell {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            backgroundUIView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5.scale),
+            backgroundUIView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10.scale),
             backgroundUIView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5.scale),
             backgroundUIView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10.scale),
             backgroundUIView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10.scale),
