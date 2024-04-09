@@ -89,6 +89,7 @@ private extension MainMotivationView {
         view.layer.masksToBounds = true
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner]
         view.backgroundColor = UIColor(integralRed: 28, green: 55, blue: 209)
+        view.attributedText = "Main.Motivation.Text".localized.attributed(with: textAttrs)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
