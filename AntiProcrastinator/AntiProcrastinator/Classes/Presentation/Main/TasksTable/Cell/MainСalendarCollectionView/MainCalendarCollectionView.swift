@@ -58,7 +58,7 @@ extension MainСalendarCollectionView: UICollectionViewDelegate {
 //MARK: UICollectionViewDelegateFlowLayout
 extension MainСalendarCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width / 7.5
+        let width = collectionView.frame.width / 8.3
         let height = collectionView.frame.height
         
         return CGSize(width: width, height: height)

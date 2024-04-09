@@ -14,7 +14,7 @@ final class MainCalendarCollectionViewCell: UICollectionViewCell {
     private lazy var attr = TextAttributes()
         .textColor(UIColor(integralRed: 170, green: 170, blue: 170))
         .lineHeight(20.scale)
-        .font(Fonts.Ubuntu.regular(size: 16))
+        .font(Fonts.Ubuntu.regular(size: 18))
         .letterSpacing(-0.20.scale)
     
     private lazy var dateFormatter: DateFormatter = {
