@@ -7,15 +7,19 @@
 
 import Foundation
 
-final class TaskManager {
-    static let shared = TaskManager()
-    
+protocol TaskManagerImpl {
+    func configure()
+    func addTask(task: Task)
+    func removeTask(withId id: Int)
+    func completeTask(withId: Int)
+    func getAllTask() -> [Task]
+}
+
+final class TaskManager: TaskManagerImpl {
     enum Constants {
         static let taskKey = "task_manager_task_key"
         static let lastCalculationDate = "task_manager_last_recalculation_date_key"
     }
-    
-    private init() {}
 }
 
 //MARK: Public

@@ -12,6 +12,11 @@ final class SplashViewModel {
         case requestName, main, info
     }
     private lazy var userManager = UserManager()
+    private let launchManager: LaunchManagerImpl
+    
+    init(launchManager: LaunchManagerImpl) {
+        self.launchManager = launchManager
+    }
 }
 
 //MARK: Public
@@ -41,7 +46,7 @@ extension SplashViewModel {
 private extension SplashViewModel {
     func makeRoute() -> Route {
         let name = userManager.getUser()?.name
-        let isFisrtLaunch = LaunchManager.shared.isFirstLaunch
+        let isFisrtLaunch = launchManager.isFirstLaunch
         return (isFisrtLaunch || name == nil) ? .requestName : .main
     }
 }

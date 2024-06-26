@@ -8,7 +8,11 @@
 import UIKit
 
 final class AddTaskViewModel {
-    private let taskManager = TaskManager.shared
+    private let taskManager: TaskManagerImpl
+    
+    init(taskManager: TaskManagerImpl) {
+        self.taskManager = taskManager
+    }
 }
 
 //MARK: Public

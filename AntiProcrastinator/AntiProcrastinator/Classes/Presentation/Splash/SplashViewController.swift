@@ -10,7 +10,12 @@ import UIKit
 class SplashViewController: UIViewController {
     lazy var mainView = SplashView()
     
-    private lazy var viewModel = SplashViewModel()
+    private lazy var viewModel: SplashViewModel = {
+        guard let launchManager = DIContainer.shared.resolve(type: LaunchManagerImpl.self)  else {
+             fatalError("LaunchManager not found in DI container")
+         }
+         return SplashViewModel(launchManager: launchManager)
+     }()
     private var userDidSelectName: ((String) -> Void)?
     
     override func viewDidLoad() {

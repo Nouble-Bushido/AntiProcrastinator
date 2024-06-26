@@ -9,7 +9,12 @@ import UIKit
 
 final class AddTaskViewController: UIViewController {
     private lazy var mainView = AddTaskView()
-    private lazy var viewModel = AddTaskViewModel()
+    private lazy var viewModel: AddTaskViewModel = {
+        guard let taskManager = DIContainer.shared.resolve(type: TaskManagerImpl.self) else {
+            fatalError("TaskManager not found in DI container")
+        }
+        return AddTaskViewModel(taskManager: taskManager)
+    }()
     var didAddNewTask: (() -> Void)?
     
     override func loadView() {

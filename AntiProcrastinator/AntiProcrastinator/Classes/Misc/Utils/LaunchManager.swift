@@ -7,16 +7,14 @@
 
 import Foundation
 
-final class LaunchManager {
-    static let shared = LaunchManager()
-    
-    private let launchKey = "launchmanager_key"
-    
-    private init() {}
+protocol LaunchManagerImpl {
+    var isFirstLaunch: Bool { get }
+    func didFinishLaunchingWithOptions()
 }
 
-//MARK: Public
-extension LaunchManager {
+final class LaunchManager: LaunchManagerImpl {
+    private let launchKey = "launchmanager_key"
+
     var isFirstLaunch: Bool {
         return UserDefaults.standard.integer(forKey: launchKey) <= 1
     }

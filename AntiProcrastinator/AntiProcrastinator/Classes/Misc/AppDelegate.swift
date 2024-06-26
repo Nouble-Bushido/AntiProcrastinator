@@ -11,13 +11,22 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var launchManager: LaunchManagerImpl?
+    var taskManager: TaskManagerImpl?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        LaunchManager.shared.didFinishLaunchingWithOptions()
-        TaskManager.shared.configure()
+        let container = DIContainer.shared
+        container.register(type: LaunchManagerImpl.self, service: LaunchManager())
+        container.register(type: TaskManagerImpl.self, service: TaskManager())
+        
+        launchManager = container.resolve(type: LaunchManagerImpl.self)
+        taskManager = container.resolve(type: TaskManagerImpl.self)
+        
+        launchManager?.didFinishLaunchingWithOptions()
+        taskManager?.configure()
         
         if let window = window {
             let splashVc = SplashViewController.make()

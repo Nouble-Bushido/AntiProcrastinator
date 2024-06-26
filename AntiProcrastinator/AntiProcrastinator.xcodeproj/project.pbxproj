@@ -79,6 +79,7 @@
 		12C986832B995EC400DA0D98 /* Fatigue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986822B995EC400DA0D98 /* Fatigue.swift */; };
 		12C986862B995F2500DA0D98 /* FatigueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986852B995F2500DA0D98 /* FatigueManager.swift */; };
 		12C986892B9C3A6000DA0D98 /* MainMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986882B9C3A6000DA0D98 /* MainMotivationView.swift */; };
+		12DD6D5C2C2BBB380058E96E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D5B2C2BBB380058E96E /* DIContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,6 +157,7 @@
 		12C986822B995EC400DA0D98 /* Fatigue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fatigue.swift; sourceTree = "<group>"; };
 		12C986852B995F2500DA0D98 /* FatigueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatigueManager.swift; sourceTree = "<group>"; };
 		12C986882B9C3A6000DA0D98 /* MainMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMotivationView.swift; sourceTree = "<group>"; };
+		12DD6D5B2C2BBB380058E96E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				1201E6422B5E229A00682E71 /* ScreenSize.swift */,
 				1201E6402B5E227E00682E71 /* TextAttributes.swift */,
 				1201E6A42B6A178900682E71 /* LaunchManager.swift */,
+				12DD6D5B2C2BBB380058E96E /* DIContainer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				12C9865E2B87425700DA0D98 /* MainTaskCell.swift in Sources */,
 				12C9865E2B87425700DA0D98 /* MainTaskCell.swift in Sources */,
 				12C986792B8F261400DA0D98 /* TaskPageElements.swift in Sources */,
+				12DD6D5C2C2BBB380058E96E /* DIContainer.swift in Sources */,
 				12C9866B2B8C150B00DA0D98 /* TaskPageAlertRemoveTaskViewController.swift in Sources */,
 				12C5C4822BB591ED005116D9 /* MainCalendarCollectionViewCell.swift in Sources */,
 				12C986862B995F2500DA0D98 /* FatigueManager.swift in Sources */,

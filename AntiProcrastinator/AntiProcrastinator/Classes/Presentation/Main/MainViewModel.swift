@@ -10,7 +10,11 @@ import Foundation
 final class MainViewModel {
     private let userManager = UserManager()
     private let fatigueManager = FatigueManager()
-    private let taskManager = TaskManager.shared
+    private let taskManager: TaskManagerImpl
+    
+    init(taskManager: TaskManagerImpl) {
+        self.taskManager = taskManager
+    }
 }
 
 //MARK: Public
