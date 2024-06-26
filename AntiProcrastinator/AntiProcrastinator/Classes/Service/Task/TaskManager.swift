@@ -8,17 +8,20 @@
 import Foundation
 
 final class TaskManager {
+    static let shared = TaskManager()
+    
     enum Constants {
         static let taskKey = "task_manager_task_key"
         static let lastCalculationDate = "task_manager_last_recalculation_date_key"
     }
+    
+    private init() {}
 }
 
 //MARK: Public
 extension TaskManager {
-    static func configure() {
-        let taskManager = TaskManager()
-        taskManager.recalculateFatigueAtEndOfDay()
+     func configure() {
+        recalculateFatigueAtEndOfDay()
     }
     
     func addTask(task: Task) {
@@ -61,14 +64,6 @@ private extension TaskManager {
         UserDefaults.standard.set(encoded, forKey: Constants.taskKey)
     }
     
-    func loadTasks() -> [Task] {
-        guard let tasksData = UserDefaults.standard.data(forKey: Constants.taskKey),
-              let decodedTasks = try? JSONDecoder().decode([Task].self, from: tasksData) else {
-            return []
-        }
-        return decodedTasks
-    }
-    
     func recalculateFatigueAtEndOfDay() {
         let currentDate = Date()
         let calendar = Calendar.current
@@ -92,4 +87,12 @@ private extension TaskManager {
         
         UserDefaults.standard.set(yesterday, forKey: Constants.lastCalculationDate)
     }
+   
+     func loadTasks() -> [Task] {
+         guard let tasksData = UserDefaults.standard.data(forKey: Constants.taskKey),
+               let decodedTasks = try? JSONDecoder().decode([Task].self, from: tasksData) else {
+             return []
+         }
+         return decodedTasks
+     }
 }

@@ -13,7 +13,7 @@ final class TaskPageViewController: UIViewController {
     var taskRemoveCompletionHandler: (() -> Void)?
     
     private var viewModel: TaskPageViewModel
-    private let taskManager = TaskManager()
+    private let taskManager = TaskManager.shared
     private let fatigueManager = FatigueManager()
     
     init(task: Task) {

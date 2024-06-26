@@ -42,6 +42,10 @@
 		1201E6A52B6A178900682E71 /* LaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6A42B6A178900682E71 /* LaunchManager.swift */; };
 		1201E6AB2B6B8F9D00682E71 /* InfoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6AA2B6B8F9D00682E71 /* InfoImageCell.swift */; };
 		1201E6AD2B6B8FB300682E71 /* InfoButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201E6AC2B6B8FB300682E71 /* InfoButtonCell.swift */; };
+		121F36402BBBA00700EE57B0 /* MainNoTaskIndicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F363F2BBBA00700EE57B0 /* MainNoTaskIndicationView.swift */; };
+		121F36422BBBB97F00EE57B0 /* MainFirstNoTaskFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F36412BBBB97F00EE57B0 /* MainFirstNoTaskFeedbackView.swift */; };
+		121F36442BBBE86700EE57B0 /* MainSecondNoTaskFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F36432BBBE86700EE57B0 /* MainSecondNoTaskFeedbackView.swift */; };
+		121F36462BBCE3EA00EE57B0 /* MotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F36452BBCE3EA00EE57B0 /* MotivationView.swift */; };
 		125DCD282B747A2300DCFCD5 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD272B747A2300DCFCD5 /* AddTaskView.swift */; };
 		125DCD2A2B747A2E00DCFCD5 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD292B747A2E00DCFCD5 /* AddTaskViewController.swift */; };
 		125DCD302B74825A00DCFCD5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD2F2B74825A00DCFCD5 /* Task.swift */; };
@@ -50,10 +54,16 @@
 		125DCD4D2B79BF9700DCFCD5 /* AddTaskAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD4C2B79BF9700DCFCD5 /* AddTaskAlertView.swift */; };
 		125DCD4F2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD4E2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift */; };
 		125DCD852B7EFB3000DCFCD5 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */; };
+		12C5C47C2BB42FE3005116D9 /* MainPointsVesselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C5C47B2BB42FE3005116D9 /* MainPointsVesselView.swift */; };
+		12C5C47F2BB591D8005116D9 /* MainCalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C5C47E2BB591D8005116D9 /* MainCalendarCollectionView.swift */; };
+		12C5C4822BB591ED005116D9 /* MainCalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C5C4812BB591ED005116D9 /* MainCalendarCollectionViewCell.swift */; };
+		12C5C48A2BB5A7D2005116D9 /* MainCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C5C4892BB5A7D2005116D9 /* MainCalendarCell.swift */; };
+		12C5C48C2BB85E08005116D9 /* MainTableElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C5C48B2BB85E07005116D9 /* MainTableElements.swift */; };
+		12C5C4902BB87A85005116D9 /* MainInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C5C48F2BB87A85005116D9 /* MainInfoCell.swift */; };
 		12C986562B86F4E600DA0D98 /* TaskPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986552B86F4E600DA0D98 /* TaskPageViewController.swift */; };
 		12C986582B873F7F00DA0D98 /* TaskPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986572B873F7F00DA0D98 /* TaskPageViewModel.swift */; };
 		12C9865B2B87423D00DA0D98 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9865A2B87423D00DA0D98 /* MainTableView.swift */; };
-		12C9865E2B87425700DA0D98 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9865D2B87425700DA0D98 /* MainCell.swift */; };
+		12C9865E2B87425700DA0D98 /* MainTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9865D2B87425700DA0D98 /* MainTaskCell.swift */; };
 		12C986622B87445000DA0D98 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986612B87445000DA0D98 /* MainViewModel.swift */; };
 		12C986652B8C14A500DA0D98 /* TaskPageAlertCloseTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986642B8C14A500DA0D98 /* TaskPageAlertCloseTaskView.swift */; };
 		12C986672B8C14B700DA0D98 /* TaskPageAlertRemoveTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986662B8C14B700DA0D98 /* TaskPageAlertRemoveTaskView.swift */; };
@@ -109,6 +119,10 @@
 		1201E6A42B6A178900682E71 /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
 		1201E6AA2B6B8F9D00682E71 /* InfoImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoImageCell.swift; sourceTree = "<group>"; };
 		1201E6AC2B6B8FB300682E71 /* InfoButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButtonCell.swift; sourceTree = "<group>"; };
+		121F363F2BBBA00700EE57B0 /* MainNoTaskIndicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNoTaskIndicationView.swift; sourceTree = "<group>"; };
+		121F36412BBBB97F00EE57B0 /* MainFirstNoTaskFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFirstNoTaskFeedbackView.swift; sourceTree = "<group>"; };
+		121F36432BBBE86700EE57B0 /* MainSecondNoTaskFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondNoTaskFeedbackView.swift; sourceTree = "<group>"; };
+		121F36452BBCE3EA00EE57B0 /* MotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationView.swift; sourceTree = "<group>"; };
 		125DCD272B747A2300DCFCD5 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		125DCD292B747A2E00DCFCD5 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		125DCD2F2B74825A00DCFCD5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -117,10 +131,16 @@
 		125DCD4C2B79BF9700DCFCD5 /* AddTaskAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskAlertView.swift; sourceTree = "<group>"; };
 		125DCD4E2B79BFA100DCFCD5 /* AddTaskAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskAlertViewController.swift; sourceTree = "<group>"; };
 		125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
+		12C5C47B2BB42FE3005116D9 /* MainPointsVesselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPointsVesselView.swift; sourceTree = "<group>"; };
+		12C5C47E2BB591D8005116D9 /* MainCalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCalendarCollectionView.swift; sourceTree = "<group>"; };
+		12C5C4812BB591ED005116D9 /* MainCalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		12C5C4892BB5A7D2005116D9 /* MainCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCalendarCell.swift; sourceTree = "<group>"; };
+		12C5C48B2BB85E07005116D9 /* MainTableElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableElements.swift; sourceTree = "<group>"; };
+		12C5C48F2BB87A85005116D9 /* MainInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoCell.swift; sourceTree = "<group>"; };
 		12C986552B86F4E600DA0D98 /* TaskPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageViewController.swift; sourceTree = "<group>"; };
 		12C986572B873F7F00DA0D98 /* TaskPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageViewModel.swift; sourceTree = "<group>"; };
 		12C9865A2B87423D00DA0D98 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
-		12C9865D2B87425700DA0D98 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		12C9865D2B87425700DA0D98 /* MainTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTaskCell.swift; sourceTree = "<group>"; };
 		12C986612B87445000DA0D98 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		12C986642B8C14A500DA0D98 /* TaskPageAlertCloseTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageAlertCloseTaskView.swift; sourceTree = "<group>"; };
 		12C986662B8C14B700DA0D98 /* TaskPageAlertRemoveTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageAlertRemoveTaskView.swift; sourceTree = "<group>"; };
@@ -201,6 +221,9 @@
 			isa = PBXGroup;
 			children = (
 				1201E62D2B5E186200682E71 /* GradientView.swift */,
+				121F36452BBCE3EA00EE57B0 /* MotivationView.swift */,
+				1201E68A2B60FA1400682E71 /* PaddingLabel.swift */,
+				125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -221,9 +244,7 @@
 				1201E6442B5E22C300682E71 /* Scalable.swift */,
 				1201E6422B5E229A00682E71 /* ScreenSize.swift */,
 				1201E6402B5E227E00682E71 /* TextAttributes.swift */,
-				1201E68A2B60FA1400682E71 /* PaddingLabel.swift */,
 				1201E6A42B6A178900682E71 /* LaunchManager.swift */,
-				125DCD842B7EFB2F00DCFCD5 /* PaddingTextField.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -323,6 +344,7 @@
 				1201E6592B5E47C100682E71 /* MainViewController.swift */,
 				12C986612B87445000DA0D98 /* MainViewModel.swift */,
 				12C986592B8741AA00DA0D98 /* TasksTable */,
+				12C986872B9C3A3100DA0D98 /* Atoms */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -396,6 +418,23 @@
 			path = AddTaskAlert;
 			sourceTree = "<group>";
 		};
+		12C5C47D2BB591BD005116D9 /* MainСalendarCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				12C5C47E2BB591D8005116D9 /* MainCalendarCollectionView.swift */,
+				12C5C4802BB591DC005116D9 /* Cell */,
+			);
+			path = "MainСalendarCollectionView";
+			sourceTree = "<group>";
+		};
+		12C5C4802BB591DC005116D9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				12C5C4812BB591ED005116D9 /* MainCalendarCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		12C986502B86F3DD00DA0D98 /* TaskPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				12C9865A2B87423D00DA0D98 /* MainTableView.swift */,
+				12C5C48B2BB85E07005116D9 /* MainTableElements.swift */,
 				12C9865C2B87424200DA0D98 /* Cell */,
 			);
 			path = TasksTable;
@@ -420,8 +460,10 @@
 		12C9865C2B87424200DA0D98 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				12C9865D2B87425700DA0D98 /* MainCell.swift */,
-				12C986872B9C3A3100DA0D98 /* Atoms */,
+				12C5C48F2BB87A85005116D9 /* MainInfoCell.swift */,
+				12C5C4892BB5A7D2005116D9 /* MainCalendarCell.swift */,
+				12C9865D2B87425700DA0D98 /* MainTaskCell.swift */,
+				12C5C47D2BB591BD005116D9 /* MainСalendarCollectionView */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -503,6 +545,10 @@
 			isa = PBXGroup;
 			children = (
 				12C986882B9C3A6000DA0D98 /* MainMotivationView.swift */,
+				12C5C47B2BB42FE3005116D9 /* MainPointsVesselView.swift */,
+				121F363F2BBBA00700EE57B0 /* MainNoTaskIndicationView.swift */,
+				121F36412BBBB97F00EE57B0 /* MainFirstNoTaskFeedbackView.swift */,
+				121F36432BBBE86700EE57B0 /* MainSecondNoTaskFeedbackView.swift */,
 			);
 			path = Atoms;
 			sourceTree = "<group>";
@@ -591,9 +637,11 @@
 				1201E6992B62000100682E71 /* InfoCell.swift in Sources */,
 				12C986652B8C14A500DA0D98 /* TaskPageAlertCloseTaskView.swift in Sources */,
 				1201E6172B5E113100682E71 /* SplashViewController.swift in Sources */,
-				12C9865E2B87425700DA0D98 /* MainCell.swift in Sources */,
+				12C9865E2B87425700DA0D98 /* MainTaskCell.swift in Sources */,
+				12C9865E2B87425700DA0D98 /* MainTaskCell.swift in Sources */,
 				12C986792B8F261400DA0D98 /* TaskPageElements.swift in Sources */,
 				12C9866B2B8C150B00DA0D98 /* TaskPageAlertRemoveTaskViewController.swift in Sources */,
+				12C5C4822BB591ED005116D9 /* MainCalendarCollectionViewCell.swift in Sources */,
 				12C986862B995F2500DA0D98 /* FatigueManager.swift in Sources */,
 				12C9866D2B8C151600DA0D98 /* TaskPageAlertCloseTaskViewController.swift in Sources */,
 				1201E6452B5E22C300682E71 /* Scalable.swift in Sources */,
@@ -604,22 +652,30 @@
 				12C986732B8F148500DA0D98 /* TaskPageTypeCell.swift in Sources */,
 				1201E6132B5E113100682E71 /* AppDelegate.swift in Sources */,
 				12C986892B9C3A6000DA0D98 /* MainMotivationView.swift in Sources */,
+				121F36402BBBA00700EE57B0 /* MainNoTaskIndicationView.swift in Sources */,
 				125DCD852B7EFB3000DCFCD5 /* PaddingTextField.swift in Sources */,
 				1201E68F2B61FF0F00682E71 /* InfoView.swift in Sources */,
 				1201E6A52B6A178900682E71 /* LaunchManager.swift in Sources */,
 				1201E6412B5E227E00682E71 /* TextAttributes.swift in Sources */,
 				1201E62E2B5E186200682E71 /* GradientView.swift in Sources */,
 				1201E65A2B5E47C100682E71 /* MainViewController.swift in Sources */,
+				121F36422BBBB97F00EE57B0 /* MainFirstNoTaskFeedbackView.swift in Sources */,
 				1201E6282B5E177100682E71 /* SplashView.swift in Sources */,
+				12C5C48C2BB85E08005116D9 /* MainTableElements.swift in Sources */,
 				1201E6932B61FF3A00682E71 /* InfoViewModel.swift in Sources */,
 				1201E6A22B69FF9900682E71 /* InfoTableHeaderView.swift in Sources */,
 				1201E6432B5E229A00682E71 /* ScreenSize.swift in Sources */,
 				1201E6582B5E47B700682E71 /* MainView.swift in Sources */,
+				12C5C47C2BB42FE3005116D9 /* MainPointsVesselView.swift in Sources */,
+				121F36442BBBE86700EE57B0 /* MainSecondNoTaskFeedbackView.swift in Sources */,
+				121F36462BBCE3EA00EE57B0 /* MotivationView.swift in Sources */,
 				12C986832B995EC400DA0D98 /* Fatigue.swift in Sources */,
 				125DCD2A2B747A2E00DCFCD5 /* AddTaskViewController.swift in Sources */,
 				12C986772B8F25C500DA0D98 /* TaskPageDetailsCell.swift in Sources */,
+				12C5C47F2BB591D8005116D9 /* MainCalendarCollectionView.swift in Sources */,
 				1201E6532B5E474400682E71 /* NameView.swift in Sources */,
 				1201E6962B61FF6B00682E71 /* InfoTableView.swift in Sources */,
+				12C5C48A2BB5A7D2005116D9 /* MainCalendarCell.swift in Sources */,
 				12C986752B8F14CE00DA0D98 /* TaskPageView.swift in Sources */,
 				12C9865B2B87423D00DA0D98 /* MainTableView.swift in Sources */,
 				1201E6912B61FF2D00682E71 /* InfoViewController.swift in Sources */,
@@ -636,6 +692,7 @@
 				1201E6AD2B6B8FB300682E71 /* InfoButtonCell.swift in Sources */,
 				12C986672B8C14B700DA0D98 /* TaskPageAlertRemoveTaskView.swift in Sources */,
 				1201E62A2B5E177F00682E71 /* SplashViewModel.swift in Sources */,
+				12C5C4902BB87A85005116D9 /* MainInfoCell.swift in Sources */,
 				12C986622B87445000DA0D98 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

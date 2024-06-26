@@ -39,7 +39,7 @@ extension InfoTableView: UITableViewDataSource {
         case .sections(let sectionInfo):
             return sectionInfo.isExpanded ? 1 : 0
         default:
-            
+
             return 1
         }
     }

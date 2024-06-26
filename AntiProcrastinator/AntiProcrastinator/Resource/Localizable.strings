@@ -63,5 +63,6 @@
 "Main.FatigueLevel.High.Description.Text" = "👀 не свожу глаз с часов в ожидании завершения рабочего дня";
 "Main.FatigueLevel.VeryHigh.Description.Text" = "😩чувствую нарастающую усталость";
 "Main.FatigueLevel.Extreme.Description.Text" = "энергия иссякает, мечтаю только об одном — о полном покое 😴";
-
-
+"Main.NoTask.First.Text" = "Так держать! Я горжусь тобой";
+"Main.NoTask.Second.Text" = "Вот ничего и не планируй больше";
+"Main.Motivation.Text" = "Помнишь девушку из кафе? Может, она сейчас там сидит. Иди познакомься";

@@ -9,8 +9,9 @@ import Foundation
 
 struct Fatigue: Codable {
     var value: Int
+    var fatigueLevels: Int
     
-    enum FatigueLevel {
+    enum FatigueLevel: Int {
         case low
         case moderate
         case high
@@ -18,18 +19,18 @@ struct Fatigue: Codable {
         case extreme
     }
     
-    var level: FatigueLevel {
-         switch value {
-         case ..<50:
-             return .low
-         case 50..<100:
-             return .moderate
-         case 100..<150:
-             return .high
-         case 150..<200:
-             return .veryHigh
-         default:
-             return .extreme
-         }
-     }
+    var determineFatigueLevel: FatigueLevel {
+        switch fatigueLevels {
+        case 1:
+            return .low
+        case 2:
+            return .moderate
+        case 3:
+            return .high
+        case 4:
+            return .veryHigh
+        default:
+            return .extreme
+        }
+    }
 }

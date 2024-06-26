@@ -34,4 +34,3 @@ private extension LaunchManager {
         UserDefaults.standard.set(launchCount, forKey: launchKey)
     }
 }
-

@@ -10,6 +10,7 @@ import UIKit
 final class MainViewController: UIViewController {
     private lazy var mainView = MainView()
     private lazy var viewModel = MainViewModel()
+    private var selectedDate = Date()
     
     override func loadView() {
         super.loadView()
@@ -20,21 +21,27 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let output = viewModel.configure()
-        mainView.tableView.setup(tasks: output.tasks)
-        mainView.setup(fatiguePoints: output.fatigue, description: output.description, userName: output.name)
+        mainView.tableView.didSelectedDate = { [weak self] selectedDate in
+            guard let self = self else { return }
+              self.selectedDate = selectedDate
+              let output = self.viewModel.configure(input: MainViewModel.Input(selectedDate: selectedDate))
+              self.mainView.tableView.setup(allElements: output.allElements)
+        }
+        
+        let output = viewModel.configure(input: MainViewModel.Input(selectedDate: selectedDate))
+        mainView.tableView.setup(allElements: output.allElements)
         mainView.tableView.didSelectItem = { [weak self] selectedTask in
             let vc = TaskPageViewController(task: selectedTask)
             vc.title = "TaskPage.Title.Text".localized
             vc.taskCloseCompletionHandler = { [weak self] in
-                let updatedOutput = self?.viewModel.configure() ?? output
-                self?.mainView.tableView.setup(tasks: updatedOutput.tasks)
-                self?.mainView.setup(fatiguePoints: updatedOutput.fatigue, description: updatedOutput.description, userName: updatedOutput.name)
+                let updatedInput = MainViewModel.Input(selectedDate: self?.selectedDate ?? Date())
+                let updatedOutput = self?.viewModel.configure(input: updatedInput) ?? output
+                self?.mainView.tableView.setup(allElements: updatedOutput.allElements)
             }
             vc.taskRemoveCompletionHandler = { [weak self] in
-                let updatedOutput = self?.viewModel.configure() ?? output
-                self?.mainView.tableView.setup(tasks: updatedOutput.tasks)
-                self?.mainView.setup(fatiguePoints: updatedOutput.fatigue, description: updatedOutput.description, userName: updatedOutput.name)
+                let updatedInput = MainViewModel.Input(selectedDate: self?.selectedDate ?? Date())
+                let updatedOutput = self?.viewModel.configure(input: updatedInput) ?? output
+                self?.mainView.tableView.setup(allElements: updatedOutput.allElements)
             }
             self?.navigationController?.pushViewController(vc, animated: true)
         }
@@ -69,11 +76,11 @@ private extension MainViewController {
     
     @objc func pressAddTaskButton() {
         let vc = AddTaskViewController.make()
-        let taskManager = TaskManager()
+        let taskManager = TaskManager.shared
         vc.didAddNewTask = { [weak self] in
             guard let self = self else { return }
-            let tasks = taskManager.getAllTask()
-            self.mainView.tableView.setup(tasks: tasks)
+            let output = self.viewModel.configure(input: MainViewModel.Input(selectedDate: self.selectedDate))
+            self.mainView.tableView.setup(allElements: output.allElements)
         }
         navigationController?.pushViewController(vc, animated: true)
     }
