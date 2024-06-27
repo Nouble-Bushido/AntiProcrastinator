@@ -14,9 +14,14 @@ protocol LaunchManagerImpl {
 
 final class LaunchManager: LaunchManagerImpl {
     private let launchKey = "launchmanager_key"
+    private let userDefaults: UserDefaultsImpl
+    
+    init(userDefaults: UserDefaultsImpl = UserDefaults.standard) {
+        self.userDefaults = userDefaults
+    }
 
     var isFirstLaunch: Bool {
-        return UserDefaults.standard.integer(forKey: launchKey) <= 1
+        return userDefaults.integer(forKey: launchKey) <= 1
     }
     
     func didFinishLaunchingWithOptions() {
@@ -27,8 +32,8 @@ final class LaunchManager: LaunchManagerImpl {
 //MARK: Private
 private extension LaunchManager {
      func trackAppLaunch() {
-        var launchCount = UserDefaults.standard.integer(forKey: launchKey)
+        var launchCount = userDefaults.integer(forKey: launchKey)
         launchCount += 1
-        UserDefaults.standard.set(launchCount, forKey: launchKey)
+         userDefaults.set(launchCount, forKey: launchKey)
     }
 }
