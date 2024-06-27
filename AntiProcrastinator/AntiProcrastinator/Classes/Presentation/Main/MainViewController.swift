@@ -47,6 +47,8 @@ final class MainViewController: UIViewController {
         }
         
         actionButtons()
+        
+        navigationItem.hidesBackButton = true
     }
 }
 
