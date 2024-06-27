@@ -9,13 +9,13 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     var launchManager: LaunchManagerImpl?
     var taskManager: TaskManagerImpl?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-      
+        
         window = UIWindow(frame: UIScreen.main.bounds)
 
         let container = DIContainer.shared
@@ -30,10 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let window = window {
             let splashVc = SplashViewController.make()
-            window.rootViewController = splashVc
+                        window.rootViewController = splashVc
+//            let navigationController = UINavigationController(rootViewController: splashVc)
+//            window.rootViewController = navigationController
             window.makeKeyAndVisible()
         }
-    
+        
         return true
     }
 }

@@ -18,7 +18,7 @@ final class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let output = viewModel.configure()
         mainView.tableView.setup(allElements: output.allElements)
         
@@ -34,8 +34,13 @@ private extension InfoViewController {
         }
     }
     
-     func pressContinueButton() {
-         let vc = MainViewController.make()
-        UIApplication.shared.keyWindow?.rootViewController = vc
+    func pressContinueButton() {
+        let vc = MainViewController.make()
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(vc, animated: true)
+        } else {
+            let navigationController = UINavigationController(rootViewController: vc)
+            UIApplication.shared.delegate?.window??.rootViewController = navigationController
+        }
     }
 }
