@@ -81,8 +81,8 @@
 		12C986892B9C3A6000DA0D98 /* MainMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986882B9C3A6000DA0D98 /* MainMotivationView.swift */; };
 		12DD6D5C2C2BBB380058E96E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D5B2C2BBB380058E96E /* DIContainer.swift */; };
 		12DD6D6A2C2CF83C0058E96E /* AntiProcrastinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D692C2CF83C0058E96E /* AntiProcrastinatorTests.swift */; };
-		12DD6D712C2CF84D0058E96E /* LaunchManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D702C2CF84D0058E96E /* LaunchManagerTests.swift */; };
 		12DD6D732C2CFA170058E96E /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D722C2CFA170058E96E /* UserDefaultsProtocol.swift */; };
+		12DD6D772C2D3B7D0058E96E /* LaunchManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D702C2CF84D0058E96E /* LaunchManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,7 +198,6 @@
 		1201E6062B5E113100682E71 = {
 			isa = PBXGroup;
 			children = (
-				12DD6D702C2CF84D0058E96E /* LaunchManagerTests.swift */,
 				1201E6112B5E113100682E71 /* AntiProcrastinator */,
 				12DD6D682C2CF83C0058E96E /* AntiProcrastinatorTests */,
 				1201E6102B5E113100682E71 /* Products */,
@@ -588,6 +587,7 @@
 			isa = PBXGroup;
 			children = (
 				12DD6D692C2CF83C0058E96E /* AntiProcrastinatorTests.swift */,
+				12DD6D702C2CF84D0058E96E /* LaunchManagerTests.swift */,
 			);
 			path = AntiProcrastinatorTests;
 			sourceTree = "<group>";
@@ -772,7 +772,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12DD6D712C2CF84D0058E96E /* LaunchManagerTests.swift in Sources */,
+				12DD6D772C2D3B7D0058E96E /* LaunchManagerTests.swift in Sources */,
 				12DD6D6A2C2CF83C0058E96E /* AntiProcrastinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
