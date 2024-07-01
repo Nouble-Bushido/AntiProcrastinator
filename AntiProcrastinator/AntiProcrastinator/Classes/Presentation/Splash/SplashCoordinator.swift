@@ -9,20 +9,21 @@ import UIKit
 
 class SplashCoordinator: Coordinator {
     var navigationController: UINavigationController
+    private let factory: ViewControllerFactory
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, factory: ViewControllerFactory) {
         self.navigationController = navigationController
+        self.factory = factory
     }
     
     func start() {
-        let vm = SplashViewModel(coordinator: self)
-        let splashViewController = SplashViewController(viewModel: vm)
+        let splashViewController = factory.createSplashViewController(coordinator: self)
         splashViewController.navigationItem.backButtonTitle = " "
         navigationController.viewControllers = [splashViewController]
     }
 
     func showNameRequestScreen() {
-        let vc = NameRequestViewController()
+        let vc = factory.createNameRequestViewController()
         vc.modalPresentationStyle = .overFullScreen
         vc.onContinue = { [weak self] name in
             self?.handleNameSelected(name)
@@ -31,12 +32,12 @@ class SplashCoordinator: Coordinator {
     }
     
     func showMainScreen() {
-        let mainCoordinator = MainCoordinator(navigationController: navigationController)
+        let mainCoordinator = MainCoordinator(navigationController: navigationController, factory: factory)
         mainCoordinator.start()
     }
     
     func showInfoScreen() {
-        let infoViewController = InfoViewController()
+        let infoViewController = factory.createInfoViewController()
         infoViewController.closure = {
             self.showMainScreen()
         }

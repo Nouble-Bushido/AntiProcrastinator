@@ -9,22 +9,20 @@ import UIKit
 
 class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
+    private let factory: ViewControllerFactory
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, factory: ViewControllerFactory) {
         self.navigationController = navigationController
+        self.factory = factory
     }
     
     func start() {
-        let userManager = UserManager()
-        let fatigueManager = FatigueManager()
-        let taskManager = DIContainer.shared.resolve(type: TaskManagerProtocol.self)
-        let vm = MainViewModel(userManager: userManager, fatigueManager: fatigueManager, taskManager: taskManager, coordinator: self)
-        let vc = MainViewController(viewModel: vm)
+        let vc = factory.createMainViewController(coordinator: self)
         navigationController.setViewControllers([vc], animated: true)
     }
     
     func showAddTask() {
-        let addTaskViewController = AddTaskViewController()
+        let addTaskViewController = factory.createAddTaskViewController()
         addTaskViewController.didAddNewTask = { [weak self] in
             guard let self = self else { return }
             if let mainViewController = self.navigationController.viewControllers.first(where: { $0 is MainViewController }) as? MainViewController {
@@ -34,9 +32,8 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(addTaskViewController, animated: true)
     }
     
-    func showTaskDetail(for task: Task) {
-        let taskManager = DIContainer.shared.resolve(type: TaskManagerProtocol.self)
-        let vc = TaskPageViewController(task: task, taskManager: taskManager)
+    func showTaskPage(for task: Task) {
+        let vc = factory.createTaskPageViewController(task: task)
         vc.title = "TaskPage.Title.Text".localized
         vc.taskCloseCompletionHandler = { [weak self] in
             self?.updateMainViewController()

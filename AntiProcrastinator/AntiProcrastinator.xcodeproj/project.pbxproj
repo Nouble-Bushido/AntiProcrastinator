@@ -87,6 +87,8 @@
 		12DD6D7C2C2E9F8B0058E96E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D7B2C2E9F8B0058E96E /* AppCoordinator.swift */; };
 		12DD6D8C2C310F860058E96E /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D8B2C310F860058E96E /* SplashCoordinator.swift */; };
 		12DD6D8E2C3122340058E96E /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D8D2C3122340058E96E /* MainCoordinator.swift */; };
+		12DD6D952C324D1C0058E96E /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D942C324D1C0058E96E /* ViewControllerFactory.swift */; };
+		12DD6D972C324DCB0058E96E /* AppViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D962C324DCB0058E96E /* AppViewControllerFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +185,8 @@
 		12DD6D7B2C2E9F8B0058E96E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		12DD6D8B2C310F860058E96E /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
 		12DD6D8D2C3122340058E96E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		12DD6D942C324D1C0058E96E /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		12DD6D962C324DCB0058E96E /* AppViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewControllerFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				12DD6D782C2E9F720058E96E /* Coordinators */,
+				12DD6D932C324CFA0058E96E /* Factory */,
 				1201E62B2B5E183A00682E71 /* Misc */,
 				1201E64A2B5E41BE00682E71 /* Service */,
 				1201E6352B5E19C600682E71 /* Presentation */,
@@ -612,6 +617,15 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		12DD6D932C324CFA0058E96E /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				12DD6D942C324D1C0058E96E /* ViewControllerFactory.swift */,
+				12DD6D962C324DCB0058E96E /* AppViewControllerFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -734,9 +748,11 @@
 				12DD6D5C2C2BBB380058E96E /* DIContainer.swift in Sources */,
 				12C9866B2B8C150B00DA0D98 /* TaskPageAlertRemoveTaskViewController.swift in Sources */,
 				12C5C4822BB591ED005116D9 /* MainCalendarCollectionViewCell.swift in Sources */,
+				12DD6D972C324DCB0058E96E /* AppViewControllerFactory.swift in Sources */,
 				12C986862B995F2500DA0D98 /* FatigueManager.swift in Sources */,
 				12C9866D2B8C151600DA0D98 /* TaskPageAlertCloseTaskViewController.swift in Sources */,
 				12DD6D7A2C2E9F830058E96E /* Coordinator.swift in Sources */,
+				12DD6D952C324D1C0058E96E /* ViewControllerFactory.swift in Sources */,
 				1201E6452B5E22C300682E71 /* Scalable.swift in Sources */,
 				125DCD4D2B79BF9700DCFCD5 /* AddTaskAlertView.swift in Sources */,
 				125DCD462B75C0A200DCFCD5 /* AddTaskViewModel.swift in Sources */,

@@ -52,7 +52,7 @@ extension MainViewModel {
     }
     
     func selectTask(_ task: Task) {
-        coordinator?.showTaskDetail(for: task)
+        coordinator?.showTaskPage(for: task)
     }
 }
 

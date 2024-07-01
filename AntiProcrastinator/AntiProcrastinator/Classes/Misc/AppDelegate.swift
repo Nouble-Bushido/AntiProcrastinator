@@ -29,8 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = UINavigationController()
+        let factory = AppViewControllerFactory()
         if let window = window {
-            appCoordinator = AppCoordinator(window: window, navigationController: navigationController)
+            appCoordinator = AppCoordinator(window: window, navigationController: navigationController,factory: factory)
             appCoordinator?.start()
         }
         return true
