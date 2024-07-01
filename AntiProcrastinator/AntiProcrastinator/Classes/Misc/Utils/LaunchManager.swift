@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol LaunchManagerImpl {
+protocol LaunchManagerProtocol {
     var isFirstLaunch: Bool { get }
     func didFinishLaunchingWithOptions()
 }
 
-final class LaunchManager: LaunchManagerImpl {
+final class LaunchManager: LaunchManagerProtocol {
     private let launchKey = "launchmanager_key"
     private let userDefaults: UserDefaultsImpl
     

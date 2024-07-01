@@ -11,31 +11,28 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var launchManager: LaunchManagerImpl?
-    var taskManager: TaskManagerImpl?
-
+    var launchManager: LaunchManagerProtocol?
+    var taskManager: TaskManagerProtocol?
+    var appCoordinator: AppCoordinator?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-
         let container = DIContainer.shared
-        container.register(type: LaunchManagerImpl.self, service: LaunchManager())
-        container.register(type: TaskManagerImpl.self, service: TaskManager())
+        container.register(type: LaunchManagerProtocol.self, service: LaunchManager())
+        container.register(type: TaskManagerProtocol.self, service: TaskManager())
         
-        launchManager = container.resolve(type: LaunchManagerImpl.self)
-        taskManager = container.resolve(type: TaskManagerImpl.self)
+        launchManager = container.resolve(type: LaunchManagerProtocol.self)
+        taskManager = container.resolve(type: TaskManagerProtocol.self)
         
         launchManager?.didFinishLaunchingWithOptions()
         taskManager?.configure()
         
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let navigationController = UINavigationController()
         if let window = window {
-            let splashVc = SplashViewController.make()
-                        window.rootViewController = splashVc
-//            let navigationController = UINavigationController(rootViewController: splashVc)
-//            window.rootViewController = navigationController
-            window.makeKeyAndVisible()
+            appCoordinator = AppCoordinator(window: window, navigationController: navigationController)
+            appCoordinator?.start()
         }
-        
         return true
     }
 }

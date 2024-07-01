@@ -8,7 +8,6 @@
 import UIKit
 
 final class MainView: UIView {
-    lazy var infoButton = makeInfoButton()
     lazy var addTaskButton = makeAddTaskButton()
     lazy var tableView = makeTableView()
     
@@ -35,11 +34,6 @@ private extension MainView {
 private extension MainView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -10.scale),
-            infoButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20.scale),
-            infoButton.widthAnchor.constraint(equalToConstant: 24.scale),
-            infoButton.heightAnchor.constraint(equalToConstant: 24.scale),
-  
             addTaskButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -10.scale),
             addTaskButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20.scale),
             addTaskButton.widthAnchor.constraint(equalToConstant: 24.scale),
@@ -47,7 +41,7 @@ private extension MainView {
             
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: infoButton.bottomAnchor, constant: 0.scale),
+            tableView.topAnchor.constraint(equalTo: addTaskButton.bottomAnchor, constant: 0.scale),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
@@ -55,17 +49,6 @@ private extension MainView {
 
 //MARK: lazy initialization
 private extension MainView {
-    func makeInfoButton() -> UIButton {
-        let view = UIButton()
-        view.setImage(UIImage(systemName: "info.circle"), for: .normal)
-        view.tintColor = UIColor(integralRed: 28, green: 55, blue: 209)
-        view.contentVerticalAlignment = .fill
-        view.contentHorizontalAlignment = .fill
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
     func makeAddTaskButton() -> UIButton {
         let view = UIButton()
         view.setImage(UIImage(systemName: "plus.circle"), for: .normal)

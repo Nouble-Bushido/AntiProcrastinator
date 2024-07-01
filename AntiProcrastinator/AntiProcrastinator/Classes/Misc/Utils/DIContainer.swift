@@ -9,7 +9,7 @@ import Foundation
 
 protocol DIContainerImpl {
     func register<Service>(type: Service.Type, service: Any)
-    func resolve<Service>(type: Service.Type) -> Service?
+    func resolve<Service>(type: Service.Type) -> Service
 }
 
 final class DIContainer: DIContainerImpl {
@@ -20,12 +20,15 @@ final class DIContainer: DIContainerImpl {
 }
 
 //MARK: Public
- extension DIContainer {
-     func register<Service>(type: Service.Type, service: Any) {
-         services["\(type)"] = service
-     }
-     
-     func resolve<Service>(type: Service.Type) -> Service? {
-         return services["\(type)"] as? Service
-     }
+extension DIContainer {
+    func register<Service>(type: Service.Type, service: Any) {
+        services["\(type)"] = service
+    }
+    
+    func resolve<Service>(type: Service.Type) -> Service {
+        guard let service = services["\(type)"] as? Service else {
+            fatalError("\(type) not found in DI container")
+        }
+        return service
+    }
 }

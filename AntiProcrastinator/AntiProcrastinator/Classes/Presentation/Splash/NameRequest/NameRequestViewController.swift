@@ -12,13 +12,13 @@ final class NameRequestViewController: UIViewController {
     var onContinue: ((String) -> Void)?
     
     override func loadView() {
-        super.loadView()
         view = mainView
         view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mainView.nameTextField.addTarget(self, action: #selector(didInput), for: .editingChanged)
         actionButton()
     }
@@ -31,8 +31,8 @@ private extension NameRequestViewController {
     }
     
     @objc func pressContinueButton() {
-        guard let enteredName = mainView.nameTextField.text else  { return }
-     onContinue?(enteredName)
+        guard let enteredName = mainView.nameTextField.text, !enteredName.isEmpty else { return }
+        onContinue?(enteredName)
     }
     
     @objc func didInput() {

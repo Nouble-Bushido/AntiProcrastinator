@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TaskManagerImpl {
+protocol TaskManagerProtocol {
     func configure()
     func addTask(task: Task)
     func removeTask(withId id: Int)
@@ -15,7 +15,7 @@ protocol TaskManagerImpl {
     func getAllTask() -> [Task]
 }
 
-final class TaskManager: TaskManagerImpl {
+final class TaskManager: TaskManagerProtocol {
     enum Constants {
         static let taskKey = "task_manager_task_key"
         static let lastCalculationDate = "task_manager_last_recalculation_date_key"

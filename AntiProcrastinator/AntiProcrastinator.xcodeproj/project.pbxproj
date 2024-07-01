@@ -83,6 +83,10 @@
 		12DD6D6A2C2CF83C0058E96E /* AntiProcrastinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D692C2CF83C0058E96E /* AntiProcrastinatorTests.swift */; };
 		12DD6D732C2CFA170058E96E /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D722C2CFA170058E96E /* UserDefaultsProtocol.swift */; };
 		12DD6D772C2D3B7D0058E96E /* LaunchManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D702C2CF84D0058E96E /* LaunchManagerTests.swift */; };
+		12DD6D7A2C2E9F830058E96E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D792C2E9F830058E96E /* Coordinator.swift */; };
+		12DD6D7C2C2E9F8B0058E96E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D7B2C2E9F8B0058E96E /* AppCoordinator.swift */; };
+		12DD6D8C2C310F860058E96E /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D8B2C310F860058E96E /* SplashCoordinator.swift */; };
+		12DD6D8E2C3122340058E96E /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D8D2C3122340058E96E /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +179,10 @@
 		12DD6D692C2CF83C0058E96E /* AntiProcrastinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiProcrastinatorTests.swift; sourceTree = "<group>"; };
 		12DD6D702C2CF84D0058E96E /* LaunchManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManagerTests.swift; sourceTree = "<group>"; };
 		12DD6D722C2CFA170058E96E /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
+		12DD6D792C2E9F830058E96E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		12DD6D7B2C2E9F8B0058E96E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		12DD6D8B2C310F860058E96E /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
+		12DD6D8D2C3122340058E96E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,9 +234,10 @@
 		1201E6262B5E174C00682E71 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				1201E6162B5E113100682E71 /* SplashViewController.swift */,
 				1201E6272B5E177100682E71 /* SplashView.swift */,
+				1201E6162B5E113100682E71 /* SplashViewController.swift */,
 				1201E6292B5E177F00682E71 /* SplashViewModel.swift */,
+				12DD6D8B2C310F860058E96E /* SplashCoordinator.swift */,
 				1201E6512B5E472900682E71 /* NameRequest */,
 			);
 			path = Splash;
@@ -324,6 +333,7 @@
 		1201E6482B5E231600682E71 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				12DD6D782C2E9F720058E96E /* Coordinators */,
 				1201E62B2B5E183A00682E71 /* Misc */,
 				1201E64A2B5E41BE00682E71 /* Service */,
 				1201E6352B5E19C600682E71 /* Presentation */,
@@ -373,6 +383,7 @@
 				1201E6572B5E47B700682E71 /* MainView.swift */,
 				1201E6592B5E47C100682E71 /* MainViewController.swift */,
 				12C986612B87445000DA0D98 /* MainViewModel.swift */,
+				12DD6D8D2C3122340058E96E /* MainCoordinator.swift */,
 				12C986592B8741AA00DA0D98 /* TasksTable */,
 				12C986872B9C3A3100DA0D98 /* Atoms */,
 			);
@@ -592,6 +603,15 @@
 			path = AntiProcrastinatorTests;
 			sourceTree = "<group>";
 		};
+		12DD6D782C2E9F720058E96E /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				12DD6D792C2E9F830058E96E /* Coordinator.swift */,
+				12DD6D7B2C2E9F8B0058E96E /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -706,14 +726,17 @@
 				1201E6992B62000100682E71 /* InfoCell.swift in Sources */,
 				12C986652B8C14A500DA0D98 /* TaskPageAlertCloseTaskView.swift in Sources */,
 				1201E6172B5E113100682E71 /* SplashViewController.swift in Sources */,
+				12DD6D8C2C310F860058E96E /* SplashCoordinator.swift in Sources */,
 				12C9865E2B87425700DA0D98 /* MainTaskCell.swift in Sources */,
 				12C9865E2B87425700DA0D98 /* MainTaskCell.swift in Sources */,
 				12C986792B8F261400DA0D98 /* TaskPageElements.swift in Sources */,
+				12DD6D8E2C3122340058E96E /* MainCoordinator.swift in Sources */,
 				12DD6D5C2C2BBB380058E96E /* DIContainer.swift in Sources */,
 				12C9866B2B8C150B00DA0D98 /* TaskPageAlertRemoveTaskViewController.swift in Sources */,
 				12C5C4822BB591ED005116D9 /* MainCalendarCollectionViewCell.swift in Sources */,
 				12C986862B995F2500DA0D98 /* FatigueManager.swift in Sources */,
 				12C9866D2B8C151600DA0D98 /* TaskPageAlertCloseTaskViewController.swift in Sources */,
+				12DD6D7A2C2E9F830058E96E /* Coordinator.swift in Sources */,
 				1201E6452B5E22C300682E71 /* Scalable.swift in Sources */,
 				125DCD4D2B79BF9700DCFCD5 /* AddTaskAlertView.swift in Sources */,
 				125DCD462B75C0A200DCFCD5 /* AddTaskViewModel.swift in Sources */,
@@ -758,6 +781,7 @@
 				1201E69F2B6209E700682E71 /* InfoElements.swift in Sources */,
 				12C986562B86F4E600DA0D98 /* TaskPageViewController.swift in Sources */,
 				1201E6552B5E475500682E71 /* NameRequestViewController.swift in Sources */,
+				12DD6D7C2C2E9F8B0058E96E /* AppCoordinator.swift in Sources */,
 				1201E6472B5E22E200682E71 /* Fonts.swift in Sources */,
 				1201E6312B5E18E100682E71 /* String+Extension.swift in Sources */,
 				1201E6AD2B6B8FB300682E71 /* InfoButtonCell.swift in Sources */,

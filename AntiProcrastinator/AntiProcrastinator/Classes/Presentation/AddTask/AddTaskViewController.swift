@@ -9,14 +9,9 @@ import UIKit
 
 final class AddTaskViewController: UIViewController {
     private lazy var mainView = AddTaskView()
-    private lazy var viewModel: AddTaskViewModel = {
-        guard let taskManager = DIContainer.shared.resolve(type: TaskManagerImpl.self) else {
-            fatalError("TaskManager not found in DI container")
-        }
-        return AddTaskViewModel(taskManager: taskManager)
-    }()
+    private var viewModel = AddTaskViewModel()
     var didAddNewTask: (() -> Void)?
-    
+
     override func loadView() {
         view = mainView
     }
@@ -26,16 +21,6 @@ final class AddTaskViewController: UIViewController {
         
         textFieldDidChange()
         actionReadyButton()
-    }
-}
-
-//MARK: Public
-extension AddTaskViewController {
-    static func make() -> AddTaskViewController {
-        let vc = AddTaskViewController()
-        vc.navigationItem.backButtonTitle = " "
-        vc.title = "AddTask.Title.Text".localized
-        return vc
     }
 }
 
