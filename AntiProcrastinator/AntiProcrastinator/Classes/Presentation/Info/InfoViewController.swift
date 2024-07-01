@@ -10,7 +10,8 @@ import UIKit
 final class InfoViewController: UIViewController {
     private lazy var mainView = InfoView()
     private var viewModel = InfoViewModel()
-    
+    var closure: (() -> Void)?
+
     override func loadView() {
         super.loadView()
         view = mainView
@@ -35,12 +36,6 @@ private extension InfoViewController {
     }
     
     func pressContinueButton() {
-        let vc = MainViewController.make()
-        if let navigationController = self.navigationController {
-            navigationController.pushViewController(vc, animated: true)
-        } else {
-            let navigationController = UINavigationController(rootViewController: vc)
-            UIApplication.shared.delegate?.window??.rootViewController = navigationController
-        }
+        closure?()
     }
 }

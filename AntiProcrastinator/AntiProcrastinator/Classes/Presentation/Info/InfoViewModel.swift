@@ -40,7 +40,7 @@ extension InfoViewModel {
             .sections(punishmentSection),
             .buttonCell("Info.Start.Text".localized)
         ]
-        
+  
         return Output(allElements: allElements)
     }
 }

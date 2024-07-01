@@ -79,7 +79,25 @@
 		12C986832B995EC400DA0D98 /* Fatigue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986822B995EC400DA0D98 /* Fatigue.swift */; };
 		12C986862B995F2500DA0D98 /* FatigueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986852B995F2500DA0D98 /* FatigueManager.swift */; };
 		12C986892B9C3A6000DA0D98 /* MainMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C986882B9C3A6000DA0D98 /* MainMotivationView.swift */; };
+		12DD6D5C2C2BBB380058E96E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D5B2C2BBB380058E96E /* DIContainer.swift */; };
+		12DD6D6A2C2CF83C0058E96E /* AntiProcrastinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D692C2CF83C0058E96E /* AntiProcrastinatorTests.swift */; };
+		12DD6D732C2CFA170058E96E /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D722C2CFA170058E96E /* UserDefaultsProtocol.swift */; };
+		12DD6D772C2D3B7D0058E96E /* LaunchManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D702C2CF84D0058E96E /* LaunchManagerTests.swift */; };
+		12DD6D7A2C2E9F830058E96E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D792C2E9F830058E96E /* Coordinator.swift */; };
+		12DD6D7C2C2E9F8B0058E96E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D7B2C2E9F8B0058E96E /* AppCoordinator.swift */; };
+		12DD6D8C2C310F860058E96E /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D8B2C310F860058E96E /* SplashCoordinator.swift */; };
+		12DD6D8E2C3122340058E96E /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D8D2C3122340058E96E /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		12DD6D6B2C2CF83C0058E96E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1201E6072B5E113100682E71 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1201E60E2B5E113100682E71;
+			remoteInfo = AntiProcrastinator;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1201E60F2B5E113100682E71 /* AntiProcrastinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AntiProcrastinator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,10 +174,26 @@
 		12C986822B995EC400DA0D98 /* Fatigue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fatigue.swift; sourceTree = "<group>"; };
 		12C986852B995F2500DA0D98 /* FatigueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatigueManager.swift; sourceTree = "<group>"; };
 		12C986882B9C3A6000DA0D98 /* MainMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMotivationView.swift; sourceTree = "<group>"; };
+		12DD6D5B2C2BBB380058E96E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		12DD6D672C2CF83C0058E96E /* AntiProcrastinatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AntiProcrastinatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		12DD6D692C2CF83C0058E96E /* AntiProcrastinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiProcrastinatorTests.swift; sourceTree = "<group>"; };
+		12DD6D702C2CF84D0058E96E /* LaunchManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManagerTests.swift; sourceTree = "<group>"; };
+		12DD6D722C2CFA170058E96E /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
+		12DD6D792C2E9F830058E96E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		12DD6D7B2C2E9F8B0058E96E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		12DD6D8B2C310F860058E96E /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
+		12DD6D8D2C3122340058E96E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1201E60C2B5E113100682E71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12DD6D642C2CF83C0058E96E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -173,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				1201E6112B5E113100682E71 /* AntiProcrastinator */,
+				12DD6D682C2CF83C0058E96E /* AntiProcrastinatorTests */,
 				1201E6102B5E113100682E71 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -181,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				1201E60F2B5E113100682E71 /* AntiProcrastinator.app */,
+				12DD6D672C2CF83C0058E96E /* AntiProcrastinatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,9 +234,10 @@
 		1201E6262B5E174C00682E71 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				1201E6162B5E113100682E71 /* SplashViewController.swift */,
 				1201E6272B5E177100682E71 /* SplashView.swift */,
+				1201E6162B5E113100682E71 /* SplashViewController.swift */,
 				1201E6292B5E177F00682E71 /* SplashViewModel.swift */,
+				12DD6D8B2C310F860058E96E /* SplashCoordinator.swift */,
 				1201E6512B5E472900682E71 /* NameRequest */,
 			);
 			path = Splash;
@@ -244,7 +281,9 @@
 				1201E6442B5E22C300682E71 /* Scalable.swift */,
 				1201E6422B5E229A00682E71 /* ScreenSize.swift */,
 				1201E6402B5E227E00682E71 /* TextAttributes.swift */,
+				12DD6D5B2C2BBB380058E96E /* DIContainer.swift */,
 				1201E6A42B6A178900682E71 /* LaunchManager.swift */,
+				12DD6D722C2CFA170058E96E /* UserDefaultsProtocol.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -294,6 +333,7 @@
 		1201E6482B5E231600682E71 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				12DD6D782C2E9F720058E96E /* Coordinators */,
 				1201E62B2B5E183A00682E71 /* Misc */,
 				1201E64A2B5E41BE00682E71 /* Service */,
 				1201E6352B5E19C600682E71 /* Presentation */,
@@ -343,6 +383,7 @@
 				1201E6572B5E47B700682E71 /* MainView.swift */,
 				1201E6592B5E47C100682E71 /* MainViewController.swift */,
 				12C986612B87445000DA0D98 /* MainViewModel.swift */,
+				12DD6D8D2C3122340058E96E /* MainCoordinator.swift */,
 				12C986592B8741AA00DA0D98 /* TasksTable */,
 				12C986872B9C3A3100DA0D98 /* Atoms */,
 			);
@@ -553,6 +594,24 @@
 			path = Atoms;
 			sourceTree = "<group>";
 		};
+		12DD6D682C2CF83C0058E96E /* AntiProcrastinatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				12DD6D692C2CF83C0058E96E /* AntiProcrastinatorTests.swift */,
+				12DD6D702C2CF84D0058E96E /* LaunchManagerTests.swift */,
+			);
+			path = AntiProcrastinatorTests;
+			sourceTree = "<group>";
+		};
+		12DD6D782C2E9F720058E96E /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				12DD6D792C2E9F830058E96E /* Coordinator.swift */,
+				12DD6D7B2C2E9F8B0058E96E /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -573,6 +632,24 @@
 			productReference = 1201E60F2B5E113100682E71 /* AntiProcrastinator.app */;
 			productType = "com.apple.product-type.application";
 		};
+		12DD6D662C2CF83C0058E96E /* AntiProcrastinatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12DD6D6D2C2CF83C0058E96E /* Build configuration list for PBXNativeTarget "AntiProcrastinatorTests" */;
+			buildPhases = (
+				12DD6D632C2CF83C0058E96E /* Sources */,
+				12DD6D642C2CF83C0058E96E /* Frameworks */,
+				12DD6D652C2CF83C0058E96E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12DD6D6C2C2CF83C0058E96E /* PBXTargetDependency */,
+			);
+			name = AntiProcrastinatorTests;
+			productName = AntiProcrastinatorTests;
+			productReference = 12DD6D672C2CF83C0058E96E /* AntiProcrastinatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -585,6 +662,10 @@
 				TargetAttributes = {
 					1201E60E2B5E113100682E71 = {
 						CreatedOnToolsVersion = 15.0.1;
+					};
+					12DD6D662C2CF83C0058E96E = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 1201E60E2B5E113100682E71;
 					};
 				};
 			};
@@ -602,6 +683,7 @@
 			projectRoot = "";
 			targets = (
 				1201E60E2B5E113100682E71 /* AntiProcrastinator */,
+				12DD6D662C2CF83C0058E96E /* AntiProcrastinatorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -621,6 +703,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		12DD6D652C2CF83C0058E96E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -637,18 +726,23 @@
 				1201E6992B62000100682E71 /* InfoCell.swift in Sources */,
 				12C986652B8C14A500DA0D98 /* TaskPageAlertCloseTaskView.swift in Sources */,
 				1201E6172B5E113100682E71 /* SplashViewController.swift in Sources */,
+				12DD6D8C2C310F860058E96E /* SplashCoordinator.swift in Sources */,
 				12C9865E2B87425700DA0D98 /* MainTaskCell.swift in Sources */,
 				12C9865E2B87425700DA0D98 /* MainTaskCell.swift in Sources */,
 				12C986792B8F261400DA0D98 /* TaskPageElements.swift in Sources */,
+				12DD6D8E2C3122340058E96E /* MainCoordinator.swift in Sources */,
+				12DD6D5C2C2BBB380058E96E /* DIContainer.swift in Sources */,
 				12C9866B2B8C150B00DA0D98 /* TaskPageAlertRemoveTaskViewController.swift in Sources */,
 				12C5C4822BB591ED005116D9 /* MainCalendarCollectionViewCell.swift in Sources */,
 				12C986862B995F2500DA0D98 /* FatigueManager.swift in Sources */,
 				12C9866D2B8C151600DA0D98 /* TaskPageAlertCloseTaskViewController.swift in Sources */,
+				12DD6D7A2C2E9F830058E96E /* Coordinator.swift in Sources */,
 				1201E6452B5E22C300682E71 /* Scalable.swift in Sources */,
 				125DCD4D2B79BF9700DCFCD5 /* AddTaskAlertView.swift in Sources */,
 				125DCD462B75C0A200DCFCD5 /* AddTaskViewModel.swift in Sources */,
 				1201E6AB2B6B8F9D00682E71 /* InfoImageCell.swift in Sources */,
 				1201E6502B5E427500682E71 /* UserManager.swift in Sources */,
+				12DD6D732C2CFA170058E96E /* UserDefaultsProtocol.swift in Sources */,
 				12C986732B8F148500DA0D98 /* TaskPageTypeCell.swift in Sources */,
 				1201E6132B5E113100682E71 /* AppDelegate.swift in Sources */,
 				12C986892B9C3A6000DA0D98 /* MainMotivationView.swift in Sources */,
@@ -687,6 +781,7 @@
 				1201E69F2B6209E700682E71 /* InfoElements.swift in Sources */,
 				12C986562B86F4E600DA0D98 /* TaskPageViewController.swift in Sources */,
 				1201E6552B5E475500682E71 /* NameRequestViewController.swift in Sources */,
+				12DD6D7C2C2E9F8B0058E96E /* AppCoordinator.swift in Sources */,
 				1201E6472B5E22E200682E71 /* Fonts.swift in Sources */,
 				1201E6312B5E18E100682E71 /* String+Extension.swift in Sources */,
 				1201E6AD2B6B8FB300682E71 /* InfoButtonCell.swift in Sources */,
@@ -697,7 +792,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		12DD6D632C2CF83C0058E96E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12DD6D772C2D3B7D0058E96E /* LaunchManagerTests.swift in Sources */,
+				12DD6D6A2C2CF83C0058E96E /* AntiProcrastinatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		12DD6D6C2C2CF83C0058E96E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1201E60E2B5E113100682E71 /* AntiProcrastinator */;
+			targetProxy = 12DD6D6B2C2CF83C0058E96E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1201E61D2B5E113200682E71 /* LaunchScreen.storyboard */ = {
@@ -884,6 +996,42 @@
 			};
 			name = Release;
 		};
+		12DD6D6E2C2CF83C0058E96E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D23Z5VP235;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Artem.AntiProcrastinatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AntiProcrastinator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AntiProcrastinator";
+			};
+			name = Debug;
+		};
+		12DD6D6F2C2CF83C0058E96E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D23Z5VP235;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Artem.AntiProcrastinatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AntiProcrastinator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AntiProcrastinator";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -901,6 +1049,15 @@
 			buildConfigurations = (
 				1201E6242B5E113200682E71 /* Debug */,
 				1201E6252B5E113200682E71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12DD6D6D2C2CF83C0058E96E /* Build configuration list for PBXNativeTarget "AntiProcrastinatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12DD6D6E2C2CF83C0058E96E /* Debug */,
+				12DD6D6F2C2CF83C0058E96E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

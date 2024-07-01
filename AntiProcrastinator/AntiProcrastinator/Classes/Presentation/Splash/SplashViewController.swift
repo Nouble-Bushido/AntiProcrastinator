@@ -7,68 +7,35 @@
 
 import UIKit
 
-class SplashViewController: UIViewController {
+final class SplashViewController: UIViewController {
     lazy var mainView = SplashView()
+    private var viewModel: SplashViewModel
     
-    private lazy var viewModel = SplashViewModel()
-    private var userDidSelectName: ((String) -> Void)?
+    init(viewModel: SplashViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view = mainView
 
-        let output = viewModel.configure(input: SplashViewModel.Input(route: route))
-        userDidSelectName = output.userDidSelectName
+        let route = viewModel.determineInitialRoute()
+        handleRoute(route)
     }
-}
 
-//MARK: Public
-extension SplashViewController {
-    static func make() -> SplashViewController {
-        let vc = SplashViewController()
-        vc.navigationItem.backButtonTitle = " "
-        return vc
-    }
-}
-
-//MARK: Private
-private extension SplashViewController {
-    var route: (SplashViewModel.Route) -> Void {
-        { route in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                guard let self = self else { return }
-                switch route {
-                case .requestName:
-                    self.presentNameRequest()
-                case .main:
-                    self.presentMain()
-                case .info:
-                    self.presentInfo()
-                }
-            }
+    private func handleRoute(_ route: CoordinatorRoute) {
+        switch route {
+        case .requestName:
+            viewModel.showNameRequestScreen()
+        case .main:
+            viewModel.showMainScreen()
+        case .info:
+            viewModel.showInfoScreen()
         }
-    }
-    
-    func presentNameRequest() {
-        let vc = NameRequestViewController()
-        vc.modalPresentationStyle = .overFullScreen
-        vc.onContinue = { [weak self] name in
-            self?.userDidSelectName?(name)
-        }
-        present(vc, animated: true)
-    }
-    
-    func presentInfo() {
-        let vc = InfoViewController()
-        vc.modalPresentationStyle = .overFullScreen
-        let nav = UINavigationController()
-        nav.pushViewController(vc, animated: true)
-        UIApplication.shared.keyWindow?.rootViewController = nav
-    }
-    
-    func presentMain() {
-        let vc = MainViewController.make()
-        let navigationController = UINavigationController(rootViewController: vc)
-        UIApplication.shared.keyWindow?.rootViewController = navigationController
     }
 }

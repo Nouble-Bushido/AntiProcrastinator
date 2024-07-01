@@ -9,9 +9,9 @@ import UIKit
 
 final class AddTaskViewController: UIViewController {
     private lazy var mainView = AddTaskView()
-    private lazy var viewModel = AddTaskViewModel()
+    private var viewModel = AddTaskViewModel()
     var didAddNewTask: (() -> Void)?
-    
+
     override func loadView() {
         view = mainView
     }
@@ -21,16 +21,6 @@ final class AddTaskViewController: UIViewController {
         
         textFieldDidChange()
         actionReadyButton()
-    }
-}
-
-//MARK: Public
-extension AddTaskViewController {
-    static func make() -> AddTaskViewController {
-        let vc = AddTaskViewController()
-        vc.navigationItem.backButtonTitle = " "
-        vc.title = "AddTask.Title.Text".localized
-        return vc
     }
 }
 

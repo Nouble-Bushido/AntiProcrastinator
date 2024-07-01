@@ -7,41 +7,36 @@
 
 import UIKit
 
+enum CoordinatorRoute {
+    case requestName
+    case main
+    case info
+}
+
 final class SplashViewModel {
-    enum Route {
-        case requestName, main, info
-    }
-    private lazy var userManager = UserManager()
-}
-
-//MARK: Public
-extension SplashViewModel {
-    struct Input {
-        let route: (Route) -> Void
-    }
+    private let userManager = UserManager()
+    private let launchManager = LaunchManager()
+    private var coordinator: SplashCoordinator?
     
-    struct Output {
-        var userDidSelectName: (String) -> Void
+    init(coordinator: SplashCoordinator? = nil) {
+        self.coordinator = coordinator
     }
-    
-    func configure(input: Input) -> Output {
-        input.route(makeRoute())
-        var userDidSelectName: (String) -> Void {
-            { [weak self] name in
-                let user = User(name: name)
-                self?.userManager.set(user: user)
-                input.route(.info)
-            }
-        }
-        return Output(userDidSelectName: userDidSelectName)
-    }
-}
 
-//MARK: Private
-private extension SplashViewModel {
-    func makeRoute() -> Route {
+    func determineInitialRoute() -> CoordinatorRoute {
         let name = userManager.getUser()?.name
-        let isFisrtLaunch = LaunchManager.shared.isFirstLaunch
-        return (isFisrtLaunch || name == nil) ? .requestName : .main
+        let isFirstLaunch = LaunchManager().isFirstLaunch
+        return (isFirstLaunch || name == nil) ? .requestName : .main
+    }
+    
+    func showNameRequestScreen() {
+        coordinator?.showNameRequestScreen()
+    }
+    
+    func showMainScreen() {
+        coordinator?.showMainScreen()
+    }
+    
+    func showInfoScreen() {
+        coordinator?.showInfoScreen()
     }
 }
