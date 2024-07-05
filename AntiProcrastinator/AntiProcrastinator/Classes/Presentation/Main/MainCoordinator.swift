@@ -9,31 +9,28 @@ import UIKit
 
 class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
-    private let factory: ViewControllerFactory
+    var closureUpdateTasks: (() -> Void)?
     
-    init(navigationController: UINavigationController, factory: ViewControllerFactory) {
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.factory = factory
+        self.closureUpdateTasks = { [weak self] in
+            self?.updateMainViewController()
+        }
     }
     
     func start() {
-        let vc = factory.createMainViewController(coordinator: self)
+        let vc = AppViewControllerFactory.createMainViewController(coordinator: self)
         navigationController.setViewControllers([vc], animated: true)
     }
     
     func showAddTask() {
-        let addTaskViewController = factory.createAddTaskViewController()
-        addTaskViewController.didAddNewTask = { [weak self] in
-            guard let self = self else { return }
-            if let mainViewController = self.navigationController.viewControllers.first(where: { $0 is MainViewController }) as? MainViewController {
-                mainViewController.updateTasks()
-            }
-        }
+        let addTaskViewController = AppViewControllerFactory.createAddTaskViewController()
+        addTaskViewController.didAddNewTask = closureUpdateTasks
         navigationController.pushViewController(addTaskViewController, animated: true)
     }
     
     func showTaskPage(for task: Task) {
-        let vc = factory.createTaskPageViewController(task: task)
+        let vc = AppViewControllerFactory.createTaskPageViewController(task: task)
         vc.title = "TaskPage.Title.Text".localized
         vc.taskCloseCompletionHandler = { [weak self] in
             self?.updateMainViewController()
@@ -45,8 +42,7 @@ class MainCoordinator: Coordinator {
     }
     
     private func updateMainViewController() {
-        if let mainViewController = navigationController.viewControllers.first(where: { $0 is MainViewController }) as? MainViewController {
-            mainViewController.updateTasks()
-        }
+        let mainViewController = navigationController.viewControllers.compactMap { $0 as? MainViewController }.first
+        mainViewController?.updateTasks()
     }
 }

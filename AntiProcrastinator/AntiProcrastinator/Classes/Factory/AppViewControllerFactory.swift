@@ -8,33 +8,52 @@
 import Foundation
 
 class AppViewControllerFactory: ViewControllerFactory {
-    func createSplashViewController(coordinator: SplashCoordinator) -> SplashViewController {
-        let viewModel = SplashViewModel(coordinator: coordinator)
+    static  func createSplashViewController(coordinator: SplashCoordinator) -> SplashViewController {
+        let viewModel = SplashViewModel(userManager: userManager, launchManager: launchManager, coordinator: coordinator )
         return SplashViewController(viewModel: viewModel)
     }
     
-    func createNameRequestViewController() -> NameRequestViewController {
+    static  func createNameRequestViewController() -> NameRequestViewController {
         return NameRequestViewController()
     }
     
-    func createInfoViewController() -> InfoViewController {
+    static  func createInfoViewController() -> InfoViewController {
         return InfoViewController()
     }
     
-    func createMainViewController(coordinator: MainCoordinator) -> MainViewController {
-        let userManager = UserManager()
-        let fatigueManager = FatigueManager()
-        let taskManger = DIContainer.shared.resolve(type: TaskManagerProtocol.self)
-        let viewModel = MainViewModel(userManager: userManager, fatigueManager: fatigueManager, taskManager: taskManger, coordinator: coordinator)
+    static func createMainViewController(coordinator: MainCoordinator) -> MainViewController {
+        let viewModel = MainViewModel(userManager: userManager, fatigueManager: fatigueManager, taskManager: taskManager, coordinator: coordinator)
         return MainViewController(viewModel: viewModel)
     }
     
-    func createAddTaskViewController() -> AddTaskViewController {
+    static func createAddTaskViewController() -> AddTaskViewController {
         return AddTaskViewController()
     }
     
-    func createTaskPageViewController(task: Task) -> TaskPageViewController {
-        let taskManager = DIContainer.shared.resolve(type: TaskManagerProtocol.self)
-        return TaskPageViewController(task: task, taskManager: taskManager)
+    static func createTaskPageViewController(task: Task) -> TaskPageViewController {
+        return TaskPageViewController(task: task, taskManager: taskManager, fatigueManager: fatigueManager, userManager: userManager)
+    }
+}
+
+//MARK: Private
+private extension AppViewControllerFactory {
+    private static func resolve<T>(type: T.Type) -> T {
+        return DIContainer.shared.resolve(type: type)
+    }
+    
+    private static var userManager: UserManagerProtocol {
+        return resolve(type: UserManagerProtocol.self)
+    }
+    
+    private static var fatigueManager: FatigueManagerProtocol {
+        return resolve(type: FatigueManagerProtocol.self)
+    }
+    
+    private static var taskManager: TaskManagerProtocol {
+        return resolve(type: TaskManagerProtocol.self)
+    }
+    
+    private static var launchManager: LaunchManagerProtocol {
+        return resolve(type: LaunchManagerProtocol.self)
     }
 }

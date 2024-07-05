@@ -14,11 +14,13 @@ enum CoordinatorRoute {
 }
 
 final class SplashViewModel {
-    private let userManager = UserManager()
-    private let launchManager = LaunchManager()
+    private let userManager: UserManagerProtocol
+    private let launchManager: LaunchManagerProtocol
     private var coordinator: SplashCoordinator?
     
-    init(coordinator: SplashCoordinator? = nil) {
+    init(userManager: UserManagerProtocol, launchManager: LaunchManagerProtocol, coordinator: SplashCoordinator?) {
+        self.userManager = userManager
+        self.launchManager = launchManager
         self.coordinator = coordinator
     }
 

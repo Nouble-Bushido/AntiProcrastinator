@@ -7,7 +7,12 @@
 
 import Foundation
 
-final class UserManager {
+protocol UserManagerProtocol {
+    func getUser() -> User?
+    func set(user: User)
+}
+
+final class UserManager: UserManagerProtocol {
     enum Constants {
         static let user = "user_manager_user_key"
     }

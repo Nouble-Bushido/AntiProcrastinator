@@ -10,12 +10,10 @@ import UIKit
 class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     private let window: UIWindow
-    private let factory: ViewControllerFactory
 
-    init(window: UIWindow, navigationController: UINavigationController, factory: ViewControllerFactory) {
+    init(window: UIWindow, navigationController: UINavigationController) {
         self.window = window
         self.navigationController = navigationController
-        self .factory = factory
     }
 
     func start() {
@@ -23,7 +21,7 @@ class AppCoordinator: Coordinator {
     }
 
     private func showSplashScreen() {
-        let splashCoordinator = SplashCoordinator(navigationController: navigationController, factory: factory)
+        let splashCoordinator = SplashCoordinator(navigationController: navigationController)
         splashCoordinator.start()
         window.rootViewController = navigationController
         window.makeKeyAndVisible()

@@ -8,12 +8,12 @@
 import Foundation
 
 final class MainViewModel {
-    private let userManager: UserManager
-    private let fatigueManager: FatigueManager
+    private let userManager: UserManagerProtocol
+    private let fatigueManager: FatigueManagerProtocol
     private let taskManager: TaskManagerProtocol
     private var coordinator: MainCoordinator?
     
-    init(userManager: UserManager, fatigueManager: FatigueManager, taskManager: TaskManagerProtocol, coordinator: MainCoordinator? = nil) {
+    init(userManager: UserManagerProtocol, fatigueManager: FatigueManagerProtocol, taskManager: TaskManagerProtocol, coordinator: MainCoordinator? = nil) {
         self.userManager = userManager
         self.fatigueManager = fatigueManager
         self.taskManager = taskManager

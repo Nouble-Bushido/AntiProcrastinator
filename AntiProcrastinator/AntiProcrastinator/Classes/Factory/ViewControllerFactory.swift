@@ -8,10 +8,10 @@
 import Foundation
 
 protocol ViewControllerFactory {
-    func createSplashViewController(coordinator: SplashCoordinator) -> SplashViewController
-    func createNameRequestViewController() -> NameRequestViewController
-    func createInfoViewController() -> InfoViewController
-    func createMainViewController(coordinator: MainCoordinator) -> MainViewController
-    func createAddTaskViewController() -> AddTaskViewController
-    func createTaskPageViewController(task: Task) -> TaskPageViewController
+    static  func createSplashViewController(coordinator: SplashCoordinator) -> SplashViewController
+    static  func createNameRequestViewController() -> NameRequestViewController
+    static  func createInfoViewController() -> InfoViewController
+    static  func createMainViewController(coordinator: MainCoordinator) -> MainViewController
+    static  func createAddTaskViewController() -> AddTaskViewController
+    static  func createTaskPageViewController(task: Task) -> TaskPageViewController
 }

@@ -7,7 +7,13 @@
 
 import Foundation
 
-final class FatigueManager {
+protocol FatigueManagerProtocol {
+    func increaseFatigueForCompletedTask()
+    func decreaseFatigueRemovedTask()
+    func getAllFatuguePoints() -> Fatigue
+}
+
+final class FatigueManager: FatigueManagerProtocol {
     enum Constants {
         static let fatiguePointsKey = "fatigue_points_manager_key"
         static let fatigueThreshold = 200

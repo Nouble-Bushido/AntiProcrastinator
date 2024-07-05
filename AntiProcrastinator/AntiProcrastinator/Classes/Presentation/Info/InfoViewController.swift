@@ -10,7 +10,7 @@ import UIKit
 final class InfoViewController: UIViewController {
     private lazy var mainView = InfoView()
     private var viewModel = InfoViewModel()
-    var closure: (() -> Void)?
+    var didTappedButton: (() -> Void)?
 
     override func loadView() {
         super.loadView()
@@ -36,6 +36,6 @@ private extension InfoViewController {
     }
     
     func pressContinueButton() {
-        closure?()
+        didTappedButton?()
     }
 }
