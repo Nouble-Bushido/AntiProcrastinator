@@ -21,11 +21,11 @@ Task Planner App is a personal productivity companion designed to help you manag
 
 ## 📸 Screenshots
 
-![Onboarding](path/to/screenshot1.png)
-![Information Levels](path/to/screenshot2.png)
-![Main Screen](path/to/screenshot3.png)
-![Add Task](path/to/screenshot4.png)
-![Task Notifications](path/to/screenshot5.png)
+![Onboarding](<img width="278" alt="Screenshot 2024-02-19 at 16 36 55" src="https://github.com/user-attachments/assets/c732cec9-cabe-441b-8f30-2cbb79517d3b">)
+![Information Levels](<img width="276" alt="Screenshot 2024-02-19 at 16 37 07" src="https://github.com/user-attachments/assets/e8e5edba-491d-43fa-83ed-bd2302871e7f">)
+![Main Screen](<img width="276" alt="Screenshot 2024-02-19 at 16 37 16" src="https://github.com/user-attachments/assets/762df6b5-3ff8-4c12-bee3-aacc4104429c">)
+![Add Task](<img width="276" alt="Screenshot 2024-02-19 at 16 37 33" src="https://github.com/user-attachments/assets/16d17ed3-fef9-4f1b-8b14-fdcb84643458">)
+![Task Notifications](<img width="276" alt="Screenshot 2024-02-19 at 16 37 53" src="https://github.com/user-attachments/assets/30aa7a91-ef1b-4815-8175-68bc797a3ed5">)
 
 ## 🛠️ Tech Stack
 
@@ -45,6 +45,6 @@ Task Planner App is a personal productivity companion designed to help you manag
 Task Planner App is developed by [Your Name].
 
 📬 Contact:
-- [LinkedIn](https://www.linkedin.com/in/yourprofile)
-- [youremail@example.com](mailto:youremail@example.com)
-- [Your Telegram](https://t.me/ArtByter)
+- [LinkedIn](https://www.linkedin.com/in/artem-chzhen-2926b7264/)
+- [E-mail](mailto:artchzhen@gmail.com)
+- [Telegramm](https://t.me/ArtByter)
