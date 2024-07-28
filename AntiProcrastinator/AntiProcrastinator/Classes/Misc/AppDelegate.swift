@@ -18,8 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let container = DIContainer.shared
-        container.register(type: LaunchManagerProtocol.self, service: LaunchManager())
-        container.register(type: TaskManagerProtocol.self, service: TaskManager())
+        DIContainerConfigurator.configure(container: container)
         
         launchManager = container.resolve(type: LaunchManagerProtocol.self)
         taskManager = container.resolve(type: TaskManagerProtocol.self)

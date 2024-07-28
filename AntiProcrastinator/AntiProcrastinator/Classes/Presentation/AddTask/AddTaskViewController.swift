@@ -45,7 +45,8 @@ private extension AddTaskViewController {
     }
     
     func showAlerVC() {
-        let vc = AddTaskAlertViewController()
+        let userManager = DIContainer.shared.resolve(type: UserManagerProtocol.self)
+        let vc = AddTaskAlertViewController(userManger: userManager)
         vc.completed = { [weak self] in
             self?.dismiss(animated: false) { [weak self] in
                 self?.navigationController?.popToRootViewController(animated: true)

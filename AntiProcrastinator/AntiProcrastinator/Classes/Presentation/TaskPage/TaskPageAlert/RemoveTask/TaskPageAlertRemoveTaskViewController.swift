@@ -11,7 +11,16 @@ final class TaskPageAlertRemoveTaskViewController: UIViewController {
     var completed: (() -> Void)?
     
     private lazy var mainView = TaskPageAlertRemoveTaskView()
-    private let userManager = UserManager()
+    private let userManager: UserManagerProtocol
+    
+    init(userManager: UserManagerProtocol) {
+        self.userManager = userManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         view = mainView

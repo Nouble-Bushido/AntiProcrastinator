@@ -14,11 +14,14 @@ final class TaskPageViewController: UIViewController {
     
     private var viewModel: TaskPageViewModel
     private let taskManager: TaskManagerProtocol
-    private let fatigueManager = FatigueManager()
+    private let fatigueManager: FatigueManagerProtocol
+    private let userManager: UserManagerProtocol
     
-    init(task: Task, taskManager: TaskManagerProtocol) {
+    init(task: Task, taskManager: TaskManagerProtocol, fatigueManager: FatigueManagerProtocol, userManager: UserManagerProtocol) {
         self.viewModel = TaskPageViewModel(task: task)
         self.taskManager = taskManager
+        self.fatigueManager = fatigueManager
+        self.userManager = userManager
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -53,7 +56,7 @@ private extension TaskPageViewController {
     }
     
     func goToTaskPageAlertCloseTaskVC() {
-        let vc = TaskPageAlertCloseTaskViewController()
+        let vc = TaskPageAlertCloseTaskViewController(userManager: userManager)
         taskManager.completeTask(withId: viewModel.task.id)
         fatigueManager.increaseFatigueForCompletedTask()
         vc.completed = { [weak self] in
@@ -67,7 +70,7 @@ private extension TaskPageViewController {
     }
     
     func goToTaskPageAlertRemoveTaskVC() {
-        let vc = TaskPageAlertRemoveTaskViewController()
+        let vc = TaskPageAlertRemoveTaskViewController(userManager: userManager)
         taskManager.removeTask(withId: viewModel.task.id)
         vc.completed = { [weak self] in
             self?.dismiss(animated: false) { [weak self] in

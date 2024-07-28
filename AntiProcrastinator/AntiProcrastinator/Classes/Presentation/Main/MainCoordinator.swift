@@ -9,34 +9,28 @@ import UIKit
 
 class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
+    var closureUpdateTasks: (() -> Void)?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.closureUpdateTasks = { [weak self] in
+            self?.updateMainViewController()
+        }
     }
     
     func start() {
-        let userManager = UserManager()
-        let fatigueManager = FatigueManager()
-        let taskManager = DIContainer.shared.resolve(type: TaskManagerProtocol.self)
-        let vm = MainViewModel(userManager: userManager, fatigueManager: fatigueManager, taskManager: taskManager, coordinator: self)
-        let vc = MainViewController(viewModel: vm)
+        let vc = AppViewControllerFactory.createMainViewController(coordinator: self)
         navigationController.setViewControllers([vc], animated: true)
     }
     
     func showAddTask() {
-        let addTaskViewController = AddTaskViewController()
-        addTaskViewController.didAddNewTask = { [weak self] in
-            guard let self = self else { return }
-            if let mainViewController = self.navigationController.viewControllers.first(where: { $0 is MainViewController }) as? MainViewController {
-                mainViewController.updateTasks()
-            }
-        }
+        let addTaskViewController = AppViewControllerFactory.createAddTaskViewController()
+        addTaskViewController.didAddNewTask = closureUpdateTasks
         navigationController.pushViewController(addTaskViewController, animated: true)
     }
     
-    func showTaskDetail(for task: Task) {
-        let taskManager = DIContainer.shared.resolve(type: TaskManagerProtocol.self)
-        let vc = TaskPageViewController(task: task, taskManager: taskManager)
+    func showTaskPage(for task: Task) {
+        let vc = AppViewControllerFactory.createTaskPageViewController(task: task)
         vc.title = "TaskPage.Title.Text".localized
         vc.taskCloseCompletionHandler = { [weak self] in
             self?.updateMainViewController()
@@ -48,8 +42,7 @@ class MainCoordinator: Coordinator {
     }
     
     private func updateMainViewController() {
-        if let mainViewController = navigationController.viewControllers.first(where: { $0 is MainViewController }) as? MainViewController {
-            mainViewController.updateTasks()
-        }
+        let mainViewController = navigationController.viewControllers.compactMap { $0 as? MainViewController }.first
+        mainViewController?.updateTasks()
     }
 }

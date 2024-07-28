@@ -46,6 +46,7 @@
 		121F36422BBBB97F00EE57B0 /* MainFirstNoTaskFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F36412BBBB97F00EE57B0 /* MainFirstNoTaskFeedbackView.swift */; };
 		121F36442BBBE86700EE57B0 /* MainSecondNoTaskFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F36432BBBE86700EE57B0 /* MainSecondNoTaskFeedbackView.swift */; };
 		121F36462BBCE3EA00EE57B0 /* MotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F36452BBCE3EA00EE57B0 /* MotivationView.swift */; };
+		1229EE152C368E7700F4602F /* DIContainerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1229EE142C368E7700F4602F /* DIContainerConfigurator.swift */; };
 		125DCD282B747A2300DCFCD5 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD272B747A2300DCFCD5 /* AddTaskView.swift */; };
 		125DCD2A2B747A2E00DCFCD5 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD292B747A2E00DCFCD5 /* AddTaskViewController.swift */; };
 		125DCD302B74825A00DCFCD5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DCD2F2B74825A00DCFCD5 /* Task.swift */; };
@@ -87,6 +88,8 @@
 		12DD6D7C2C2E9F8B0058E96E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D7B2C2E9F8B0058E96E /* AppCoordinator.swift */; };
 		12DD6D8C2C310F860058E96E /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D8B2C310F860058E96E /* SplashCoordinator.swift */; };
 		12DD6D8E2C3122340058E96E /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D8D2C3122340058E96E /* MainCoordinator.swift */; };
+		12DD6D952C324D1C0058E96E /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D942C324D1C0058E96E /* ViewControllerFactory.swift */; };
+		12DD6D972C324DCB0058E96E /* AppViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DD6D962C324DCB0058E96E /* AppViewControllerFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +144,7 @@
 		121F36412BBBB97F00EE57B0 /* MainFirstNoTaskFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFirstNoTaskFeedbackView.swift; sourceTree = "<group>"; };
 		121F36432BBBE86700EE57B0 /* MainSecondNoTaskFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondNoTaskFeedbackView.swift; sourceTree = "<group>"; };
 		121F36452BBCE3EA00EE57B0 /* MotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationView.swift; sourceTree = "<group>"; };
+		1229EE142C368E7700F4602F /* DIContainerConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainerConfigurator.swift; sourceTree = "<group>"; };
 		125DCD272B747A2300DCFCD5 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		125DCD292B747A2E00DCFCD5 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		125DCD2F2B74825A00DCFCD5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 		12DD6D7B2C2E9F8B0058E96E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		12DD6D8B2C310F860058E96E /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
 		12DD6D8D2C3122340058E96E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		12DD6D942C324D1C0058E96E /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		12DD6D962C324DCB0058E96E /* AppViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewControllerFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +288,7 @@
 				1201E6422B5E229A00682E71 /* ScreenSize.swift */,
 				1201E6402B5E227E00682E71 /* TextAttributes.swift */,
 				12DD6D5B2C2BBB380058E96E /* DIContainer.swift */,
+				1229EE142C368E7700F4602F /* DIContainerConfigurator.swift */,
 				1201E6A42B6A178900682E71 /* LaunchManager.swift */,
 				12DD6D722C2CFA170058E96E /* UserDefaultsProtocol.swift */,
 			);
@@ -334,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				12DD6D782C2E9F720058E96E /* Coordinators */,
+				12DD6D932C324CFA0058E96E /* Factory */,
 				1201E62B2B5E183A00682E71 /* Misc */,
 				1201E64A2B5E41BE00682E71 /* Service */,
 				1201E6352B5E19C600682E71 /* Presentation */,
@@ -612,6 +620,15 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		12DD6D932C324CFA0058E96E /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				12DD6D942C324D1C0058E96E /* ViewControllerFactory.swift */,
+				12DD6D962C324DCB0058E96E /* AppViewControllerFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -734,14 +751,17 @@
 				12DD6D5C2C2BBB380058E96E /* DIContainer.swift in Sources */,
 				12C9866B2B8C150B00DA0D98 /* TaskPageAlertRemoveTaskViewController.swift in Sources */,
 				12C5C4822BB591ED005116D9 /* MainCalendarCollectionViewCell.swift in Sources */,
+				12DD6D972C324DCB0058E96E /* AppViewControllerFactory.swift in Sources */,
 				12C986862B995F2500DA0D98 /* FatigueManager.swift in Sources */,
 				12C9866D2B8C151600DA0D98 /* TaskPageAlertCloseTaskViewController.swift in Sources */,
 				12DD6D7A2C2E9F830058E96E /* Coordinator.swift in Sources */,
+				12DD6D952C324D1C0058E96E /* ViewControllerFactory.swift in Sources */,
 				1201E6452B5E22C300682E71 /* Scalable.swift in Sources */,
 				125DCD4D2B79BF9700DCFCD5 /* AddTaskAlertView.swift in Sources */,
 				125DCD462B75C0A200DCFCD5 /* AddTaskViewModel.swift in Sources */,
 				1201E6AB2B6B8F9D00682E71 /* InfoImageCell.swift in Sources */,
 				1201E6502B5E427500682E71 /* UserManager.swift in Sources */,
+				1229EE152C368E7700F4602F /* DIContainerConfigurator.swift in Sources */,
 				12DD6D732C2CFA170058E96E /* UserDefaultsProtocol.swift in Sources */,
 				12C986732B8F148500DA0D98 /* TaskPageTypeCell.swift in Sources */,
 				1201E6132B5E113100682E71 /* AppDelegate.swift in Sources */,

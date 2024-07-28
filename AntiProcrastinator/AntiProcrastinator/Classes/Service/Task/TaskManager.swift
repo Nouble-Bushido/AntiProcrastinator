@@ -74,7 +74,7 @@ private extension TaskManager {
         let startOfDay = calendar.startOfDay(for: currentDate)
         let yesterday = calendar.date(byAdding: .day, value: -1, to: currentDate)!
         let tasks = getAllTask()
-        let fatigueManager = FatigueManager()
+        let fatigueManager = DIContainer.shared.resolve(type: FatigueManagerProtocol.self)
         
         guard let lastCalculationDate = UserDefaults.standard.object(forKey: Constants.lastCalculationDate) as? Date else {
             UserDefaults.standard.set(startOfDay, forKey: Constants.lastCalculationDate)

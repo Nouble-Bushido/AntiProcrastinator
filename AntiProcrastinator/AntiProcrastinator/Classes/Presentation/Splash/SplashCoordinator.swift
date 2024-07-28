@@ -15,14 +15,13 @@ class SplashCoordinator: Coordinator {
     }
     
     func start() {
-        let vm = SplashViewModel(coordinator: self)
-        let splashViewController = SplashViewController(viewModel: vm)
+        let splashViewController = AppViewControllerFactory.createSplashViewController(coordinator: self)
         splashViewController.navigationItem.backButtonTitle = " "
         navigationController.viewControllers = [splashViewController]
     }
 
     func showNameRequestScreen() {
-        let vc = NameRequestViewController()
+        let vc = AppViewControllerFactory.createNameRequestViewController()
         vc.modalPresentationStyle = .overFullScreen
         vc.onContinue = { [weak self] name in
             self?.handleNameSelected(name)
@@ -36,8 +35,8 @@ class SplashCoordinator: Coordinator {
     }
     
     func showInfoScreen() {
-        let infoViewController = InfoViewController()
-        infoViewController.closure = {
+        let infoViewController = AppViewControllerFactory.createInfoViewController()
+        infoViewController.didTappedButton = {
             self.showMainScreen()
         }
         navigationController.setViewControllers([infoViewController], animated: true)
@@ -45,13 +44,14 @@ class SplashCoordinator: Coordinator {
     
     private func handleNameSelected(_ name: String) {
         let user = User(name: name)
-        UserManager().set(user: user)
+        let userManager = DIContainer.shared.resolve(type: UserManagerProtocol.self)
+        userManager.set(user: user)
         dismissAndShowInfoScreen()
     }
     
     private func dismissAndShowInfoScreen() {
-        navigationController.presentedViewController?.dismiss(animated: true, completion: {
-            self.showInfoScreen()
+        navigationController.presentedViewController?.dismiss(animated: true, completion: { [weak self] in
+            self?.showInfoScreen()
         })
     }
 }
